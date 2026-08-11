@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AssetsTracker | Asset Tracking System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header class="bg-white border-b border-slate-200">
+        <div class="px-36 py-5 flex items-center justify-between">
+            <a href="" class="text-4xl font-bold text-teal-700 tracking-wider">ꍏꌗꌗꍟ꓄ꌗ <span class="text-slate-700">꓄ꋪꍏꉓꀘꍟꋪ</span></a>
+            <nav class="flex items-center gap-8 text-md font-semibold">
+                <a href="" class="text-teal-700 font-medium">Home</a>
+                <a href="" class="text-slate-600 hover:text-teal-700">Assets</a>
+                <a href="{% url "manager:dashboard" %}" class="text-slate-600 hover:text-teal-700">Dashboard</a>
+                <a href="" class="text-slate-600 hover:text-teal-700">Contact</a>
+                <a href="{% url "login" %}" class="bg-teal-600 text-white px-5 py-2.5 rounded-lg hover:bg-teal-700">Login</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Banner -->
+    <div class="flex items-center justify-center py-12">
+        <div class="grid grid-cols-2 gap-36 items-center px-40 ">
+            <div class="flex flex-col">
+                <h1 class="text-5xl font-semibold leading-tight tracking-wide text-slate-900">Manage your assets. <span class="text-teal-600">Simplify your business.</span></h1>
+                <p class="text-lg text-slate-500 mt-5 tracking-wider">AssetsTracker helps organizations keep their assets organized, controlled and easy to manage through one simple and reliable platform.</p>
+                <div class="flex gap-8 mt-8">
+                    <a href="{% url "manager:manager-register" %}" class="bg-teal-600 text-white px-7 py-3.5 rounded-lg font-medium hover:bg-teal-700">Get Started</a>
+                    <a href="" class="border border-slate-300 text-slate-700 px-7 py-3.5 rounded-lg font-medium hover:bg-white">Learn More</a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-7">
+                <div class="flex justify-between items-center">
+                    <p class="text-sm text-slate-400 tracking-widest">Assets Tracker</p>
+                </div>
+
+                <div class="flex items-center justify-center">
+                    <img class="h-96 w-96" src="https://www.qandle.com/img/asset-management-software.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <section class="py-12 px-36 bg-white">
+        <div class="text-center max-w-2xl mx-auto">
+            <p class="text-teal-600 font-medium">WHAT WE PROVIDE</p>
+            <h2 class="text-4xl font-semibold text-slate-900 mt-3">Everything you need to manage assets better</h2>
+            <p class="text-slate-500 mt-4 leading-7">AssetsTracker focuses on making everyday asset management organized, understandable and efficient.</p>
+        </div>
+        <div class="grid grid-cols-3 gap-6 mt-12">
+            <div class="border border-slate-200 rounded-xl p-7 hover:shadow-md">
+                <div class="w-11 h-11 bg-teal-50 text-teal-600 rounded-lg flex items-center justify-center text-xl">+</div>
+                <h3 class="text-xl font-semibold text-slate-900 mt-6">Easy Asset Management</h3>
+                <p class="text-slate-500 mt-3 leading-7">Add and maintain asset information in a clear and structured way without unnecessary complexity.</p>
+            </div>
+            
+            <div class="border border-slate-200 rounded-xl p-7 hover:shadow-md">
+                <div class="w-11 h-11 bg-teal-50 text-teal-600 rounded-lg flex items-center justify-center text-xl">↑</div>
+                <h3 class="text-xl font-semibold text-slate-900 mt-6">Better Organization</h3>
+                <p class="text-slate-500 mt-3 leading-7">Keep valuable organizational resources properly categorized and easier to manage.</p>
+            </div>
+            
+            <div class="border border-slate-200 rounded-xl p-7 hover:shadow-md">
+                <div class="w-11 h-11 bg-teal-50 text-teal-600 rounded-lg flex items-center justify-center text-xl">✓</div>
+                <h3 class="text-xl font-semibold text-slate-900 mt-6">Reliable Tracking</h3>
+                <p class="text-slate-500 mt-3 leading-7">Access important asset information when you need it and maintain better visibility.</p>
+            </div>
+            
+            <div class="border border-slate-200 rounded-xl p-7 hover:shadow-md">
+                <div class="w-11 h-11 bg-teal-50 text-teal-600 rounded-lg flex items-center justify-center text-xl">S</div>
+                <h3 class="text-xl font-semibold text-slate-900 mt-6">Secure Information</h3>
+                <p class="text-slate-500 mt-3 leading-7">Keep important asset information inside a structured system.</p>
+            </div>
+            
+            <div class="border border-slate-200 rounded-xl p-7 hover:shadow-md">
+                <div class="w-11 h-11 bg-teal-50 text-teal-600 rounded-lg flex items-center justify-center text-xl">→</div>
+                <h3 class="text-xl font-semibold text-slate-900 mt-6">Faster Decisions</h3>
+                <p class="text-slate-500 mt-3 leading-7">Find the information you need quickly and make better decisions about organizational assets.</p>
+            </div>
+            
+            <div class="border border-slate-200 rounded-xl p-7 hover:shadow-md">
+                <div class="w-11 h-11 bg-teal-50 text-teal-600 rounded-lg flex items-center justify-center text-xl">★</div>
+                <h3 class="text-xl font-semibold text-slate-900 mt-6">Simple Experience</h3>
+                <p class="text-slate-500 mt-3 leading-7">A clean and straightforward interface designed for everyday asset management.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Your Assets Your Control -->
+    <section class="py-20 bg-slate-900">
+        <div class="px-36">
+            <div class="grid grid-cols-2 gap-16 items-center">
+                
+                <div class="flex flex-col gap-3">
+                    <p class="text-teal-400 font-medium">YOUR ASSETS. YOUR CONTROL.</p>
+                    <h2 class="text-4xl font-semibold text-white leading-tight">Stop managing valuable assets through scattered records.</h2>
+                    <p class="text-slate-400 leading-6">Bring your asset management process into one organized system with AssetsTracker.</p>
+                    <a href="{% url "manager:manager-register" %}" class="w-max inline-block text-center bg-teal-600 text-white px-7 py-3.5 rounded-lg font-medium hover:bg-teal-700">Start with AssetsTracker</a>
+                </div>
+                
+                <div class="bg-slate-800 border border-white/10 rounded-2xl p-7">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center">
+                                <span class="text-teal-400">01</span>
+                            </div>
+                            <div>
+                                <p class="text-white font-medium">Centralized Information</p>
+                                <p class="text-slate-500 text-sm mt-1">Keep asset details together.</p>
+                            </div>
+                        </div>
+                        <div class="h-px bg-slate-800"></div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center">
+                                <span class="text-teal-400">02</span>
+                            </div>
+                            <div>
+                                <p class="text-white font-medium">Better Visibility</p>
+                                <p class="text-slate-500 text-sm mt-1">Understand your assets clearly.</p>
+                            </div>
+                        </div>
+                        <div class="h-px bg-slate-800"></div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center">
+                                <span class="text-teal-400">03</span>
+                            </div>
+                            <div>
+                                <p class="text-white font-medium">Smarter Management</p>
+                                <p class="text-slate-500 text-sm mt-1">Make asset management easier.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why AssetsTracker -->
+    <section class="py-20 bg-slate-50">
+        <div class="px-36">
+            <div class="text-center">
+                <p class="text-teal-600 font-medium">WHY ASSETSTRACKER</p>
+                <h2 class="text-4xl font-semibold text-slate-900 mt-3">We take asset management seriously.</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto mt-4 leading-7">Every part of AssetsTracker is focused on helping organizations manage their resources with confidence.</p>
+            </div>
+            <div class="grid grid-cols-4 gap-6 mt-12">
+                <div class="bg-white border border-slate-200 rounded-xl p-7 text-center">
+                    <div class="w-14 h-14 mx-auto bg-teal-50 rounded-xl flex items-center justify-center">
+                        <span class="text-teal-600 text-xl">✓</span>
+                    </div>
+                    <h3 class="font-semibold text-slate-900 mt-5">Reliable</h3>
+                    <p class="text-sm text-slate-500 mt-2 leading-6">Designed to keep asset information organized and dependable.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-7 text-center">
+                    <div class="w-14 h-14 mx-auto bg-teal-50 rounded-xl flex items-center justify-center">
+                        <span class="text-teal-600 text-xl">◇</span>
+                    </div>
+                    <h3 class="font-semibold text-slate-900 mt-5">Organized</h3>
+                    <p class="text-sm text-slate-500 mt-2 leading-6">Bring important asset information together in one structured system.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-7 text-center">
+                    <div class="w-14 h-14 mx-auto bg-teal-50 rounded-xl flex items-center justify-center">
+                        <span class="text-teal-600 text-xl">+</span>
+                    </div>
+                    <h3 class="font-semibold text-slate-900 mt-5">Efficient</h3>
+                    <p class="text-sm text-slate-500 mt-2 leading-6">Reduce unnecessary work and make asset management easier.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-7 text-center">
+                    <div class="w-14 h-14 mx-auto bg-teal-50 rounded-xl flex items-center justify-center">
+                        <span class="text-teal-600 text-xl">S</span>
+                    </div>
+                    <h3 class="font-semibold text-slate-900 mt-5">Secure</h3>
+                    <p class="text-sm text-slate-500 mt-2 leading-6">Keep organizational asset information within a controlled environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-slate-500 border-t border-slate-200 pt-20">
+        <div class="px-20 py-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold">AssetsTracker</h3>
+                    <p class="text-sm text-slate-500 mt-2">Smart and organized asset management.</p>
+                </div>
+                <div class="flex gap-7 text-sm text-slate-500">
+                    <a href="" class="hover:text-teal-600">Home</a>
+                    <a href="" class="hover:text-teal-600">About</a>
+                    <a href="" class="hover:text-teal-600">Features</a>
+                    <a href="" class="hover:text-teal-600">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 mt-2 pt-6">
+                <p class="text-sm text-slate-400">© 2026 AssetsTracker. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    
+</body>
+</html>
