@@ -1,0 +1,44 @@
+from django.db import models
+
+# Create your models here.
+
+class Category(models.Model):
+    category_name = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True, default="N/A")
+
+    def __str__(self):
+        return self.category_name
+    
+
+class Asset(models.Model):
+    asset_name = models.CharField(max_length=200)
+    category = models.ForeignKey("manager.Category", on_delete=models.PROTECT)
+    brand = models.CharField(max_length=100)
+    model = models.CharField(max_length=200)
+    serial_number = models.CharField(100)
+    purchase_date = models.DateField()
+    purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    CONDITION_CHOICES = [
+        ("new", "New"),
+        ("good", "Good"),
+        ("fair", "Fair"),
+        ("damaged", "Damaged")
+    ]
+    condition = models.CharField(max_length=40, choices=CONDITION_CHOICES, default="new")
+
+    STATUS = [
+        ("available", "Available"),
+        ("not_available", "Not Available"),
+    ]
+    status = models.CharField(max_length=50, choices=STATUS, default="available")
+
+    location = models.CharField(max_length=200)
+    asset_description = models.TextField(null=True, blank=True, default="N/A")
+    image = models.ImageField(upload_to="assets_image/")
+
+
+    def __str__(self):
+        return self.asset_name
+
+
