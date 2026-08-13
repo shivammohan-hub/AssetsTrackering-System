@@ -15,7 +15,7 @@ class Asset(models.Model):
     category = models.ForeignKey("manager.Category", on_delete=models.PROTECT)
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=200)
-    serial_number = models.CharField(100)
+    serial_number = models.CharField(max_length=50)
     purchase_date = models.DateField()
     purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -33,7 +33,7 @@ class Asset(models.Model):
     ]
     status = models.CharField(max_length=50, choices=STATUS, default="available")
 
-    location = models.CharField(max_length=200)
+    quantity = models.IntegerField(default=1)
     asset_description = models.TextField(null=True, blank=True, default="N/A")
     image = models.ImageField(upload_to="assets_image/", null=True, blank=True)
 

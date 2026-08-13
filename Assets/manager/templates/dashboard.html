@@ -75,17 +75,11 @@
 
 
         <div class="w-10/12 border bg-slate-50/10">
-            <div class="flex justify-between px-10 font-bold bg-white border-b">
-                <div class="flex items-center gap-5 py-3">
-                    <svg class="h-7 w-7 text-slate-600" width="10%" height="10%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>
-                        <h3 class="text-sm text-slate-600">Welcome back, Manager !</h3>
-                        <p class="text-xs text-slate-300 font-medium tracking-wide">Here's is an overview of your asset management.</p>
-                    </span>
+            <header class="h-20 bg-white border-b border-slate-200 px-10 flex items-center justify-between">
+                <div class="py-5">
+                    <p class="text-teal-600 text-xl font-bold tracking-widest uppercase">welcome back, manager !</p>
+                    <p class="text-slate-500 text-sm">Here's is an overview of your asset management.</p>
                 </div>
-
                 <div class="flex items-center gap-3 py-3 border-l-2 px-5">
                     <svg class="h-6 w-6 text-slate-600" width="10%" height="10%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.3163 19.4384C5.92462 18.0052 7.34492 17 9 17H15C16.6551 17 18.0754 18.0052 18.6837 19.4384M16 9.5C16 11.7091 14.2091 13.5 12 13.5C9.79086 13.5 8 11.7091 8 9.5C8 7.29086 9.79086 5.5 12 5.5C14.2091 5.5 16 7.29086 16 9.5ZM22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -95,8 +89,7 @@
                         <p class="text-xs text-slate-300 font-medium tracking-wide">Administrator</p>
                     </span>
                 </div>
-                
-            </div>
+            </header>
 
 
             <grid class="grid grid-cols-5 gap-7 px-10 mt-5">
@@ -141,19 +134,19 @@
                         + Add New Assets
                     </a>
 
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="">
+                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="{% url "manager:category_list" %}">
                         + Add Category
                     </a>
 
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="">
+                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="{% url "manager:asset_list" %}">
                         View All Assets
                     </a>
 
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="">
+                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="{% url "manager:assignments" %}">
                         View Assigns 
                     </a>
 
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="">
+                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="{% url "manager:add_user" %}">
                         + Add New user
                     </a>
 
