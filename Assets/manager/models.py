@@ -35,7 +35,7 @@ class Asset(models.Model):
 
     location = models.CharField(max_length=200)
     asset_description = models.TextField(null=True, blank=True, default="N/A")
-    image = models.ImageField(upload_to="assets_image/")
+    image = models.ImageField(upload_to="assets_image/", null=True, blank=True)
 
 
     def __str__(self):

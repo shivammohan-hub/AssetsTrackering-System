@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <div class="w-full flex h-screen">
-        <div class="w-2/12 border flex flex-col justify-between">
+    <div class="w-full flex">
+        <div class="w-2/12 border-r shadow h-screen flex flex-col justify-between fixed bg-white">
             <div class="flex flex-col ">
                 <div class="text-center py-6">
                     <a href="" class="text-2xl font-bold text-teal-700 tracking-wider">ꍏꌗꌗꍟ꓄ꌗ<span class="text-slate-700">꓄ꋪꍏꉓꀘꍟꋪ</span></a>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="flex flex-col gap-2 px-3 text-slate-700 font-medium">
 
-                    <a class="bg-teal-50 border-l-8 border-teal-400 text-teal-800 rounded-md flex items-center gap-1" href="{% url "manager:dashboard" %}">
+                    <a class="flex items-center gap-1 px-2 hover:bg-teal-50 hover:rounded-md" href="{% url "manager:dashboard" %}">
                         <svg width="30%" height="30%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.4 3H4.6C4.03995 3 3.75992 3 3.54601 3.10899C3.35785 3.20487 3.20487 3.35785 3.10899 3.54601C3 3.75992 3 4.03995 3 4.6V8.4C3 8.96005 3 9.24008 3.10899 9.45399C3.20487 9.64215 3.35785 9.79513 3.54601 9.89101C3.75992 10 4.03995 10 4.6 10H8.4C8.96005 10 9.24008 10 9.45399 9.89101C9.64215 9.79513 9.79513 9.64215 9.89101 9.45399C10 9.24008 10 8.96005 10 8.4V4.6C10 4.03995 10 3.75992 9.89101 3.54601C9.79513 3.35785 9.64215 3.20487 9.45399 3.10899C9.24008 3 8.96005 3 8.4 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M19.4 3H15.6C15.0399 3 14.7599 3 14.546 3.10899C14.3578 3.20487 14.2049 3.35785 14.109 3.54601C14 3.75992 14 4.03995 14 4.6V8.4C14 8.96005 14 9.24008 14.109 9.45399C14.2049 9.64215 14.3578 9.79513 14.546 9.89101C14.7599 10 15.0399 10 15.6 10H19.4C19.9601 10 20.2401 10 20.454 9.89101C20.6422 9.79513 20.7951 9.64215 20.891 9.45399C21 9.24008 21 8.96005 21 8.4V4.6C21 4.03995 21 3.75992 20.891 3.54601C20.7951 3.35785 20.6422 3.20487 20.454 3.10899C20.2401 3 19.9601 3 19.4 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -26,7 +26,7 @@
                         </svg>
                         <span>Dashboard</span></a>
 
-                    <a class="flex items-center gap-1 px-2 hover:bg-teal-50 hover:rounded-md" href="{% url "manager:asset_list" %}">
+                    <a class="bg-teal-50 border-l-8 border-teal-400 text-teal-800 rounded-md flex items-center gap-1" href="{% url "manager:asset_list" %}">
                         <svg width="30%" height="30%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.5 7.27783L12 12.0001M12 12.0001L3.49997 7.27783M12 12.0001L12 21.5001M21 16.0586V7.94153C21 7.59889 21 7.42757 20.9495 7.27477C20.9049 7.13959 20.8318 7.01551 20.7354 6.91082C20.6263 6.79248 20.4766 6.70928 20.177 6.54288L12.777 2.43177C12.4934 2.27421 12.3516 2.19543 12.2015 2.16454C12.0685 2.13721 11.9315 2.13721 11.7986 2.16454C11.6484 2.19543 11.5066 2.27421 11.223 2.43177L3.82297 6.54288C3.52345 6.70928 3.37369 6.79248 3.26463 6.91082C3.16816 7.01551 3.09515 7.13959 3.05048 7.27477C3 7.42757 3 7.59889 3 7.94153V16.0586C3 16.4013 3 16.5726 3.05048 16.7254C3.09515 16.8606 3.16816 16.9847 3.26463 17.0893C3.37369 17.2077 3.52345 17.2909 3.82297 17.4573L11.223 21.5684C11.5066 21.726 11.6484 21.8047 11.7986 21.8356C11.9315 21.863 12.0685 21.863 12.2015 21.8356C12.3516 21.8047 12.4934 21.726 12.777 21.5684L20.177 17.4573C20.4766 17.2909 20.6263 17.2077 20.7354 17.0893C20.8318 16.9847 20.9049 16.8606 20.9495 16.7254C21 16.5726 21 16.4013 21 16.0586Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -61,7 +61,7 @@
                         <path d="M19 10V4M16 7H22M16 21V19.8C16 18.1198 16 17.2798 15.673 16.638C15.3854 16.0735 14.9265 15.6146 14.362 15.327C13.7202 15 12.8802 15 11.2 15H6.8C5.11984 15 4.27976 15 3.63803 15.327C3.07354 15.6146 2.6146 16.0735 2.32698 16.638C2 17.2798 2 18.1198 2 19.8V21M12.5 7.5C12.5 9.433 10.933 11 9 11C7.067 11 5.5 9.433 5.5 7.5C5.5 5.567 7.067 4 9 4C10.933 4 12.5 5.567 12.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <span>Add User</span></a>
-
+                        
                 </div>
             </div>
             <div class="px-4 py-3 font-medium text-slate-700">
@@ -72,20 +72,16 @@
                 </a>
             </div>
         </div>
+    
 
 
-        <div class="w-10/12 border bg-slate-50/10">
-            <div class="flex justify-between px-10 font-bold bg-white border-b">
-                <div class="flex items-center gap-5 py-3">
-                    <svg class="h-7 w-7 text-slate-600" width="10%" height="10%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>
-                        <h3 class="text-sm text-slate-600">Welcome back, Manager !</h3>
-                        <p class="text-xs text-slate-300 font-medium tracking-wide">Here's is an overview of your asset management.</p>
-                    </span>
+        <div class="w-10/12 border bg-slate-50/10 ml-64">
+            <!-- Header -->
+            <header class="h-20 bg-white border-b border-slate-200 px-10 flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-800">Add New Asset</h1>
+                    <p class="text-sm text-slate-500 mt-1">Register a new asset in your organization</p>
                 </div>
-
                 <div class="flex items-center gap-3 py-3 border-l-2 px-5">
                     <svg class="h-6 w-6 text-slate-600" width="10%" height="10%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.3163 19.4384C5.92462 18.0052 7.34492 17 9 17H15C16.6551 17 18.0754 18.0052 18.6837 19.4384M16 9.5C16 11.7091 14.2091 13.5 12 13.5C9.79086 13.5 8 11.7091 8 9.5C8 7.29086 9.79086 5.5 12 5.5C14.2091 5.5 16 7.29086 16 9.5ZM22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -95,79 +91,16 @@
                         <p class="text-xs text-slate-300 font-medium tracking-wide">Administrator</p>
                     </span>
                 </div>
-                
-            </div>
-
-
-            <grid class="grid grid-cols-5 gap-7 px-10 mt-5">
-                <a class="bg-white p-6 rounded-lg flex flex-col gap-2 shadow" href="">
-                    <h3 class="text-slate-600 text-md font-semibold">Total assets</h3>
-                    <h2 class="text-5xl font-bold text-teal-600 ">251</h2>
-                    <p class="text-xs font-medium text-slate-400">All Registered Assets</p>
-                </a>
-
-                <a class="bg-white p-6 rounded-lg flex flex-col gap-2 shadow" href="">
-                    <h3 class="text-slate-600 text-md font-semibold">Assigned Assets</h3>
-                    <h2 class="text-5xl font-bold text-teal-600 ">251</h2>
-                    <p class="text-xs font-medium text-slate-400">Currently Assigned</p>
-                </a>
-
-                <a class="bg-white p-6 rounded-lg flex flex-col gap-2 shadow" href="">
-                    <h3 class="text-slate-600 text-md font-semibold">Available Assets</h3>
-                    <h2 class="text-5xl font-bold text-teal-600 ">251</h2>
-                    <p class="text-xs font-medium text-slate-400">Ready to Assigned</p>
-                </a>
-
-                <a class="bg-white p-6 rounded-lg flex flex-col gap-2 shadow" href="">
-                    <h3 class="text-slate-600 text-md font-semibold">Total assets</h3>
-                    <h2 class="text-5xl font-bold text-teal-600 ">251</h2>
-                    <p class="text-xs font-medium text-slate-400">Required Attentions</p>
-                </a>
-
-                <a class="bg-white p-6 rounded-lg flex flex-col gap-2 shadow" href="">
-                    <h3 class="text-slate-600 text-md font-semibold">Total assets</h3>
-                    <h2 class="text-5xl font-bold text-teal-600 ">251</h2>
-                    <p class="text-xs font-medium text-slate-400">System User</p>
-                </a>
-
-            </grid>
+            </header>
 
 
 
-            <div class="flex flex-col gap-3 mt-7 p-5 border rounded-lg m-10">
-                <h2 class="text-slate-600 font-bold px-3 border-l-4 border-teal-400">Quick Actions</h2>
-                <grid class="grid grid-cols-5 gap-7">
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="{% url "manager:add_asset" %}">
-                        + Add New Assets
-                    </a>
-
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="">
-                        + Add Category
-                    </a>
-
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="">
-                        View All Assets
-                    </a>
-
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="">
-                        View Assigns 
-                    </a>
-
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow" href="">
-                        + Add New user
-                    </a>
-
-                </grid>
-
-            </div>
 
 
+
+            
         </div>
     </div>
-    
-    
-
-
-    
 </body>
 </html>
+
