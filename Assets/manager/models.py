@@ -11,13 +11,14 @@ class Category(models.Model):
     
 
 class Asset(models.Model):
+    assetId = models.CharField(max_length=50, null=True,blank=True)
     asset_name = models.CharField(max_length=200)
     category = models.ForeignKey("manager.Category", on_delete=models.PROTECT)
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=200)
     serial_number = models.CharField(max_length=50)
     purchase_date = models.DateField()
-    purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
+    purchase_price = models.IntegerField()
 
     CONDITION_CHOICES = [
         ("new", "New"),
@@ -33,9 +34,9 @@ class Asset(models.Model):
     ]
     status = models.CharField(max_length=50, choices=STATUS, default="available")
 
-    quantity = models.IntegerField(default=1)
+    quantity = models.IntegerField(null=True, blank=True, default=1)
     asset_description = models.TextField(null=True, blank=True, default="N/A")
-    image = models.ImageField(upload_to="assets_image/", null=True, blank=True)
+    image = models.ImageField(upload_to="assets_image/", null=True, blank=True,)
 
 
     def __str__(self):

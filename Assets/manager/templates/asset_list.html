@@ -120,39 +120,39 @@
                         </thead>
                         
                         <tbody class="">
+                            {% for asset in assets %}
                             <tr class="border-b text-center">
-                                <td class="px-6 py-4 text-sm font-medium text-slate-500">#001</td>
+                                <td class="px-6 py-4 text-sm font-medium text-slate-500">#{{asset.assetId}}</td>
                                 <td class="px-6 py-4">
-                                    <p class="text-md font-semibold text-slate-700">HP ZBook</p>
+                                    <p class="text-md font-semibold text-slate-700">{{asset.asset_name}}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="text-sm text-slate-500">Laptop</p>
+                                    <p class="text-sm text-slate-500">{{asset.category}}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="text-sm text-slate-500">HP</p>
+                                    <p class="text-sm text-slate-500">{{asset.brand}}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="text-sm text-slate-500">Zbook G3</p>
+                                    <p class="text-sm text-slate-500">{{asset.model}}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="text-sm text-slate-500">24582385HP</p>
+                                    <p class="text-sm text-slate-500">{{asset.serial_number}}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="text-sm text-slate-500">25,000</p>
+                                    <p class="text-sm text-slate-500">{{asset.purchase_price}}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="text-sm text-slate-500">Good</p>
+                                    <p class="text-sm text-slate-500">{{asset.condition}}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="text-sm text-slate-500">Available</p>
+                                    <p class="text-sm text-slate-500">{{asset.status}}</p>
                                 </td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
 
             
         </div>

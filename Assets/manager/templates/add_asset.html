@@ -108,10 +108,10 @@
 
                         <div class="grid grid-cols-3 gap-6">
                             <div>
-                                <label for="asset_id" class="block text-sm font-medium text-slate-700 mb-2">
+                                <label for="assetId" class="block text-sm font-medium text-slate-700 mb-2">
                                     Asset ID <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" name="asset_id" placeholder="e.g. AST-001" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                <input type="text" name="assetId" placeholder="e.g. AST-001" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                             </div>
 
                             <div>
@@ -120,12 +120,18 @@
                                 </label>
                                 <input type="text" name="asset_name" placeholder="e.g. Dell Latitude 5420" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                             </div>
-
+                            
                             <div>
                                 <label for="category" class="block text-sm font-medium text-slate-700 mb-2">
                                     Category <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" name="category" placeholder="e.g. AST-001" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                
+                                <select name="category" class="w-full rounded-lg bg-white border border-slate-300 px-4 py-3 outline-none">
+                                    <option value=""disabled selected>Select Category</option>
+                                    {% for category in categories %}
+                                    <option value="{{category.id}}">{{category.category_name}}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
 
                             <div>
@@ -173,7 +179,7 @@
                                 <label for="purchase_price" class="block text-sm font-medium text-slate-700 mb-2">
                                     Purchase Price <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" name="purchase_price" placeholder="e.g. 65000" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                <input type="Number" name="purchase_price" placeholder="e.g. 65000" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                             </div>
                         </div>
                     </div>
@@ -193,21 +199,29 @@
                                 <label for="condition" class="block text-sm font-medium text-slate-700 mb-2">
                                     Condition <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" name="condition" placeholder="" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                <select name="condition" class="w-full rounded-lg bg-white border border-slate-300 px-4 py-3 outline-none">
+                                    <option value="" disabled selected>Select condition</option>
+                                    <option value="new">New</option>
+                                    <option value="good">Good</option>
+                                    <option value="fair">Fair</option>
+                                    <option value="damaged">Damaged</option>
+                                </select>
                             </div>
 
                             <div>
                                 <label for="status" class="block text-sm font-medium text-slate-700 mb-2">
                                     Status <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" name="status" placeholder="" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                <select name="status" class="w-full bg-white rounded-lg border border-slate-300 px-4 py-3 outline-none">
+                                    <option value="" disabled selected>Select Status</option>
+                                    <option value="available">Available</option>
+                                    <option value="not_available">Not Available</option>
+                                </select>
                             </div>
 
                             <div>
-                                <label for="quantity" class="block text-sm font-medium text-slate-700 mb-2">
-                                    Quantity <span class="text-red-500">*</span>
-                                </label>
-                                <input type="Number" name="quantity" placeholder="e.g. 05" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                <label for="quantity" class="block text-sm font-medium text-slate-700 mb-2"> Quantity</label>
+                                <input type="Number" name="quantity" placeholder="e.g. 05" class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                             </div>
                         </div>
                     </div>
