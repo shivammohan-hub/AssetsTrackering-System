@@ -3,7 +3,12 @@ from .models import *
 
 # Create your views here.
 def dashboard(req):
-    return render(req, "dashboard.html")
+    
+    data = {
+        "total_asset" : Asset.objects.count(),
+        "total_category" : Category.objects.count(),
+    }
+    return render(req, "dashboard.html",data)
 
 
 def category_list(req):
