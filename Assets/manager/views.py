@@ -7,6 +7,7 @@ def dashboard(req):
     data = {
         "total_asset" : Asset.objects.count(),
         "total_category" : Category.objects.count(),
+        "assets" : Asset.objects.all()[:2],
     }
     return render(req, "dashboard.html",data)
 
