@@ -6,8 +6,8 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def dashboard(req):
-    
     data = {
         "total_asset" : Asset.objects.count(),
         "total_category" : Category.objects.count(),
@@ -16,6 +16,7 @@ def dashboard(req):
     return render(req, "dashboard.html",data)
 
 
+@login_required
 def category_list(req):
     if req.method == "POST":
             category  = Category()
@@ -30,6 +31,7 @@ def category_list(req):
     return render(req, "category_list.html",data)
 
 
+@login_required
 def add_asset(req):
     if req.method == "POST":
         asset  = Asset()
@@ -55,6 +57,7 @@ def add_asset(req):
     return render(req, "add_asset.html",data)
 
 
+@login_required
 def asset_list(req):
     data = {
         "assets" : Asset.objects.all()
@@ -62,14 +65,17 @@ def asset_list(req):
     return render(req, "asset_list.html",data)
 
 
+@login_required
 def add_user(req):
     return render(req, "add_user.html")
 
 
+@login_required
 def assignments(req):
     return render(req, "assignments.html")
 
 
+@login_required
 def users(req):
     return render(req, "users.html")
 
@@ -80,6 +86,14 @@ def users(req):
 
 def manager_register(req):
     form = UserCreationForm(req.POST or None)
+    if req.method == "POST":
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.first_name = req.POST.get("fname")
+            data.last_name = req.POST.get("lname")
+            data.email = req.POST.get("email")
+            data.save()
+            return redirect("manager:login")
     data = {
         "registerForm" : form
     }
@@ -87,6 +101,15 @@ def manager_register(req):
 
 def manager_login(req):
     form = AuthenticationForm(req.POST or None)
+    if req.method == "POST":
+        username = req.POST.get("username")
+        password = req.POST.get("password")
+        user = authenticate(username = username,
+                            password = password)
+
+        if user is not None:
+            auth_login(req,user)
+            return redirect("manager:dashboard")
     data = {
         "loginForm" : form
     }
