@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import *
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def dashboard(req):
@@ -75,13 +79,22 @@ def users(req):
 
 
 def manager_register(req):
-    return render(req, "admin-register.html")
+    form = UserCreationForm(req.POST or None)
+    data = {
+        "registerForm" : form
+    }
+    return render(req, "admin-register.html",data)
 
 def manager_login(req):
-    return render(req, "admin-login.html")
+    form = AuthenticationForm(req.POST or None)
+    data = {
+        "loginForm" : form
+    }
+    return render(req, "admin-login.html",data)
 
 def manager_logout(req):
-    pass
+    auth_logout(req)
+    return redirect("user:home")
 
 
 
