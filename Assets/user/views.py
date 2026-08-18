@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 
 from django.contrib.auth.decorators import login_required
 
+from manager.models import *
+
 # Create your views here.
 def home(req):
     return render(req, "home.html")
@@ -19,7 +21,10 @@ def assign_assets(req):
     return render(req, "assign-assets.html")
 
 def my_assets(req):
-    return render(req, "my-assets.html")
+    data = {
+        "assets" : Asset.objects.all()
+    }
+    return render(req, "my-assets.html",data)
 
 @login_required
 def user_profile(req):
