@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-@login_required
+
 def dashboard(req):
     data = {
         "total_asset" : Asset.objects.count(),
@@ -77,7 +77,19 @@ def assignments(req):
 
 @login_required
 def users(req):
-    return render(req, "users.html")
+    form = UserCreationForm(req.POST or None)
+    if req.method == "POST":
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.first_name = req.POST.get("fname")
+            data.last_name = req.POST.get("lname")
+            data.email = req.POST.get("email")
+            data.save()
+            return redirect("manager:login")
+    data = {
+        "registerForm" : form
+    }
+    return render(req, "users.html",data)
 
 
 

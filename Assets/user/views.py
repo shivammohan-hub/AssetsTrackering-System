@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
 # Create your views here.
 def home(req):
@@ -8,8 +9,32 @@ def home(req):
 def user_dashboard(req):
     return render(req, "user-dashboard.html")
 
+def assets_details(req):
+    return render(req, "assets-details.html")
+
+def assign_assets(req):
+    return render(req, "assign-assets.html")
+
+def my_assets(req):
+    return render(req, "my-assets.html")
+
+def user_profile(req):
+    return render(req, "user-profile.html")
+
+def asset_history(req):
+    return render(req, "asset-history.html")
+
 def login(req):
     form = AuthenticationForm(req.POST or None)
+    if req.method == "POST":
+        username = req.POST.get("username")
+        password = req.POST.get("password")
+        user = authenticate(username = username,
+                            password = password)
+
+        if user is not None:
+            auth_login(req,user)
+            return redirect("manager:dashboard")
     data = {
         "loginForm" : form
     }
