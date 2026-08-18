@@ -10,11 +10,11 @@
 <body>
     <header class="h-[10vh] bg-white border-b border-slate-200 px-8 flex items-center gap-10">
         <div class="text-center ">
-            <a href="" class="text-2xl flex gap-1 font-bold text-teal-500 tracking-wider">ASSETS <span class="text-slate-700 font-medium">TRACKER</span></a>
+            <a href="" class="text-2xl flex gap-1 font-bold text-rose-500 tracking-wider">ASSETS <span class="text-slate-700 font-medium">TRACKER</span></a>
         </div>
         <div class="flex w-full justify-between items-center">
         <div class="py-5">
-            <p class="text-teal-600 text-xl font-bold tracking-widest uppercase">welcome back, user !</p>
+            <p class="text-rose-600 text-xl font-bold tracking-widest uppercase">welcome back, user !</p>
         </div>
         <div class="flex items-center gap-3 py-3 border-l-2 px-5">
             <svg class="h-5 w-5 text-slate-600" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,6 +33,103 @@
 
         <div class="w-10/12 border bg-slate-50/10 p-5">
 
+            <grid class="grid grid-cols-4 gap-7 px-10 mt-5">
+                <a class="bg-white p-6 rounded-lg flex flex-col gap-2 shadow" href="">
+                    <h3 class="text-slate-600 text-md font-semibold">Total assets</h3>
+                    <h2 class="text-5xl font-bold text-rose-600 ">{{total_asset}}</h2>
+                    <p class="text-xs font-medium text-slate-400">All Registered Assets</p>
+                </a>
+
+                <a class="bg-white p-6 rounded-lg flex flex-col gap-2 shadow" href="">
+                    <h3 class="text-slate-600 text-md font-semibold">Assigned Assets</h3>
+                    <h2 class="text-5xl font-bold text-rose-600 ">25</h2>
+                    <p class="text-xs font-medium text-slate-400">Currently Assigned</p>
+                </a>
+
+                <a class="bg-white p-6 rounded-lg flex flex-col gap-2 shadow" href="">
+                    <h3 class="text-slate-600 text-md font-semibold">Available Assets</h3>
+                    <h2 class="text-5xl font-bold text-rose-600 ">25</h2>
+                    <p class="text-xs font-medium text-slate-400">Ready to Assigned</p>
+                </a>
+
+                <a class="bg-white p-6 rounded-lg flex flex-col gap-2 shadow" href="">
+                    <h3 class="text-slate-600 text-md font-semibold">Maintainance</h3>
+                    <h2 class="text-5xl font-bold text-rose-600 ">25</h2>
+                    <p class="text-xs font-medium text-slate-400">Required Attentions</p>
+                </a>
+
+            </grid>
+
+
+
+            <div class="flex flex-col gap-3 mt-7 p-5 border rounded-lg m-10">
+                <h2 class="text-slate-600 font-bold px-3 border-l-4 border-rose-400">Quick Actions</h2>
+                <grid class="grid grid-cols-3 gap-7">
+                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow hover:bg-rose-50 hover:shadow-lg" href="{% url "manager:add_asset" %}">
+                        Assign Asset
+                    </a>
+
+                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow hover:bg-rose-50 hover:shadow-lg" href="{% url "manager:category_list" %}">
+                        View Assets
+                    </a>
+
+                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow hover:bg-rose-50 hover:shadow-lg" href="{% url "manager:asset_list" %}">
+                        Assign History
+                    </a>
+
+                </grid>
+            </div>
+
+
+            <div class="px-10">
+                <div class="w-full bg-white border border-slate-200 rounded-xl">
+                    <div class="p25 py-4 border-b border-slate-200 flex items-center">
+                        <h2 class="text-xl font-semibold text-slate-700 font-bold px-3 mx- border-l-4 border-rose-400">Recently Added Assets</h2>
+                    </div>
+
+                    <table class="w-full">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-200 font-semibold text-xs text-slate-500 uppercase">
+                                <th class="px-6 py-4 text-center">ID</th>
+                                <th class="px-6 py-4 text-center">Name</th>
+                                <th class="px-6 py-4 text-center">Category</th>
+                                <th class="px-6 py-4 text-center">Brand</th>
+                                <th class="px-6 py-4 text-center">Model</th>
+                                <th class="px-6 py-4 text-center">Condition</th>
+                                <th class="px-6 py-4 text-center">Status</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody class="">
+                            {% for asset in assets %}
+                            <tr class="border-b text-center">
+                                <td class="px-6 py-4 text-sm font-medium text-slate-500">#{{asset.assetId}}</td>
+                                <td class="px-6 py-4">
+                                    <p class="text-md font-semibold text-slate-700">{{asset.asset_name}}</p>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm text-slate-500">{{asset.category}}</p>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm text-slate-500">{{asset.brand}}</p>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm text-slate-500">{{asset.model}}</p>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm text-slate-500">{{asset.condition}}</p>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm text-slate-500">{{asset.status}}</p>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
             
             
         </div>

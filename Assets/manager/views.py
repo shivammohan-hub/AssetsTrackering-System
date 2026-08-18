@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -89,7 +90,8 @@ def assignments(req):
 
 @login_required
 def users(req):
-    return render(req, "users.html")
+    users = User.objects.all()
+    return render(req, "users.html", {"users": users} )
 
 
 

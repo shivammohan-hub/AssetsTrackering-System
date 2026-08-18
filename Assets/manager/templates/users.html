@@ -95,10 +95,164 @@
 
 
 
+            <main class="max-w-7xl mx-auto px-6 py-10">
+
+        <!-- Page Heading -->
+        <div class="flex items-center justify-between mb-6">
+
+            <div>
+                <h2 class="text-2xl font-semibold text-gray-800">
+                    Registered Users
+                </h2>
+
+                <p class="text-gray-500 mt-1">
+                    List of all users registered in the system.
+                </p>
+            </div>
+
+            <div class="bg-teal-50 border border-teal-100 px-5 py-3 rounded-xl">
+                <p class="text-sm text-gray-500">
+                    Total Users
+                </p>
+
+                <p class="text-2xl font-bold text-teal-700">
+                    {{ users|length }}
+                </p>
+            </div>
+
+        </div>
 
 
+        <!-- Users Table -->
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
 
-            
+            <div class="overflow-x-auto">
+
+                <table class="w-full text-left">
+
+                    <!-- Table Header -->
+                    <thead class="bg-teal-50 border-b border-teal-100">
+
+                        <tr>
+                            <th class="px-6 py-4 text-sm font-semibold text-teal-800">
+                                #
+                            </th>
+
+                            <th class="px-6 py-4 text-sm font-semibold text-teal-800">
+                                Name
+                            </th>
+
+                            <th class="px-6 py-4 text-sm font-semibold text-teal-800">
+                                Username
+                            </th>
+
+                            <th class="px-6 py-4 text-sm font-semibold text-teal-800">
+                                Email
+                            </th>
+
+                            <th class="px-6 py-4 text-sm font-semibold text-teal-800">
+                                Joined
+                            </th>
+
+                            <th class="px-6 py-4 text-sm font-semibold text-teal-800">
+                                Status
+                            </th>
+                        </tr>
+
+                    </thead>
+
+
+                    <!-- Table Body -->
+                    <tbody class="divide-y divide-gray-100">
+
+                        {% for user in users %}
+
+                        <tr class="hover:bg-teal-50/50 transition">
+
+                            <td class="px-6 py-4 text-gray-600">
+                                {{ forloop.counter }}
+                            </td>
+
+                            <td class="px-6 py-4">
+
+                                <div class="flex items-center gap-3">
+
+                                    <!-- User Initial -->
+                                    <div class="w-10 h-10 rounded-full bg-teal-100
+                                                text-teal-700 flex items-center
+                                                justify-center font-semibold">
+
+                                        {{ user.first_name|first|upper }}
+
+                                    </div>
+
+                                    <div>
+                                        <p class="font-medium text-gray-800">
+                                            {{ user.first_name }} {{ user.last_name }}
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td class="px-6 py-4 text-gray-600">
+                                {{ user.username }}
+                            </td>
+
+
+                            <td class="px-6 py-4 text-gray-600">
+                                {{ user.email }}
+                            </td>
+
+
+                            <td class="px-6 py-4 text-gray-600">
+                                {{ user.date_joined|date:"d M Y" }}
+                            </td>
+
+
+                            <td class="px-6 py-4">
+
+                                {% if user.is_active %}
+
+                                    <span class="inline-flex items-center px-3 py-1
+                                                 rounded-full text-xs font-medium
+                                                 bg-green-100 text-green-700">
+                                        Active
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="inline-flex items-center px-3 py-1
+                                                 rounded-full text-xs font-medium
+                                                 bg-red-100 text-red-700">
+                                        Inactive
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+                            <td colspan="6" class="px-6 py-12 text-center">
+                                <div class="text-gray-400">
+                                    <p class="text-lg font-medium">No registered users</p>
+                                    <p class="text-sm mt-1">Users will appear here after registration.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
         </div>
     </div>
 </body>
