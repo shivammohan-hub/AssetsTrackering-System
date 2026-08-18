@@ -67,7 +67,19 @@ def asset_list(req):
 
 @login_required
 def add_user(req):
-    return render(req, "add_user.html")
+    user_form = UserCreationForm(req.POST or None)
+    if req.method == "POST":
+        if user_form.is_valid():
+            data = user_form.save(commit=False)
+            data.first_name = req.POST.get("fname")
+            data.last_name = req.POST.get("lname")
+            data.email = req.POST.get("email")
+            data.save()
+            return redirect("manager:add_user")
+    data = {
+        "registerForm" : user_form
+    }
+    return render(req, "add_user.html",data)
 
 
 @login_required
@@ -77,19 +89,7 @@ def assignments(req):
 
 @login_required
 def users(req):
-    form = UserCreationForm(req.POST or None)
-    if req.method == "POST":
-        if form.is_valid():
-            data = form.save(commit=False)
-            data.first_name = req.POST.get("fname")
-            data.last_name = req.POST.get("lname")
-            data.email = req.POST.get("email")
-            data.save()
-            return redirect("manager:login")
-    data = {
-        "registerForm" : form
-    }
-    return render(req, "users.html",data)
+    return render(req, "users.html")
 
 
 
