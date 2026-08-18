@@ -5,7 +5,8 @@ from django.contrib.auth.forms import AuthenticationForm
 def home(req):
     return render(req, "home.html")
 
-
+def user_dashboard(req):
+    return render(req, "user-dashboard.html")
 
 def login(req):
     form = AuthenticationForm(req.POST or None)
