@@ -65,15 +65,15 @@
             <div class="flex flex-col gap-3 mt-7 p-5 border rounded-lg m-10">
                 <h2 class="text-slate-600 font-bold px-3 border-l-4 border-rose-400">Quick Actions</h2>
                 <grid class="grid grid-cols-3 gap-7">
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow hover:bg-rose-50 hover:shadow-lg" href="{% url "manager:add_asset" %}">
+                    <a class="text-lg font-semibold text-slate-900 bg-white py-6 text-center rounded-lg flex flex-col gap-2 shadow hover:bg-rose-50 hover:shadow-lg" href="{% url "user:assign_assets" %}">
                         Assign Asset
                     </a>
 
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow hover:bg-rose-50 hover:shadow-lg" href="{% url "manager:category_list" %}">
+                    <a class="text-lg font-semibold text-slate-900 bg-white py-6 text-center rounded-lg flex flex-col gap-2 shadow hover:bg-rose-50 hover:shadow-lg" href="{% url "user:my_assets" %}">
                         View Assets
                     </a>
 
-                    <a class="text-sm font-semibold text-slate-700 bg-white py-3 text-center rounded-lg flex flex-col gap-2 shadow hover:bg-rose-50 hover:shadow-lg" href="{% url "manager:asset_list" %}">
+                    <a class="text-lg font-semibold text-slate-900 bg-white py-6 text-center rounded-lg flex flex-col gap-2 shadow hover:bg-rose-50 hover:shadow-lg" href="{% url "user:asset_history" %}">
                         Assign History
                     </a>
 
@@ -83,7 +83,7 @@
 
             <div class="px-10">
                 <div class="w-full bg-white border border-slate-200 rounded-xl">
-                    <div class="p25 py-4 border-b border-slate-200 flex items-center">
+                    <div class="p25 py-4 border-b border-slate-200 flex items-center px-5">
                         <h2 class="text-xl font-semibold text-slate-700 font-bold px-3 mx- border-l-4 border-rose-400">Recently Added Assets</h2>
                     </div>
 

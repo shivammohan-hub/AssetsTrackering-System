@@ -11,7 +11,11 @@ def home(req):
     return render(req, "home.html")
 
 def user_dashboard(req):
-    return render(req, "user-dashboard.html")
+    data = {
+        "assets" : Asset.objects.all(),
+        "total_asset" : Asset.objects.count()
+    }
+    return render(req, "user-dashboard.html",data)
 
 def assets_details(req):
     return render(req, "assets-details.html")
