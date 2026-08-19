@@ -21,11 +21,12 @@ def assets_details(req):
     return render(req, "assets-details.html")
 
 @login_required
-def assign_assets(req, selected_assets):
+def assign_assets(req):
+    selected_assets = req.POST.getlist("selected_assets")
     data = {
-        "assets" : Asset.objects.filter(id=selected_assets),
+        "assets" : Asset.objects.filter(id__in=selected_assets),
     }
-    return render(req,"user/assign_assets.html",data)
+    return render(req,"assign_assets.html",data)
     
 
 @login_required
@@ -35,9 +36,8 @@ def my_assets(req):
     }
     if req.method == "POST":
         selected_assets = req.POST.getlist("selected_assets")
-        selected_assets.save()
-        
-        return redirect("user/assign_assets")
+
+        return redirect("user:assign_assets",{"selected_assets": selected_assets,})
     return render(req, "my-assets.html", data)
 
 
