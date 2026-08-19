@@ -21,11 +21,11 @@ def assets_details(req):
     return render(req, "assets-details.html")
 
 @login_required
-def assign_assets(req, id):
-    # data = {
-    #     "assets" : Asset.objects.filter(id=id),
-    # }
-    return render(req,"user:assign_assets.html",data)
+def assign_assets(req, selected_assets):
+    data = {
+        "assets" : Asset.objects.filter(id=selected_assets),
+    }
+    return render(req,"user/assign_assets.html",data)
     
 
 @login_required
@@ -34,9 +34,10 @@ def my_assets(req):
         "assets" : Asset.objects.all()
     }
     if req.method == "POST":
-        selected_assets = req.POST.get("id=selected_assets")
+        selected_assets = req.POST.getlist("selected_assets")
         selected_assets.save()
-        return redirect("user:assign_assets")
+        
+        return redirect("user/assign_assets")
     return render(req, "my-assets.html", data)
 
 
@@ -58,7 +59,7 @@ def login(req):
 
         if user is not None:
             auth_login(req,user)
-            return redirect("user:user_dashboard")
+            return redirect("user/user_dashboard")
     data = {
         "loginForm" : user_form
     }
