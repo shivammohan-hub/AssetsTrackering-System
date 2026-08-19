@@ -12,7 +12,7 @@ def home(req):
 
 def user_dashboard(req):
     data = {
-        "assets" : Asset.objects.all(),
+        "assets" : Asset.objects.all()[:2],
         "total_asset" : Asset.objects.count()
     }
     return render(req, "user-dashboard.html",data)
@@ -21,14 +21,24 @@ def assets_details(req):
     return render(req, "assets-details.html")
 
 @login_required
-def assign_assets(req):
-    return render(req, "assign-assets.html")
+def assign_assets(req, id):
+    # data = {
+    #     "assets" : Asset.objects.filter(id=id),
+    # }
+    return render(req,"user:assign_assets.html",data)
+    
 
+@login_required
 def my_assets(req):
     data = {
         "assets" : Asset.objects.all()
     }
-    return render(req, "my-assets.html",data)
+    if req.method == "POST":
+        selected_assets = req.POST.get("id=selected_assets")
+        selected_assets.save()
+        return redirect("user:assign_assets")
+    return render(req, "my-assets.html", data)
+
 
 @login_required
 def user_profile(req):

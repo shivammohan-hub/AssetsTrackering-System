@@ -33,7 +33,12 @@
 
         <div class="w-10/12 border bg-slate-50/10 p-5">
 
-            
+            <h2>Selected Assets</h2>
+            {% for asset in assets %}
+                <div>
+                    <p>{{ asset.asset_name }}</p>
+                </div>
+            {% endfor %}
             
         </div>
 

@@ -28,54 +28,65 @@
         </div>
     </header>
 
-    <div class="w-full flex h-[90vh]">
+    <div class="w-full flex h-fit">
         {% include "sidebar.html" %}
 
         <div class="w-10/12 border bg-slate-50/10 p-5">
 
-            <div class="grid grid-cols-4 gap-10">
+            <form action="{% url "user:assign_assets" %}" method="post">
+                {% csrf_token %}
 
-                {% for asset in assets %}
-                
-                <div class="bg-white border shadow rounded-xl hover:shadow-lg p-3 px-5">
-                    <div class="flex items-center justify-center">
-                        <img src="{{ asset.image.url }}" alt="{{asset.model}}" class="h-36 w-40 ">
+                <div class="grid grid-cols-4 gap-10">
+                    {% for asset in assets %}
+                    
+                    <div class="bg-white border shadow rounded-xl hover:shadow-lg py-4 px-5">
+                        <div class="flex items-center justify-center">
+                            <img src="{{ asset.image.url }}" alt="{{asset.model}}" class="h-32 w-40 ">
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <h2 class="text-lg font-bold text-slate-800 mt-1">{{asset.asset_name}}</h2>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-500">Brand</span>
+                                <span class="font-medium text-slate-700">{{asset.brand}}</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-500">Model</span>
+                                <span class="font-medium text-slate-700">{{asset.model}}</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-500">Serial No.</span>
+                                <span class="font-medium text-slate-700">{{asset.serial_number}}</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-500">Status</span>
+                                <span class="text-slate-700 bg-green-100 rounded-xl text-sm py-1 px-3 font-semibold">{{asset.status}}</span>
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between">
+                                <a href="" class="w-44 flex items-center text-white font-bold py-2 rounded-lg justify-center gap-2 bg-rose-500 font-semibold text-sm hover:bg-rose-600">View Details</a> 
+
+                                <input type="checkbox"  class="w-16 h-8" name="selected_assets" id="">
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex flex-col gap-1">
-                        <h2 class="text-lg font-bold text-slate-800 mt-1">{{asset.asset_name}}</h2>
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-500">Brand</span>
-                            <span class="font-medium text-slate-700">{{asset.brand}}</span>
-                        </div>
 
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-500">Model</span>
-                            <span class="font-medium text-slate-700">{{asset.model}}</span>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-500">Serial No.</span>
-                            <span class="font-medium text-slate-700">{{asset.serial_number}}</span>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-500">Status</span>
-                            <span class="text-slate-700 bg-green-100 rounded-xl text-sm py-1 px-3 font-semibold">{{asset.status}}</span>
-                        </div>
-
-                        <div class="mt-2 flex items-center gap-1">
-                            <a href="" class="w-full flex items-center text-white font-bold py-2 rounded-lg justify-center gap-2 bg-rose-500 font-semibold text-sm hover:bg-rose-600">View Details
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-6-6 6 6-6 6"/>
-                            </svg>
-                            </a>
-                        </div>
-                    </div>
+                    {% endfor %}
+                    
                 </div>
 
-                {% endfor %}
-                
-            </div>
+                <section class="fixed bottom-0 w-9/12 ml-16">
+                    <div class="flex items-center justify-between mb-5 border bg-white shadow px-16 py-4 rounded-full mr-10 ">
+                        <p class="uppercase tracking-wider text-slate-600 font-bold text-xl">Select the items for Assign the Assets.</p>
+                        <input class="px-7 py-3.5 border rounded-lg font-bold text-sm hover:text-rose-500 text-slate-500 hover:shadow hover:border-rose-500 " type="submit" value="Select Items">
+                    </div>
+                </section>
+
+            </form>
+            
+
             
         </div>
 

@@ -106,6 +106,7 @@ def manager_register(req):
             data.first_name = req.POST.get("fname")
             data.last_name = req.POST.get("lname")
             data.email = req.POST.get("email")
+            data.is_staff = True
             data.save()
             return redirect("manager:login")
     data = {
