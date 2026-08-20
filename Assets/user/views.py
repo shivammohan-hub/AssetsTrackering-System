@@ -3,8 +3,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
 from django.contrib.auth.decorators import login_required
-
 from manager.models import *
+
 
 # Create your views here.
 def home(req):
@@ -26,7 +26,7 @@ def assign_assets(req):
     data = {
         "assets" : Asset.objects.filter(id__in=selected_assets),
     }
-    return render(req,"assign_assets.html",data)
+    return render(req,"assign-assets.html",data)
     
 
 @login_required

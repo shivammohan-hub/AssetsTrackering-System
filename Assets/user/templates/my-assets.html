@@ -3,95 +3,131 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AssetsTracker | Manager Dashboard</title>
+    <title>AssetsTracker | Assign Assets</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <header class="h-[10vh] bg-white border-b border-slate-200 px-8 flex items-center gap-10">
-        <div class="text-center ">
-            <a href="" class="text-2xl flex gap-1 font-bold text-rose-500 tracking-wider">ASSETS <span class="text-slate-700 font-medium">TRACKER</span></a>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-hidden">
+    
+    <header class="h-[10vh] bg-white border-b border-slate-200 px-8 flex items-center gap-10 shadow-sm z-10 relative">
+        <div class="text-center min-w-max">
+            <a href="/" class="text-2xl flex gap-1 font-bold text-rose-500 tracking-wider">
+                ASSETS <span class="text-slate-800 font-medium">TRACKER</span>
+            </a>
         </div>
         <div class="flex w-full justify-between items-center">
-        <div class="py-5">
-            <p class="text-rose-600 text-xl font-bold tracking-widest uppercase">welcome back, user !</p>
-        </div>
-        <div class="flex items-center gap-3 py-3 border-l-2 px-5">
-            <svg class="h-5 w-5 text-slate-600" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 15.8369C19.4559 16.5683 20.7041 17.742 21.6152 19.2096C21.7956 19.5003 21.8858 19.6456 21.917 19.8468C21.9804 20.2558 21.7008 20.7585 21.3199 20.9204C21.1325 21 20.9216 21 20.5 21M16 11.5322C17.4817 10.7959 18.5 9.26686 18.5 7.5C18.5 5.73314 17.4817 4.20411 16 3.46776M14 7.5C14 9.98528 11.9852 12 9.49996 12C7.01468 12 4.99996 9.98528 4.99996 7.5C4.99996 5.01472 7.01468 3 9.49996 3C11.9852 3 14 5.01472 14 7.5ZM2.55919 18.9383C4.1535 16.5446 6.66933 15 9.49996 15C12.3306 15 14.8464 16.5446 16.4407 18.9383C16.79 19.4628 16.9646 19.725 16.9445 20.0599C16.9289 20.3207 16.7579 20.64 16.5495 20.7976C16.2819 21 15.9138 21 15.1776 21H3.82232C3.08613 21 2.71804 21 2.4504 20.7976C2.24201 20.64 2.07105 20.3207 2.05539 20.0599C2.03529 19.725 2.20992 19.4628 2.55919 18.9383Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>
-                <h3 class="text-sm text-slate-600 font-semibold"> Shivam</h3>
-                <p class="text-xs text-slate-300 font-medium tracking-wide">Authorized User</p>
-            </span>
-        </div>
+            <div class="py-5">
+                <p class="text-rose-600 text-sm font-bold tracking-widest uppercase">Welcome back, Manager</p>
+            </div>
+            
+            <div class="flex items-center gap-4 py-2 border-l border-slate-200 px-6">
+                <!-- User Profile -->
+                <div class="flex items-center gap-3 bg-slate-50 p-2 rounded-lg border border-slate-100 cursor-pointer hover:bg-slate-100 transition-colors">
+                    <div class="bg-white p-1.5 rounded-md shadow-sm border border-slate-200">
+                        <svg class="h-5 w-5 text-slate-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 15.8369C19.4559 16.5683 20.7041 17.742 21.6152 19.2096C21.7956 19.5003 21.8858 19.6456 21.917 19.8468C21.9804 20.2558 21.7008 20.7585 21.3199 20.9204C21.1325 21 20.9216 21 20.5 21M16 11.5322C17.4817 10.7959 18.5 9.26686 18.5 7.5C18.5 5.73314 17.4817 4.20411 16 3.46776M14 7.5C14 9.98528 11.9852 12 9.49996 12C7.01468 12 4.99996 9.98528 4.99996 7.5C4.99996 5.01472 7.01468 3 9.49996 3C11.9852 3 14 5.01472 14 7.5ZM2.55919 18.9383C4.1535 16.5446 6.66933 15 9.49996 15C12.3306 15 14.8464 16.5446 16.4407 18.9383C16.79 19.4628 16.9646 19.725 16.9445 20.0599C16.9289 20.3207 16.7579 20.64 16.5495 20.7976C16.2819 21 15.9138 21 15.1776 21H3.82232C3.08613 21 2.71804 21 2.4504 20.7976C2.24201 20.64 2.07105 20.3207 2.05539 20.0599C2.03529 19.725 2.20992 19.4628 2.55919 18.9383Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span>
+                        <h3 class="text-sm text-slate-800 font-bold leading-tight">Shivam</h3>
+                        <p class="text-[11px] text-slate-500 font-medium uppercase tracking-wide">Authorized User</p>
+                    </span>
+                </div>
+            </div>
         </div>
     </header>
 
-    <div class="w-full flex h-fit">
+    <div class="w-full flex h-[90vh]">
+        
         {% include "sidebar.html" %}
 
-        <div class="w-10/12 border bg-slate-50/10 p-5">
-
-            <form action="{% url "user:assign_assets" %}" method="post">
+        <main class="w-10/12 overflow-y-auto relative bg-slate-50/50">
+            
+            <form action="{% url 'user:assign_assets' %}" method="post" class="min-h-full flex flex-col p-8 pb-32">
                 {% csrf_token %}
 
-                <div class="grid grid-cols-4 gap-10">
-                    {% for asset in assets %}
+                <div class="mb-6">
+                    <h1 class="text-3xl font-bold text-slate-800 tracking-tight">Assign Assets</h1>
+                    <p class="text-slate-500 text-sm mt-1">Select the available assets below to assign them to a user.</p>
+                </div>
+
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     
-                    <div class="bg-white border shadow rounded-xl hover:shadow-lg py-4 px-5">
-                        <div class="flex items-center justify-center">
-                            <img src="{{ asset.image.url }}" alt="{{asset.model}}" class="h-32 w-40 ">
+                    {% for asset in assets %}
+                    <label class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-rose-300 transition-all duration-200 cursor-pointer group flex flex-col overflow-hidden">
+                        
+                        <div class="h-40 w-full border-b flex items-center justify-center p-4 relative">
+                            <div class="absolute top-3 right-3">
+                                <span class="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                                    {{ asset.status }}
+                                </span>
+                            </div>
+                            <img src="{{ asset.image.url }}" alt="{{ asset.model }}" class="h-full w-full object-contain ">
                         </div>
-                        <div class="flex flex-col gap-1">
-                            <h2 class="text-lg font-bold text-slate-800 mt-1">{{asset.asset_name}}</h2>
-                            <div class="flex items-center justify-between">
-                                <span class="text-slate-500">Brand</span>
-                                <span class="font-medium text-slate-700">{{asset.brand}}</span>
+
+                        <div class="p-5 flex flex-col flex-grow">
+                            <h2 class="text-lg font-bold text-slate-800 truncate mb-4" title="{{ asset.asset_name }}">
+                                {{ asset.asset_name }}
+                            </h2>
+                            
+                            <div class="flex flex-col gap-2.5 text-sm mb-6 flex-grow">
+                                <div class="flex items-center justify-between border-b border-slate-50 pb-1.5">
+                                    <span class="text-slate-500">Brand</span>
+                                    <span class="font-semibold text-slate-700">{{ asset.brand }}</span>
+                                </div>
+                                <div class="flex items-center justify-between border-b border-slate-50 pb-1.5">
+                                    <span class="text-slate-500">Model</span>
+                                    <span class="font-semibold text-slate-700">{{ asset.model }}</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-500">Serial No.</span>
+                                    <span class="font-mono text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">{{ asset.serial_number }}</span>
+                                </div>
                             </div>
 
-                            <div class="flex items-center justify-between">
-                                <span class="text-slate-500">Model</span>
-                                <span class="font-medium text-slate-700">{{asset.model}}</span>
-                            </div>
+                            <div class="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
+                                <a href="#" class="text-rose-500 font-semibold text-sm hover:text-rose-600 flex items-center gap-1 transition-colors">
+                                    View Details
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                </a> 
 
-                            <div class="flex items-center justify-between">
-                                <span class="text-slate-500">Serial No.</span>
-                                <span class="font-medium text-slate-700">{{asset.serial_number}}</span>
-                            </div>
-
-                            <div class="flex items-center justify-between">
-                                <span class="text-slate-500">Status</span>
-                                <span class="text-slate-700 bg-green-100 rounded-xl text-sm py-1 px-3 font-semibold">{{asset.status}}</span>
-                            </div>
-
-                            <div class="mt-4 flex items-center justify-between">
-                                <a href="" class="w-44 flex items-center text-white font-bold py-2 rounded-lg justify-center gap-2 bg-rose-500 font-semibold text-sm hover:bg-rose-600">View Details</a> 
-
-                                <input type="checkbox" class="w-16 h-8" name="selected_assets" id="{{ asset.id }}">
+                                <div class="flex items-center justify-center p-1 hover:bg-slate-50 rounded-full transition-colors">
+                                    <input type="checkbox" name="selected_assets" value="{{ asset.id }}" class="w-6 h-6 rounded border-slate-300 text-rose-500 accent-rose-500 focus:ring-rose-500 cursor-pointer shadow-sm">
+                                </div>
                             </div>
                         </div>
+                    </label>
+                    {% empty %}
+                    <div class="col-span-full py-12 flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-xl bg-white">
+                        <svg class="w-12 h-12 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
+                        <p class="text-slate-500 font-medium">No assets available to assign.</p>
                     </div>
-
                     {% endfor %}
                     
                 </div>
 
-                <section class="fixed bottom-0 w-9/12 ml-16">
-                    <div class="flex items-center justify-between mb-5 border bg-white shadow px-16 py-4 rounded-full mr-10 ">
-                        <p class="uppercase tracking-wider text-slate-600 font-bold text-xl">Select the items for Assign the Assets.</p>
-                        <input class="px-7 py-3.5 border rounded-lg font-bold text-sm hover:text-rose-500 text-slate-500 hover:shadow hover:border-rose-500 " type="submit" value="Select Items">
+                <div class="fixed bottom-6 left-[16.666%] right-0 mx-auto w-max max-w-3xl z-40">
+                    <div class="bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-200/60 px-8 py-4 rounded-2xl flex items-center justify-between gap-12">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-rose-100 p-2 rounded-full text-rose-500">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-slate-800 font-bold text-lg">Ready to assign?</p>
+                                <p class="text-slate-500 text-xs font-medium">Select items above to proceed</p>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 rounded-xl font-bold text-sm transition-all shadow-lg shadow-slate-200 flex items-center gap-2">
+                            Assign Selected
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
                     </div>
-                </section>
+                </div>
 
             </form>
-            
-
-            
-        </div>
-
+        </main>
     </div>
-    
-
 </body>
 </html>
