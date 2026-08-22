@@ -20,6 +20,7 @@ def user_dashboard(req):
 def assets_details(req):
     return render(req, "assets-details.html")
 
+
 @login_required
 def assign_assets(req):
     selected_assets = req.POST.getlist("selected_assets")
@@ -27,7 +28,7 @@ def assign_assets(req):
         "assets" : Asset.objects.filter(id__in=selected_assets),
     }
     return render(req,"assign-assets.html",data)
-    
+
 
 @login_required
 def my_assets(req):
