@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 
 from django.contrib.auth.decorators import login_required
 from manager.models import *
+from .models import ToAssign
 
 
 # Create your views here.
@@ -23,11 +24,30 @@ def assets_details(req):
 
 @login_required
 def assign_assets(req):
-    selected_assets = req.POST.getlist("selected_assets")
-    data = {
-        "assets" : Asset.objects.filter(id__in=selected_assets),
-    }
-    return render(req,"assign-assets.html",data)
+
+    if req.method == "POST":
+
+        selected_assets = req.POST.getlist("selected_assets")
+
+        person_name = req.POST.get("person_name")
+        person_email = req.POST.get("person_email")
+        department = req.POST.get("department")
+        person_designation = req.POST.get("person_designation")
+        assignment_date = req.POST.get("assignment_date")
+        remarks = req.POST.get("remarks")
+
+        assignment = ToAssign.objects.create(
+            person_name=person_name,
+            person_email=person_email,
+            department=department,
+            person_designation=person_designation,
+            assignment_date=assignment_date,
+            remarks=remarks,
+        )
+
+        assignment.assets.set(selected_assets)
+        return redirect("user:assignment_history")
+    return redirect("user:my_assets")
 
 
 @login_required
