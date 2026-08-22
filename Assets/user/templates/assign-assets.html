@@ -13,7 +13,7 @@
     <header class="h-[10vh] bg-white border-b border-slate-200 px-8 flex items-center gap-10 shadow-sm z-10 relative">
 
         <div class="text-center min-w-max">
-            <a href="/" class="text-2xl flex gap-1 font-bold text-rose-500 tracking-wider">
+            <a href="/" class="text-2xl flex gap-1 font-bold text-sky-500 tracking-wider">
                 ASSETS <span class="text-slate-800 font-medium">TRACKER</span>
             </a>
         </div>
@@ -21,7 +21,7 @@
         <div class="flex w-full justify-between items-center">
 
             <div class="py-5">
-                <p class="text-rose-600 text-sm font-bold tracking-widest uppercase">
+                <p class="text-sky-600 text-sm font-bold tracking-widest uppercase">
                     Welcome back, Manager
                 </p>
             </div>
@@ -84,7 +84,7 @@
                 </div>
 
                 <a href="{% url 'user:my_assets' %}"
-                   class="bg-white border border-slate-200 hover:border-rose-300 hover:text-rose-500 text-slate-600 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all shadow-sm">
+                   class="bg-white border border-slate-200 hover:border-sky-300 hover:text-sky-500 text-slate-600 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all shadow-sm">
 
                     ← Back to Assets
                 </a>
@@ -113,7 +113,7 @@
                                 </p>
                             </div>
 
-                            <span class="bg-rose-100 text-rose-600 text-xs font-bold px-3 py-1.5 rounded-full">
+                            <span class="bg-sky-100 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full">
                                 {{ assets|length }} Selected
                             </span>
 
@@ -124,7 +124,7 @@
 
                             {% for asset in assets %}
 
-                            <div class="border border-slate-200 rounded-xl p-4 flex items-center gap-5 hover:border-rose-200 hover:shadow-sm transition-all">
+                            <div class="border border-slate-200 rounded-xl p-4 flex items-center gap-5 hover:border-sky-200 hover:shadow-sm transition-all">
 
                                 <!-- IMAGE -->
                                 <div class="w-20 h-20 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-center overflow-hidden shrink-0">
@@ -276,7 +276,7 @@
                                        name="person_name"
                                        placeholder="Enter full name"
                                        required
-                                       class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-400 focus:ring-2 focus:ring-rose-100 outline-none text-sm transition-all">
+                                       class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all">
 
                             </div>
 
@@ -292,7 +292,7 @@
                                        name="email"
                                        placeholder="person@example.com"
                                        required
-                                       class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-400 focus:ring-2 focus:ring-rose-100 outline-none text-sm transition-all">
+                                       class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all">
 
                             </div>
 
@@ -306,7 +306,7 @@
 
                                 <select name="department"
                                         required
-                                        class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-400 focus:ring-2 focus:ring-rose-100 outline-none text-sm transition-all">
+                                        class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all">
 
                                     <option value="">Select department</option>
                                     <option value="IT">IT</option>
@@ -332,7 +332,7 @@
                                        name="designation"
                                        placeholder="e.g. Software Developer"
                                        required
-                                       class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-400 focus:ring-2 focus:ring-rose-100 outline-none text-sm transition-all">
+                                       class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all">
 
                             </div>
 
@@ -347,7 +347,7 @@
                                 <input type="date"
                                        name="assignment_date"
                                        required
-                                       class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-400 focus:ring-2 focus:ring-rose-100 outline-none text-sm transition-all">
+                                       class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all">
 
                             </div>
 
@@ -365,14 +365,14 @@
                                 <textarea name="remarks"
                                           rows="3"
                                           placeholder="Add any additional information..."
-                                          class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-400 focus:ring-2 focus:ring-rose-100 outline-none text-sm transition-all resize-none"></textarea>
+                                          class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all resize-none"></textarea>
 
                             </div>
 
 
                             <!-- SUBMIT -->
                             <button type="submit"
-                                    class="w-full bg-rose-500 hover:bg-rose-600 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-rose-100">
+                                    class="w-full bg-sky-500 hover:bg-sky-600 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-sky-100">
 
                                 Assign {{ assets|length }} Asset{{ assets|length|pluralize }}
 
