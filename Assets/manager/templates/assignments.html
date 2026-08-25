@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AssetsTracker | Manager Dashboard</title>
+    <title>AssetsTracker | Assignment History</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-slate-50/10 text-slate-800 font-sans antialiased">
     <div class="w-full flex">
         <div class="w-2/12 border-r shadow h-screen flex flex-col justify-between fixed bg-white">
             <div class="flex flex-col ">
@@ -32,7 +32,7 @@
                         </svg>
                         <span>Assets</span></a>
 
-                    <a class="flex items-center gap-1 px-2 hover:bg-teal-50 hover:rounded-md" href="{% url "manager:add_asset" %}">
+                    <a class="bg-teal-50 border-l-8 border-teal-400 text-teal-800 rounded-md flex items-center gap-1" href="{% url "manager:add_asset" %}">
                         <svg width="30%" height="30%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -44,7 +44,7 @@
                         </svg>
                         <span>Categories</span></a>
 
-                    <a class="bg-teal-50 border-l-8 border-teal-400 text-teal-800 rounded-md flex items-center gap-1" href="{% url "manager:assignments" %}">
+                    <a class="flex items-center gap-1 px-2 hover:bg-teal-50 hover:rounded-md" href="{% url "manager:assignments" %}">
                         <svg width="30%" height="30%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19 21L22 18M22 18L19 15M22 18H16M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -73,32 +73,78 @@
             </div>
         </div>
 
-        <div class="w-10/12 border bg-slate-50/10 ml-64">
-            <!-- Header -->
-            <header class="h-20 bg-white border-b border-slate-200 px-10 flex items-center justify-between">
+        <div class="w-10/12 border bg-slate-50/10 ml-[16.666667%] min-h-screen flex flex-col">
+            
+            <header class="h-20 bg-white border-b border-slate-200 px-10 flex items-center justify-between sticky top-0 z-10">
                 <div class="py-5">
                     <p class="text-teal-600 text-xl font-bold tracking-widest uppercase">Assignments</p>
-                    <p class="text-slate-500 text-sm">Manage all Assigned Assets</p>
+                    <p class="text-slate-500 text-sm">Manage all Assigned Assets history</p>
                 </div>
-                <div class="flex items-center gap-3 py-3 border-l-2 px-5">
-                    <svg class="h-6 w-6 text-slate-600" width="10%" height="10%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="flex items-center gap-3 py-3 border-l-2 pl-5">
+                    <svg class="h-6 w-6 text-slate-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.3163 19.4384C5.92462 18.0052 7.34492 17 9 17H15C16.6551 17 18.0754 18.0052 18.6837 19.4384M16 9.5C16 11.7091 14.2091 13.5 12 13.5C9.79086 13.5 8 11.7091 8 9.5C8 7.29086 9.79086 5.5 12 5.5C14.2091 5.5 16 7.29086 16 9.5ZM22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <span>
-                        <h3 class="text-sm text-slate-600">Manager</h3>
-                        <p class="text-xs text-slate-300 font-medium tracking-wide">Administrator</p>
+                        <h3 class="text-sm text-slate-600 font-bold">Manager</h3>
+                        <p class="text-xs text-slate-400 font-medium tracking-wide">Administrator</p>
                     </span>
                 </div>
             </header>
 
-
-
-
-
-
             
+            <main class="p-8 flex-grow">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-200 text-xs uppercase text-slate-500 tracking-wider">
+                                <th class="p-4 font-bold">Assignee Details</th>
+                                <th class="p-4 font-bold">Assigned Assets</th>
+                                <th class="p-4 font-bold">Assignment Date</th>
+                                <th class="p-4 font-bold">Remarks</th>
+                                <th class="p-4 font-bold">Assigned By</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-sm">
+                            {% for record in assignments %}
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="p-4 align-top">
+                                    <p class="font-bold text-slate-800">{{ record.assignee_name }}</p>
+                                    <p class="text-xs text-slate-500">ID: {{ record.employee_id }}</p>
+                                    <p class="text-xs text-teal-600 font-semibold">Dept: {{ record.department }}</p>
+                                </td>
+                                <td class="p-4 align-top">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        {% for asset in record.assets.all %}
+                                        <span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-md border border-slate-200 font-medium flex flex-col">
+                                             <span class="text-slate-400">
+                                                {{ asset.brand }} : {{ asset.model }}
+                                                </span>
+                                        </span>
+                                        {% endfor %}
+                                    </div>
+                                </td>
+                                <td class="p-4 align-top text-slate-600 whitespace-nowrap">
+                                    {{ record.assignment_date }}
+                                </td>
+                                <td class="p-4 align-top text-slate-500 text-xs max-w-xs">
+                                    {{ record.remarks }}
+                                </td>
+                                <td class="p-4 align-top text-slate-600 text-xs">
+                                    {{ record.assigned_by.username }}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="p-16 text-center text-slate-400 font-medium">
+                                    No asset assignments have been recorded yet.
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </main>
         </div>
     </div>
 </body>
 </html>
-

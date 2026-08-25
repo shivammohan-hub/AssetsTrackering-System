@@ -7,9 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-slate-50/10 text-slate-800 font-sans antialiased overflow-hidden">
+<body class="bg-slate-50/10 text-slate-800 overflow-hidden">
     
-    <!-- Header: Reused exactly from your theme -->
     <header class="h-[10vh] bg-white border-b border-slate-200 px-8 flex items-center gap-10 shadow-sm z-10 relative">
         <div class="text-center min-w-max">
             <a href="/" class="text-2xl flex gap-1 font-bold text-sky-500 tracking-wider">
@@ -41,7 +40,7 @@
         
         {% include "sidebar.html" %}
 
-        <!-- Pointing action to save_assignments view -->
+        
         <main class="w-10/12 overflow-y-auto relative bg-slate-50/50">
             
             <form action="{% url 'user:save_assignments' %}" method="POST" class="min-h-full flex flex-col p-8 pb-32">
@@ -60,17 +59,16 @@
 
                 <div class="flex flex-col lg:flex-row gap-6">
 
-                    <!-- Right Side: Selected Assets Summary -->
+                    
                     <div class="w-full lg:w-5/12 flex flex-col gap-4">
                         <h2 class="text-lg font-bold text-slate-800 px-1">Selected Assets Review</h2>
                         
                         {% for asset in selected_assets %}
-                        
-                        <!-- HIDDEN INPUT: Passes each selected asset ID back to save_assignments view -->
+                    
                         <input type="hidden" name="selected_assets" value="{{ asset.id }}">
                         
                         <div class="bg-white rounded-xl border border-slate-200 shadow-sm flex items-center p-4 gap-4">
-                            <!-- Image thumbnail styling matching your original -->
+                            
                             <div class="h-20 w-20 border border-slate-100 rounded-lg flex items-center justify-center p-2 relative bg-slate-50 shrink-0">
                                 {% if asset.image %}
                                     <img src="{{ asset.image.url }}" alt="{{ asset.model }}" class="h-full w-full object-contain">
@@ -79,7 +77,7 @@
                                 {% endif %}
                             </div>
 
-                            <!-- Details matching your inner card styles -->
+                            
                             <div class="flex flex-col flex-grow w-full">
                                 <h3 class="text-md font-bold text-slate-800 truncate mb-2" title="{{ asset.name }}">
                                     {{ asset.name }}
@@ -104,7 +102,7 @@
                         {% endfor %}
                     </div>
                     
-                    <!-- Left Side: Assignee Form -->
+                    <!-- Assign Form -->
                     <div class="w-full lg:w-7/12">
                         <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-8">
                             <h2 class="text-xl font-bold text-slate-800 mb-6 border-b border-slate-100 pb-4">Assign To</h2>
@@ -146,7 +144,6 @@
 
                 </div>
 
-                <!-- Floating Bottom Action Bar -->
                 <div class="fixed bottom-4 w-9/12 ml-7 bg-white">
                     <div class="shadow border border-slate-200/60 px-16 py-6 rounded-full flex items-center justify-between gap-12">
                         <div class="flex items-center gap-3">

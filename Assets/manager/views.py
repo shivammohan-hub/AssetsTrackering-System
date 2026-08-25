@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
+from user.models import ToAssign
+
 # Create your views here.
 
 def dashboard(req):
@@ -84,8 +86,13 @@ def add_user(req):
 
 
 @login_required
-def assignments(req):
-    return render(req, "assignments.html")
+def assignments(request):
+    assignments = ToAssign.objects.all().order_by("-created_at")
+
+    data = {
+        "assignments": assignments,
+    }
+    return render(request, "assignments.html", data)
 
 
 @login_required
