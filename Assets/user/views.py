@@ -96,10 +96,10 @@ def save_assignments(request):
 def asset_history(request):
     assignments = ToAssign.objects.all().order_by("-created_at")
     
-    context = {
+    data = {
         "assignments": assignments,
     }
-    return render(request, "asset-history.html", context)
+    return render(request, "asset-history.html", data)
 
 
 
