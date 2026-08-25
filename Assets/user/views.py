@@ -26,13 +26,10 @@ def assets_details(req):
 
 @login_required
 def my_assets(request):
-    """
-    1. Displays all assets with checkboxes on 'my-assets.html'
-    """
-    context = {
+    data = {
         "assets": Asset.objects.all()
     }
-    return render(request, "my-assets.html", context)
+    return render(request, "my-assets.html", data)
 
 
 
@@ -40,7 +37,6 @@ def my_assets(request):
 def assign_assets(request):
     if request.method == "POST":
         selected_assets = request.POST.getlist("selected_assets")
-
         if not selected_assets:
             return redirect("user:my_assets")
         
@@ -54,38 +50,17 @@ def assign_assets(request):
 
 
 
-@login_required
 def save_assignments(request):
     if request.method == "POST":
-        assignee_name = request.POST.get("assignee_name")
-        employee_id = request.POST.get("employee_id")
-        department = request.POST.get("department")
-        assignment_date = request.POST.get("assignment_date")
-        remarks = request.POST.get("remarks")
+        assign = ToAssign() 
+        assign.assignee_name = request.POST.get("assignee_name")
+        assign.employee_id = request.POST.get("employee_id")
+        assign.department = request.POST.get("department")
+        assign.assignment_date = request.POST.get("assignment_date")
+        assign.remarks = request.POST.get("remarks")
+        assign.selected_ids = request.POST.getlist("selected_assets") 
         
-        selected_ids = request.POST.getlist("selected_assets")
-
-        if not assignee_name or not selected_ids:
-            return redirect("user:my_assets")
-
-        history_record = ToAssign.objects.create(
-            assignee_name=assignee_name,
-            employee_id=employee_id,
-            department=department,
-            assignment_date=assignment_date,
-            remarks=remarks,
-            assigned_by=request.user
-        )
-
-        # Attach the selected assets to this history log and update their status
-        for asset_id in selected_ids:
-            asset = get_object_or_404(Asset, id=asset_id)
-            asset.is_assigned = True
-            asset.save()
-            
-            # Add asset to the ManyToMany relationship
-            history_record.assets.add(asset)
-
+        assign.save()
         return redirect("user:asset_history")
 
     return redirect("user:my_assets")
