@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from manager.models import *
 from .models import ToAssign
 
+from django.shortcuts import render, redirect, get_object_or_404
+
 
 # Create your views here.
 def home(req):
@@ -24,45 +26,87 @@ def assets_details(req):
 
 @login_required
 def my_assets(request):
-    data = {
-        "assets" : Asset.objects.all()
+    """
+    1. Displays all assets with checkboxes on 'my-assets.html'
+    """
+    context = {
+        "assets": Asset.objects.all()
     }
-    return render(request, "my-assets.html", data)
+    return render(request, "my-assets.html", context)
+
+
 
 @login_required
 def assign_assets(request):
-
     if request.method == "POST":
-
         selected_assets = request.POST.getlist("selected_assets")
 
         if not selected_assets:
             return redirect("user:my_assets")
-
-        assets = Asset.objects.filter(
-            id__in=selected_assets
-        )
-
-        context = {
-            "assets": assets,
+        
+        assets = Asset.objects.filter(id__in=selected_assets)
+        data = {
+            "selected_assets": assets,
         }
-
-        return render(
-            request,
-            "assign-assets.html",
-            context
-        )
+        return render(request, "assign-assets.html", data)
 
     return redirect("user:my_assets")
+
+
+
+@login_required
+def save_assignments(request):
+    if request.method == "POST":
+        assignee_name = request.POST.get("assignee_name")
+        employee_id = request.POST.get("employee_id")
+        department = request.POST.get("department")
+        assignment_date = request.POST.get("assignment_date")
+        remarks = request.POST.get("remarks")
+        
+        selected_ids = request.POST.getlist("selected_assets")
+
+        if not assignee_name or not selected_ids:
+            return redirect("user:my_assets")
+
+        history_record = ToAssign.objects.create(
+            assignee_name=assignee_name,
+            employee_id=employee_id,
+            department=department,
+            assignment_date=assignment_date,
+            remarks=remarks,
+            assigned_by=request.user
+        )
+
+        # Attach the selected assets to this history log and update their status
+        for asset_id in selected_ids:
+            asset = get_object_or_404(Asset, id=asset_id)
+            asset.is_assigned = True
+            asset.save()
+            
+            # Add asset to the ManyToMany relationship
+            history_record.assets.add(asset)
+
+        return redirect("user:asset_history")
+
+    return redirect("user:my_assets")
+
+
+
+@login_required
+def asset_history(request):
+    assignments = ToAssign.objects.all().order_by("-created_at")
+    
+    context = {
+        "assignments": assignments,
+    }
+    return render(request, "asset-history.html", context)
+
 
 
 @login_required
 def user_profile(req):
     return render(req, "user-profile.html")
 
-@login_required
-def asset_history(req):
-    return render(req, "asset-history.html")
 
 def login(req):
     user_form = AuthenticationForm(req.POST or None)

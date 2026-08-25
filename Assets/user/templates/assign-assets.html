@@ -41,9 +41,10 @@
         
         {% include "sidebar.html" %}
 
+        <!-- Pointing action to save_assignments view -->
         <main class="w-10/12 overflow-y-auto relative bg-slate-50/50">
             
-            <form action="" method="post" class="min-h-full flex flex-col p-8 pb-32">
+            <form action="{% url 'user:save_assignments' %}" method="POST" class="min-h-full flex flex-col p-8 pb-32">
                 {% csrf_token %}
 
                 <div class="mb-6 flex items-center justify-between">
@@ -59,33 +60,31 @@
 
                 <div class="flex flex-col lg:flex-row gap-6">
 
-
-                    <!-- Right Side: Selected Assets Summary (Matches your card styling) -->
+                    <!-- Right Side: Selected Assets Summary -->
                     <div class="w-full lg:w-5/12 flex flex-col gap-4">
                         <h2 class="text-lg font-bold text-slate-800 px-1">Selected Assets Review</h2>
                         
-                        <!-- Assuming context variable 'selected_assets' is passed from your Django view -->
                         {% for asset in selected_assets %}
                         
-                        <!-- HIDDEN INPUT: Crucial for sending the selected asset IDs along with the form -->
-                        <input type="hidden" name="asset_ids" value="{{ asset.id }}">
+                        <!-- HIDDEN INPUT: Passes each selected asset ID back to save_assignments view -->
+                        <input type="hidden" name="selected_assets" value="{{ asset.id }}">
                         
                         <div class="bg-white rounded-xl border border-slate-200 shadow-sm flex items-center p-4 gap-4">
                             <!-- Image thumbnail styling matching your original -->
                             <div class="h-20 w-20 border border-slate-100 rounded-lg flex items-center justify-center p-2 relative bg-slate-50 shrink-0">
-                                <img src="{{ asset.image.url }}" alt="{{ asset.model }}" class="h-full w-full object-contain">
+                                {% if asset.image %}
+                                    <img src="{{ asset.image.url }}" alt="{{ asset.model }}" class="h-full w-full object-contain">
+                                {% else %}
+                                    <span class="text-[10px] text-slate-400 font-medium">No Image</span>
+                                {% endif %}
                             </div>
 
                             <!-- Details matching your inner card styles -->
                             <div class="flex flex-col flex-grow w-full">
-                                <h3 class="text-md font-bold text-slate-800 truncate mb-2" title="{{ asset.asset_name }}">
-                                    {{ asset.asset_name }}
+                                <h3 class="text-md font-bold text-slate-800 truncate mb-2" title="{{ asset.name }}">
+                                    {{ asset.name }}
                                 </h3>
                                 <div class="flex flex-col gap-1.5 text-xs">
-                                    <div class="flex items-center justify-between border-b border-slate-50 pb-1">
-                                        <span class="text-slate-500">Brand</span>
-                                        <span class="font-semibold text-slate-700">{{ asset.brand }}</span>
-                                    </div>
                                     <div class="flex items-center justify-between border-b border-slate-50 pb-1">
                                         <span class="text-slate-500">Model</span>
                                         <span class="font-semibold text-slate-700">{{ asset.model }}</span>
@@ -105,7 +104,7 @@
                         {% endfor %}
                     </div>
                     
-                    <!-- Left Side: Assignee Form (Matches your clean UI) -->
+                    <!-- Left Side: Assignee Form -->
                     <div class="w-full lg:w-7/12">
                         <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-8">
                             <h2 class="text-xl font-bold text-slate-800 mb-6 border-b border-slate-100 pb-4">Assign To</h2>
@@ -147,7 +146,7 @@
 
                 </div>
 
-                <!-- Floating Bottom Action Bar (Reused exactly from your theme) -->
+                <!-- Floating Bottom Action Bar -->
                 <div class="fixed bottom-4 w-9/12 ml-7 bg-white">
                     <div class="shadow border border-slate-200/60 px-16 py-6 rounded-full flex items-center justify-between gap-12">
                         <div class="flex items-center gap-3">

@@ -15,6 +15,7 @@ urlpatterns = [
     path('my-assets/', views.my_assets, name='my_assets'),
     path('asset-history/', views.asset_history, name='asset_history'),
     path('user-profile/', views.user_profile, name='user_profile'),
+    path('save_assignments/',views.save_assignments, name="save_assignments"),
 
     
 
