@@ -3,403 +3,168 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AssetsTracker | Assign Assets</title>
+    <title>AssetsTracker | Assign Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-hidden">
-
-    <!-- HEADER -->
+<body class="bg-slate-50/10 text-slate-800 font-sans antialiased overflow-hidden">
+    
+    <!-- Header: Reused exactly from your theme -->
     <header class="h-[10vh] bg-white border-b border-slate-200 px-8 flex items-center gap-10 shadow-sm z-10 relative">
-
         <div class="text-center min-w-max">
             <a href="/" class="text-2xl flex gap-1 font-bold text-sky-500 tracking-wider">
                 ASSETS <span class="text-slate-800 font-medium">TRACKER</span>
             </a>
         </div>
-
         <div class="flex w-full justify-between items-center">
-
             <div class="py-5">
-                <p class="text-sky-600 text-xl font-bold tracking-widest uppercase">
-                    Welcome back, Manager
-                </p>
+                <p class="text-sky-600 text-xl font-bold tracking-widest uppercase">Welcome back, Manager</p>
             </div>
-
+            
             <div class="flex items-center gap-4 py-2 border-l border-slate-200 px-6">
-
-                <div class="flex items-center gap-3 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                <div class="flex items-center gap-3 bg-slate-50 p-2 rounded-lg border border-slate-100 cursor-pointer hover:bg-slate-100 transition-colors">
                     <div class="bg-white p-1.5 rounded-md shadow-sm border border-slate-200">
-
-                        <svg class="h-5 w-5 text-slate-600"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-
-                            <path d="M18 15.8369C19.4559 16.5683 20.7041 17.742 21.6152 19.2096C21.7956 19.5003 21.8858 19.6456 21.917 19.8468C21.9804 20.2558 21.7008 20.7585 21.3199 20.9204C21.1325 21 20.9216 21 20.5 21M16 11.5322C17.4817 10.7959 18.5 9.26686 18.5 7.5C18.5 5.73314 17.4817 4.20411 16 3.46776M14 7.5C14 9.98528 11.9852 12 9.49996 12C7.01468 12 4.99996 9.98528 4.99996 7.5C4.99996 5.01472 7.01468 3 9.49996 3C11.9852 3 14 5.01472 14 7.5ZM2.55919 18.9383C4.1535 16.5446 6.66933 15 9.49996 15C12.3306 15 14.8464 16.5446 16.4407 18.9383C16.79 19.4628 16.9646 19.725 16.9445 20.0599C16.9289 20.3207 16.7579 20.64 16.5495 20.7976C16.2819 21 15.9138 21 15.1776 21H3.82232C3.08613 21 2.71804 21 2.4504 20.7976C2.24201 20.64 2.07105 20.0599 2.55919 18.9383Z"
-                                  stroke="currentColor"
-                                  stroke-width="2"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"/>
+                        <svg class="h-5 w-5 text-slate-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 15.8369C19.4559 16.5683 20.7041 17.742 21.6152 19.2096C21.7956 19.5003 21.8858 19.6456 21.917 19.8468C21.9804 20.2558 21.7008 20.7585 21.3199 20.9204C21.1325 21 20.9216 21 20.5 21M16 11.5322C17.4817 10.7959 18.5 9.26686 18.5 7.5C18.5 5.73314 17.4817 4.20411 16 3.46776M14 7.5C14 9.98528 11.9852 12 9.49996 12C7.01468 12 4.99996 9.98528 4.99996 7.5C4.99996 5.01472 7.01468 3 9.49996 3C11.9852 3 14 5.01472 14 7.5ZM2.55919 18.9383C4.1535 16.5446 6.66933 15 9.49996 15C12.3306 15 14.8464 16.5446 16.4407 18.9383C16.79 19.4628 16.9646 19.725 16.9445 20.0599C16.9289 20.3207 16.7579 20.64 16.5495 20.7976C16.2819 21 15.9138 21 15.1776 21H3.82232C3.08613 21 2.71804 21 2.4504 20.7976C2.24201 20.64 2.07105 20.3207 2.05539 20.0599C2.03529 19.725 2.20992 19.4628 2.55919 18.9383Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-
                     </div>
-
                     <span>
-                        <h3 class="text-sm text-slate-800 font-bold leading-tight">
-                            Shivam
-                        </h3>
-
-                        <p class="text-[11px] text-slate-500 font-medium uppercase tracking-wide">
-                            Authorized User
-                        </p>
+                        <h3 class="text-sm text-slate-800 font-bold leading-tight">Shivam</h3>
+                        <p class="text-[11px] text-slate-500 font-medium uppercase tracking-wide">Authorized User</p>
                     </span>
                 </div>
-
             </div>
         </div>
     </header>
 
-
-    <!-- MAIN LAYOUT -->
     <div class="w-full flex h-[90vh]">
-
+        
         {% include "sidebar.html" %}
 
+        <main class="w-10/12 overflow-y-auto relative bg-slate-50/50">
+            
+            <form action="" method="post" class="min-h-full flex flex-col p-8 pb-32">
+                {% csrf_token %}
 
-        <!-- CONTENT -->
-        <main class="w-10/12 overflow-y-auto p-8">
-
-            <!-- PAGE HEADER -->
-            <div class="flex justify-between items-end mb-8 border-b border-slate-200 pb-5">
-
-                <div>
-                    <h1 class="text-3xl font-bold text-slate-800 tracking-tight">
-                        Assign Assets
-                    </h1>
-
-                    <p class="text-slate-500 text-sm mt-1">
-                        Assign the selected assets to an employee or authorized user.
-                    </p>
+                <div class="mb-6 flex items-center justify-between">
+                    <div>
+                        <h1 class="text-3xl font-bold text-slate-800 tracking-tight">Assignment Details</h1>
+                        <p class="text-slate-500 text-sm mt-1">Fill in the details below to assign the selected assets.</p>
+                    </div>
+                    <a href="javascript:history.back()" class="text-sky-500 hover:text-sky-600 font-semibold text-sm flex items-center gap-1 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        Back to Selection
+                    </a>
                 </div>
 
-                <a href="{% url 'user:my_assets' %}"
-                   class="bg-white border border-slate-200 hover:border-sky-300 hover:text-sky-500 text-slate-600 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all shadow-sm">
-
-                    ← Back to Assets
-                </a>
-
-            </div>
+                <div class="flex flex-col lg:flex-row gap-6">
 
 
-            <!-- TWO COLUMN LAYOUT -->
-            <div class="grid grid-cols-1 xl:grid-cols-5 gap-8">
-
-
-                <!-- SELECTED ASSETS -->
-                <section class="xl:col-span-3">
-
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-
-                        <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
-
-                            <div>
-                                <h2 class="text-lg font-bold text-slate-800">
-                                    Selected Assets
-                                </h2>
-
-                                <p class="text-xs text-slate-500 mt-1">
-                                    Assets that will be assigned.
-                                </p>
+                    <!-- Right Side: Selected Assets Summary (Matches your card styling) -->
+                    <div class="w-full lg:w-5/12 flex flex-col gap-4">
+                        <h2 class="text-lg font-bold text-slate-800 px-1">Selected Assets Review</h2>
+                        
+                        <!-- Assuming context variable 'selected_assets' is passed from your Django view -->
+                        {% for asset in selected_assets %}
+                        
+                        <!-- HIDDEN INPUT: Crucial for sending the selected asset IDs along with the form -->
+                        <input type="hidden" name="asset_ids" value="{{ asset.id }}">
+                        
+                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm flex items-center p-4 gap-4">
+                            <!-- Image thumbnail styling matching your original -->
+                            <div class="h-20 w-20 border border-slate-100 rounded-lg flex items-center justify-center p-2 relative bg-slate-50 shrink-0">
+                                <img src="{{ asset.image.url }}" alt="{{ asset.model }}" class="h-full w-full object-contain">
                             </div>
 
-                            <span class="bg-sky-100 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full">
-                                {{ assets|length }} Selected
-                            </span>
-
-                        </div>
-
-
-                        <div class="p-6 space-y-4">
-
-                            {% for asset in assets %}
-
-                            <div class="border border-slate-200 rounded-xl p-4 flex items-center gap-5 hover:border-sky-200 hover:shadow-sm transition-all">
-
-                                <!-- IMAGE -->
-                                <div class="w-20 h-20 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-center overflow-hidden shrink-0">
-
-                                    {% if asset.image %}
-                                        <img src="{{ asset.image.url }}"
-                                             alt="{{ asset.asset_name }}"
-                                             class="w-full h-full object-contain p-2">
-                                    {% else %}
-                                        <svg class="w-8 h-8 text-slate-300"
-                                             fill="none"
-                                             stroke="currentColor"
-                                             viewBox="0 0 24 24">
-                                            <path stroke-linecap="round"
-                                                  stroke-linejoin="round"
-                                                  stroke-width="1.5"
-                                                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                        </svg>
-                                    {% endif %}
-
-                                </div>
-
-
-                                <!-- DETAILS -->
-                                <div class="flex-grow min-w-0">
-
-                                    <h3 class="font-bold text-slate-800 truncate">
-                                        {{ asset.asset_name }}
-                                    </h3>
-
-                                    <div class="grid grid-cols-2 gap-x-6 gap-y-1 mt-2 text-xs">
-
-                                        <p>
-                                            <span class="text-slate-400">
-                                                Brand:
-                                            </span>
-
-                                            <span class="font-semibold text-slate-600">
-                                                {{ asset.brand }}
-                                            </span>
-                                        </p>
-
-                                        <p>
-                                            <span class="text-slate-400">
-                                                Model:
-                                            </span>
-
-                                            <span class="font-semibold text-slate-600">
-                                                {{ asset.model }}
-                                            </span>
-                                        </p>
-
-                                        <p>
-                                            <span class="text-slate-400">
-                                                Serial:
-                                            </span>
-
-                                            <span class="font-mono font-semibold text-slate-600">
-                                                {{ asset.serial_number }}
-                                            </span>
-                                        </p>
-
-                                        <p>
-                                            <span class="text-slate-400">
-                                                Status:
-                                            </span>
-
-                                            <span class="font-semibold text-emerald-600">
-                                                {{ asset.status }}
-                                            </span>
-                                        </p>
-
+                            <!-- Details matching your inner card styles -->
+                            <div class="flex flex-col flex-grow w-full">
+                                <h3 class="text-md font-bold text-slate-800 truncate mb-2" title="{{ asset.asset_name }}">
+                                    {{ asset.asset_name }}
+                                </h3>
+                                <div class="flex flex-col gap-1.5 text-xs">
+                                    <div class="flex items-center justify-between border-b border-slate-50 pb-1">
+                                        <span class="text-slate-500">Brand</span>
+                                        <span class="font-semibold text-slate-700">{{ asset.brand }}</span>
                                     </div>
-
+                                    <div class="flex items-center justify-between border-b border-slate-50 pb-1">
+                                        <span class="text-slate-500">Model</span>
+                                        <span class="font-semibold text-slate-700">{{ asset.model }}</span>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-0.5">
+                                        <span class="text-slate-500">Serial No.</span>
+                                        <span class="font-mono text-[10px] font-semibold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">{{ asset.serial_number }}</span>
+                                    </div>
                                 </div>
-
-
-                                <!-- CHECK -->
-                                <div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
-
-                                    <svg class="w-5 h-5 text-emerald-500"
-                                         fill="none"
-                                         stroke="currentColor"
-                                         viewBox="0 0 24 24">
-
-                                        <path stroke-linecap="round"
-                                              stroke-linejoin="round"
-                                              stroke-width="2"
-                                              d="M5 13l4 4L19 7"/>
-
-                                    </svg>
-
-                                </div>
-
                             </div>
-
-                            {% empty %}
-
-                            <div class="text-center py-12">
-
-                                <p class="text-slate-500 font-medium">
-                                    No assets selected.
-                                </p>
-
-                            </div>
-
-                            {% endfor %}
-
                         </div>
+                        {% empty %}
+                        <div class="py-12 flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-xl bg-white">
+                            <svg class="w-10 h-10 text-slate-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
+                            <p class="text-slate-500 font-medium text-sm">No assets were selected.</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Left Side: Assignee Form (Matches your clean UI) -->
+                    <div class="w-full lg:w-7/12">
+                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-8">
+                            <h2 class="text-xl font-bold text-slate-800 mb-6 border-b border-slate-100 pb-4">Assign To</h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-2">Person Name *</label>
+                                    <input type="text" name="assignee_name" required placeholder="Enter full name" 
+                                           class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block p-3 transition-colors outline-none">
+                                </div>
 
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-bold text-slate-700 mb-2">Employee ID</label>
+                                        <input type="text" name="employee_id" placeholder="e.g. EMP-001" 
+                                               class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block p-3 transition-colors outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-bold text-slate-700 mb-2">Department</label>
+                                        <input type="text" name="department" placeholder="e.g. IT, HR, Sales" 
+                                               class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block p-3 transition-colors outline-none">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-2">Assignment Date *</label>
+                                    <input type="date" name="assignment_date" required 
+                                           class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block p-3 transition-colors outline-none">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-2">Remarks / Notes</label>
+                                    <textarea name="remarks" rows="3" placeholder="Add any condition notes or details here..." 
+                                              class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block p-3 transition-colors outline-none"></textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                </section>
+                </div>
 
+                <!-- Floating Bottom Action Bar (Reused exactly from your theme) -->
+                <div class="fixed bottom-4 w-9/12 ml-7 bg-white">
+                    <div class="shadow border border-slate-200/60 px-16 py-6 rounded-full flex items-center justify-between gap-12">
+                        <div class="flex items-center gap-3">
+                            <div>
+                                <p class="text-slate-800 font-bold text-2xl tracking-wider">Confirm Assignment?</p>
+                                <p class="text-slate-300 text-xs font-medium tracking-widest">Verify details and submit</p>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 rounded-xl font-bold text-sm transition-all shadow-lg shadow-slate-200 flex items-center gap-2">
+                            Complete Assignment
+                        </button>
+                    </div>
+                </div>
 
-
-                <!-- ASSIGNMENT FORM -->
-                <section class="xl:col-span-2">
-
-                    <form method="POST"
-      action="{% url 'user:assign_assets' %}"
-      class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-
-    {% csrf_token %}
-
-    <!-- SELECTED ASSETS -->
-    {% for asset in assets %}
-        <input type="hidden"
-               name="selected_assets"
-               value="{{ asset.id }}">
-    {% endfor %}
-
-
-    <div class="px-6 py-5 border-b border-slate-100">
-
-        <h2 class="text-lg font-bold text-slate-800">
-            Assign To
-        </h2>
-
-        <p class="text-xs text-slate-500 mt-1">
-            Enter the details of the person receiving these assets.
-        </p>
-
-    </div>
-
-
-    <div class="p-6 space-y-5">
-
-
-        <!-- NAME -->
-        <div>
-
-            <label class="block text-sm font-semibold text-slate-700 mb-2">
-                Person Name
-            </label>
-
-            <input type="text"
-                   name="person_name"
-                   placeholder="Enter full name"
-                   required
-                   class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all">
-
-        </div>
-
-
-        <!-- EMAIL -->
-        <div>
-
-            <label class="block text-sm font-semibold text-slate-700 mb-2">
-                Email Address
-            </label>
-
-            <input type="email"
-                   name="person_email"
-                   placeholder="person@example.com"
-                   required
-                   class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all">
-
-        </div>
-
-
-        <!-- DEPARTMENT -->
-        <div>
-
-            <label class="block text-sm font-semibold text-slate-700 mb-2">
-                Department
-            </label>
-
-            <select name="department"
-                    required
-                    class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all">
-
-                <option value="">Select department</option>
-
-                <option value="it">IT</option>
-                <option value="hr">Human Resources</option>
-                <option value="finance">Finance</option>
-                <option value="sales">Sales</option>
-                <option value="marketing">Marketing</option>
-                <option value="administration">Administration</option>
-                <option value="accounts">Accounts</option>
-                <option value="customer_support">Customer Support</option>
-
-            </select>
-
-        </div>
-
-
-        <!-- DESIGNATION -->
-        <div>
-
-            <label class="block text-sm font-semibold text-slate-700 mb-2">
-                Designation
-            </label>
-
-            <input type="text"
-                   name="person_designation"
-                   placeholder="e.g. Software Developer"
-                   required
-                   class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all">
-
-        </div>
-
-
-        <!-- ASSIGNMENT DATE -->
-        <div>
-
-            <label class="block text-sm font-semibold text-slate-700 mb-2">
-                Assignment Date
-            </label>
-
-            <input type="date"
-                   name="assignment_date"
-                   required
-                   class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all">
-
-        </div>
-
-
-        <!-- REMARKS -->
-        <div>
-
-            <label class="block text-sm font-semibold text-slate-700 mb-2">
-                Remarks
-                <span class="text-slate-400 font-normal">
-                    (Optional)
-                </span>
-            </label>
-
-            <textarea name="remarks"
-                      rows="3"
-                      placeholder="Add any additional information..."
-                      class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:border-sky-400 focus:ring-2 focus:ring-sky-100 outline-none text-sm transition-all resize-none"></textarea>
-
-        </div>
-
-
-        <!-- SUBMIT -->
-        <button type="submit"
-                class="w-full bg-sky-500 hover:bg-sky-600 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-sky-100">
-
-            Assign {{ assets|length }} Asset{{ assets|length|pluralize }}
-
-        </button>
-
-    </div>
-
-</form>
-                </section>
-
-            </div>
-
+            </form>
         </main>
-
     </div>
-
 </body>
 </html>

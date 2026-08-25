@@ -23,43 +23,37 @@ def assets_details(req):
 
 
 @login_required
-def assign_assets(req):
-
-    if req.method == "POST":
-
-        selected_assets = req.POST.getlist("selected_assets")
-
-        person_name = req.POST.get("person_name")
-        person_email = req.POST.get("person_email")
-        department = req.POST.get("department")
-        person_designation = req.POST.get("person_designation")
-        assignment_date = req.POST.get("assignment_date")
-        remarks = req.POST.get("remarks")
-
-        assignment = ToAssign.objects.create(
-            person_name=person_name,
-            person_email=person_email,
-            department=department,
-            person_designation=person_designation,
-            assignment_date=assignment_date,
-            remarks=remarks,
-        )
-
-        assignment.assets.set(selected_assets)
-        return redirect("user:assignment_history")
-    return redirect("user:my_assets")
-
-
-@login_required
-def my_assets(req):
+def my_assets(request):
     data = {
         "assets" : Asset.objects.all()
     }
-    if req.method == "POST":
-        selected_assets = req.POST.getlist("selected_assets")
+    return render(request, "my-assets.html", data)
 
-        return redirect("user:assign_assets",{"selected_assets": selected_assets,})
-    return render(req, "my-assets.html", data)
+@login_required
+def assign_assets(request):
+
+    if request.method == "POST":
+
+        selected_assets = request.POST.getlist("selected_assets")
+
+        if not selected_assets:
+            return redirect("user:my_assets")
+
+        assets = Asset.objects.filter(
+            id__in=selected_assets
+        )
+
+        context = {
+            "assets": assets,
+        }
+
+        return render(
+            request,
+            "assign-assets.html",
+            context
+        )
+
+    return redirect("user:my_assets")
 
 
 @login_required
