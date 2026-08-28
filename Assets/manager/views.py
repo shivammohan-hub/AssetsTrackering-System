@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -104,7 +104,6 @@ def users(req):
 
 
 
-
 def manager_register(req):
     form = UserCreationForm(req.POST or None)
     if req.method == "POST":
@@ -121,6 +120,7 @@ def manager_register(req):
     }
     return render(req, "admin-register.html",data)
 
+
 def manager_login(req):
     form = AuthenticationForm(req.POST or None)
     if req.method == "POST":
@@ -130,12 +130,18 @@ def manager_login(req):
                             password = password)
 
         if user is not None:
-            auth_login(req,user)
-            return redirect("manager:dashboard")
+            if user.is_staff:
+                auth_login(req, user)
+                return redirect("manager:dashboard")
+            else:
+                messages.error(req, "You are not authorized to access this dashboard.")
+        else:
+            messages.error(req, "Invalid username or password.")
     data = {
         "loginForm" : form
     }
     return render(req, "admin-login.html",data)
+
 
 def manager_logout(req):
     auth_logout(req)

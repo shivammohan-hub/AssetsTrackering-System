@@ -14,8 +14,7 @@
             <nav class="flex items-center gap-8 text-md font-semibold">
                 <a href="" class="text-teal-700 font-medium">Home</a>
                 <a href="" class="text-slate-600 hover:text-teal-700">Assets</a>
-                <a href="{% url "manager:dashboard" %}" class="text-slate-600 hover:text-teal-700">aDashboard</a>
-                <a href="{% url "user:user_dashboard" %}" class="text-slate-600 hover:text-teal-700">Dashboard</a>
+                <a href="" class="text-slate-600 hover:text-teal-700">About Us</a>
                 <a href="" class="text-slate-600 hover:text-teal-700">Contact</a>
                 <a href="{% url "user:login" %}" class="bg-teal-600 text-white px-5 py-2.5 rounded-lg hover:bg-teal-700">Login</a>
             </nav>
@@ -29,7 +28,7 @@
                 <h1 class="text-5xl font-semibold leading-tight tracking-wide text-slate-900">Manage your assets. <span class="text-teal-600">Simplify your business.</span></h1>
                 <p class="text-lg text-slate-500 mt-5 tracking-wider">AssetsTracker helps organizations keep their assets organized, controlled and easy to manage through one simple and reliable platform.</p>
                 <div class="flex gap-8 mt-8">
-                    <a href="{% url "manager:manager-register" %}" class="bg-teal-600 text-white px-7 py-3.5 rounded-lg font-medium hover:bg-teal-700">Get Started</a>
+                    <a href="{% url "user:login" %}" class="bg-teal-600 text-white px-7 py-3.5 rounded-lg font-medium hover:bg-teal-700">Get Started</a>
                     <a href="" class="border border-slate-300 text-slate-700 px-7 py-3.5 rounded-lg font-medium hover:bg-white">Learn More</a>
                 </div>
             </div>
@@ -101,7 +100,7 @@
                     <p class="text-teal-400 font-medium">YOUR ASSETS. YOUR CONTROL.</p>
                     <h2 class="text-4xl font-semibold text-white leading-tight">Stop managing valuable assets through scattered records.</h2>
                     <p class="text-slate-400 leading-6">Bring your asset management process into one organized system with AssetsTracker.</p>
-                    <a href="{% url "manager:manager-register" %}" class="w-max inline-block text-center bg-teal-600 text-white px-7 py-3.5 rounded-lg font-medium hover:bg-teal-700">Start with AssetsTracker</a>
+                    <a href="{% url "user:login" %}" class="w-max inline-block text-center bg-teal-600 text-white px-7 py-3.5 rounded-lg font-medium hover:bg-teal-700">Start with AssetsTracker</a>
                 </div>
                 
                 <div class="bg-slate-800 border border-white/10 rounded-2xl p-7">

@@ -83,6 +83,8 @@ def user_profile(req):
     return render(req, "user-profile.html")
 
 
+
+
 def login(req):
     user_form = AuthenticationForm(req.POST or None)
     if req.method == "POST":
@@ -93,7 +95,7 @@ def login(req):
 
         if user is not None:
             auth_login(req,user)
-            return redirect("user/user_dashboard")
+            return redirect("user:user_dashboard")
     data = {
         "loginForm" : user_form
     }
