@@ -3,42 +3,144 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AssetsTracker | Manager Dashboard</title>
+    <title>AssetsTracker | Asset Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <header class="h-[10vh] bg-white border-b border-slate-200 px-8 flex items-center gap-10">
-        <div class="text-center ">
-            <a href="" class="text-2xl flex gap-1 font-bold text-sky-500 tracking-wider">ASSETS <span class="text-slate-700 font-medium">TRACKER</span></a>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 h-auto md:h-[10vh] bg-white border-b border-slate-300 px-3 md:px-8 py-3 md:py-0 flex md:flex-row items-center justify-between gap-4 shadow-md">
+        <div class="w-full md:w-auto flex items-center justify-between md:justify-start">
+            <a href="" class="text-lg md:text-2xl flex gap-1 font-black text-sky-600 tracking-wider">
+                ASSETS<span class="text-slate-800 font-bold">TRACKER</span>
+            </a>
         </div>
-        <div class="flex w-full justify-between items-center">
-        <div class="py-5">
-            <p class="text-sky-600 text-xl font-bold tracking-widest uppercase">welcome back, user !</p>
-        </div>
-        <div class="flex items-center gap-3 py-3 border-l-2 px-5">
-            <svg class="h-5 w-5 text-slate-600" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 15.8369C19.4559 16.5683 20.7041 17.742 21.6152 19.2096C21.7956 19.5003 21.8858 19.6456 21.917 19.8468C21.9804 20.2558 21.7008 20.7585 21.3199 20.9204C21.1325 21 20.9216 21 20.5 21M16 11.5322C17.4817 10.7959 18.5 9.26686 18.5 7.5C18.5 5.73314 17.4817 4.20411 16 3.46776M14 7.5C14 9.98528 11.9852 12 9.49996 12C7.01468 12 4.99996 9.98528 4.99996 7.5C4.99996 5.01472 7.01468 3 9.49996 3C11.9852 3 14 5.01472 14 7.5ZM2.55919 18.9383C4.1535 16.5446 6.66933 15 9.49996 15C12.3306 15 14.8464 16.5446 16.4407 18.9383C16.79 19.4628 16.9646 19.725 16.9445 20.0599C16.9289 20.3207 16.7579 20.64 16.5495 20.7976C16.2819 21 15.9138 21 15.1776 21H3.82232C3.08613 21 2.71804 21 2.4504 20.7976C2.24201 20.64 2.07105 20.3207 2.05539 20.0599C2.03529 19.725 2.20992 19.4628 2.55919 18.9383Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>
-                <h3 class="text-sm text-slate-900 font-bold leading-wide">{{ user.username }}</h3>
-                <p class="text-xs text-sky-700 font-semibold tracking-wide">Authorized User</p>
-            </span>
-        </div>
+        
+        <div class="flex w-72 md:w-auto md:justify-end justify-between items-center gap-4 md:gap-6 flex-wrap">
+            <div class="hidden sm:block py-1">
+                <p class="text-sky-700 text-lg md:text-base font-extrabold tracking-widest uppercase">Asset Information</p>
+            </div>
+            
+            <div class="flex items-center gap-3 py-1 md:py-3 sm:border-l-2 sm:border-slate-300 sm:px-5">
+                <div class="bg-sky-600 p-2.5 rounded-xl text-white">
+                    <svg class="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 15.8369C19.4559 16.5683 20.7041 17.742 21.6152 19.2096C21.7956 19.5003 21.8858 19.6456 21.917 19.8468C21.9804 20.2558 21.7008 20.7585 21.3199 20.9204C21.1325 21 20.9216 21 20.5 21M16 11.5322C17.4817 10.7959 18.5 9.26686 18.5 7.5C18.5 5.73314 17.4817 4.20411 16 3.46776M14 7.5C14 9.98528 11.9852 12 9.49996 12C7.01468 12 4.99996 9.98528 4.99996 7.5C4.99996 5.01472 7.01468 3 9.49996 3C11.9852 3 14 5.01472 14 7.5ZM2.55919 18.9383C4.1535 16.5446 6.66933 15 9.49996 15C12.3306 15 14.8464 16.5446 16.4407 18.9383C16.79 19.4628 16.9646 19.725 16.9445 20.0599C16.9289 20.3207 16.7579 20.64 16.5495 20.7976C16.2819 21 15.9138 21 15.1776 21H3.82232C3.08613 21 2.71804 21 2.4504 20.7976C2.24201 20.64 2.07105 20.3207 2.05539 20.0599C2.03529 19.725 2.20992 19.4628 2.55919 18.9383Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span>
+                    <h3 class="text-sm text-slate-900 font-bold leading-wide">{{ user.username }}</h3>
+                    <p class="text-xs text-sky-700 font-semibold tracking-wide">Authorized User</p>
+                </span>
+            </div>
         </div>
     </header>
 
-    <div class="w-full flex h-[90vh]">
-        {% include "sidebar.html" %}
-
-        <div class="w-10/12 border bg-slate-50/10 p-5">
-
+    <!-- Main Container (No Sidebar) -->
+    <div class="w-full flex min-h-[calc(100vh-10vh)]">
+        <main class="w-full p-4 md:p-6 lg:p-10 overflow-y-auto">
             
-            
-        </div>
+            <div class="max-w-5xl mx-auto space-y-6">
+                
+                <!-- Page Title & Back Action -->
+                <div class="flex items-center justify-between px-2">
+                    <div>
+                        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Asset Overview</h1>
+                        <p class="text-slate-600 text-sm mt-1 font-semibold">Comprehensive specifications and current status for this item.</p>
+                    </div>
+                    <a href="javascript:history.back()" class="text-sky-600 hover:text-sky-700 font-bold text-sm flex items-center gap-1 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                        Back
+                    </a>
+                </div>
 
+                <!-- Detail Card Grid -->
+                <div class="bg-white rounded-2xl border border-slate-300 shadow-md overflow-hidden grid grid-cols-1 md:grid-cols-12 gap-0">
+
+                    {% for asset in assets %}
+                    
+                    <!-- Left: Asset Image Container -->
+                    <div class="md:col-span-5 p-8 border-b md:border-b-0 md:border-r border-slate-300 flex flex-col items-center justify-center relative">
+                        <div class="absolute top-4 left-4">
+                            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 shadow-sm border border-sky-200">
+                                ID: {{ asset.assetId }}
+                            </span>
+                        </div>
+                        
+                        <div class="h-64 w-full flex items-center justify-center my-6">
+                            {% if asset.image %}
+                                <img src="{{ asset.image.url }}" alt="{{ asset.asset_name }}" class="max-h-full max-w-full object-contain drop-shadow-sm">
+                            {% else %}
+                                <div class="text-slate-400 font-bold text-sm flex flex-col items-center gap-2">
+                                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                    No Image Available
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="w-full text-center border-t border-slate-200 pt-4">
+                            <span class="text-xs font-bold uppercase tracking-widest text-slate-500">Current Status</span>
+                            <p class="text-lg font-black text-emerald-700 mt-1">{{ asset.status }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Detailed Specifications Grid -->
+                    <div class="md:col-span-7 p-6 md:p-8 flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-black text-slate-900 border-l-4 border-sky-500 pl-3 mb-6">
+                                {{ asset.asset_name }}
+                            </h2>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                    <p class="text-xs font-extrabold text-slate-500 uppercase tracking-wider">Category</p>
+                                    <p class="text-base font-bold text-slate-900 mt-1">{{ asset.category|default:"N/A" }}</p>
+                                </div>
+
+                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                    <p class="text-xs font-extrabold text-slate-500 uppercase tracking-wider">Brand</p>
+                                    <p class="text-base font-bold text-slate-900 mt-1">{{ asset.brand|default:"N/A" }}</p>
+                                </div>
+
+                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                    <p class="text-xs font-extrabold text-slate-500 uppercase tracking-wider">Model</p>
+                                    <p class="text-base font-bold text-slate-900 mt-1">{{ asset.model|default:"N/A" }}</p>
+                                </div>
+
+                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                    <p class="text-xs font-extrabold text-slate-500 uppercase tracking-wider">Condition</p>
+                                    <p class="text-base font-bold text-slate-900 mt-1">{{ asset.condition|default:"N/A" }}</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <p class="text-xs font-extrabold text-slate-500 uppercase tracking-wider">Serial Number</p>
+                                <p class="font-mono text-sm font-bold text-slate-800 mt-1 bg-white p-2 rounded border border-slate-200 inline-block">
+                                    {{ asset.serial_number|default:"N/A" }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Action Toolbar -->
+                        <div class="mt-8 pt-6 border-t border-slate-200 flex flex-wrap items-center gap-4">
+                            <a href="{% url 'user:assign_assets' %}" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all shadow-md shadow-sky-600/20 flex items-center gap-2">
+                                <svg class="h-5 w-5" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                 Continue to Assign
+                            </a>
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+
+                </div>
+
+            </div>
+        </main>
     </div>
-    
 
 </body>
 </html>

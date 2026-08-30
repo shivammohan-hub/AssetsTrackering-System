@@ -20,8 +20,11 @@ def user_dashboard(req):
     }
     return render(req, "user-dashboard.html",data)
 
-def assets_details(req):
-    return render(req, "assets-details.html")
+def assets_details(req, id):
+    data = {
+        "assets" : Asset.objects.filter(id=id)
+    }
+    return render(req, "assets-details.html",data)
 
 
 

@@ -13,7 +13,7 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
 
     path('user-dashboard/', views.user_dashboard, name='user_dashboard'),
-    path('assets-details/', views.assets_details, name='assets_details'),
+    path('assets-details/<int:id>/', views.assets_details, name='assets_details'),
     path('assign-assets/', views.assign_assets, name='assign_assets'),
     path('my-assets/', views.my_assets, name='my_assets'),
     path('asset-history/', views.asset_history, name='asset_history'),
