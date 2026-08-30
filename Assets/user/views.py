@@ -24,7 +24,7 @@ def assets_details(req):
     return render(req, "assets-details.html")
 
 
-@login_required
+
 def my_assets(request):
     data = {
         "assets": Asset.objects.all()
@@ -33,7 +33,7 @@ def my_assets(request):
 
 
 
-@login_required
+
 def assign_assets(request):
     if request.method == "POST":
         selected_assets = request.POST.getlist("selected_assets")
@@ -67,7 +67,7 @@ def save_assignments(request):
 
 
 
-@login_required
+
 def asset_history(request):
     assignments = ToAssign.objects.all().order_by("-created_at")
     
@@ -78,7 +78,7 @@ def asset_history(request):
 
 
 
-@login_required
+
 def user_profile(req):
     return render(req, "user-profile.html")
 
