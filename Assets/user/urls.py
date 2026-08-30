@@ -8,7 +8,10 @@ app_name = "user"
 urlpatterns = [
 
     path('', views.home, name='home'),
+
     path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
+
     path('user-dashboard/', views.user_dashboard, name='user_dashboard'),
     path('assets-details/', views.assets_details, name='assets_details'),
     path('assign-assets/', views.assign_assets, name='assign_assets'),

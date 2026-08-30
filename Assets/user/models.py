@@ -7,6 +7,7 @@ class ToAssign(models.Model):
     employee_id = models.CharField(max_length=100, blank=True, null=True)
     department = models.CharField(max_length=100, blank=True, null=True)
     assignment_date = models.DateField()
+    return_date = models.DateField(null=True, blank=True)
     remarks = models.TextField(blank=True, null=True)
     
     

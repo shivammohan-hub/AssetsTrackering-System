@@ -101,3 +101,6 @@ def login(req):
     }
     return render(req, "login.html",data)
 
+def logout(req):
+    auth_logout(req)
+    return redirect('user:home')
