@@ -5,26 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AssetsTracker | Manager Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body class="bg-slate-50/10 min-h-screen">
-    <div class="lg:hidden flex items-center justify-between bg-white border-b border-slate-200 px-4 py-3 sticky top-0 z-30">
-        <div class="flex items-center gap-2">
-            <button id="menu-btn" class="text-slate-700 focus:outline-none p-1">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-            <a href="" class="text-xl font-bold text-teal-700 tracking-wider uppercase">Assets<span class="text-slate-700">Tracker</span></a>
-        </div>
-        <div class="flex items-center gap-2">
-            <span class="text-xs font-semibold text-slate-600">Manager</span>
-        </div>
+    <div class="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-slate-200 px-4 py-2 flex items-center justify-around lg:hidden shadow-lg">
+        <a href="{% url 'manager:dashboard' %}" class="flex flex-col items-center text-slate-500 hover:text-teal-700">
+            <i class="bi bi-grid text-xl"></i>
+            <span class="text-[10px] font-medium">Home</span>
+        </a>
+        <a href="{% url 'manager:asset_list' %}" class="flex flex-col items-center text-slate-500 hover:text-teal-700">
+            <i class="bi bi-box-seam text-xl"></i>
+            <span class="text-[10px] font-medium">Assets</span>
+        </a>
+        <a href="{% url 'manager:add_asset' %}" class="flex flex-col items-center text-slate-500 hover:text-teal-700">
+            <i class="bi bi-plus-circle text-xl"></i>
+            <span class="text-[10px] font-medium">Add</span>
+        </a>
+        <a href="{% url 'manager:assignments' %}" class="flex flex-col items-center text-slate-500 hover:text-teal-700">
+            <i class="bi bi-clipboard-check text-xl"></i>
+            <span class="text-[10px] font-medium">Assign</span>
+        </a>
+        <a href="{% url 'manager:users' %}" class="flex flex-col items-center text-teal-700">
+            <i class="bi bi-people text-xl"></i>
+            <span class="text-[10px] font-medium">Users</span>
+        </a>
+        <a href="{% url 'manager:manager-logout' %}" class="flex flex-col items-center text-red-500 hover:text-red-600">
+            <i class="bi bi-box-arrow-right text-xl"></i>
+            <span class="text-[10px] font-medium">Logout</span>
+        </a>
     </div>
 
     <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
 
-    <div class="w-full flex flex-col lg:flex-row min-h-screen relative">
+    <div class="w-full flex flex-col lg:flex-row min-h-screen relative pb-16 lg:pb-0">
         <div id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 lg:w-[17%] bg-white lg:bg-transparent border-r lg:border flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-in-out py-5 px-3">
             <div class="flex flex-col h-full overflow-y-auto">
                 <div class="flex justify-end p-2 lg:hidden">
@@ -42,10 +56,7 @@
 
                     <a class="flex items-center gap-2 px-3 py-5 hover:bg-teal-50 hover:rounded-md" href="{% url "manager:dashboard" %}">
                         <svg class="w-6 h-6 min-w-[24px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.4 3H4.6C4.03995 3 3.75992 3 3.54601 3.10899C3.35785 3.20487 3.20487 3.35785 3.10899 3.54601C3 3.75992 3 4.03995 3 4.6V8.4C3 8.96005 3 9.24008 3.10899 9.45399C3.20487 9.64215 3.35785 9.79513 3.54601 9.89101C3.75992 10 4.03995 10 4.6 10H8.4C8.96005 10 9.24008 10 9.45399 9.89101C9.64215 9.79513 9.79513 9.64215 9.89101 9.45399C10 9.24008 10 8.96005 10 8.4V4.6C10 4.03995 10 3.75992 9.89101 3.54601C9.79513 3.35785 9.64215 3.20487 9.45399 3.10899C9.24008 3 8.96005 3 8.4 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M19.4 3H15.6C15.0399 3 14.7599 3 14.546 3.10899C14.3578 3.20487 14.2049 3.35785 14.109 3.54601C14 3.75992 14 4.03995 14 4.6V8.4C14 8.96005 14 9.24008 14.109 9.45399C14.2049 9.64215 14.3578 9.79513 14.546 9.89101C14.7599 10 15.0399 10 15.6 10H19.4C19.9601 10 20.2401 10 20.454 9.89101C20.6422 9.79513 20.7951 9.64215 20.891 9.45399C21 9.24008 21 8.96005 21 8.4V4.6C21 4.03995 21 3.75992 20.891 3.54601C20.7951 3.35785 20.6422 3.20487 20.454 3.10899C20.2401 3 19.9601 3 19.4 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M19.4 14H15.6C15.0399 14 14.7599 14 14.546 14.109C14.3578 14.2049 14.2049 14.3578 14.109 14.546C14 14.7599 14 15.0399 14 15.6V19.4C14 19.9601 14 20.2401 14.109 20.454C14.2049 20.6422 14.3578 20.7951 14.546 20.891C14.7599 21 15.0399 21 15.6 21H19.4C19.9601 21 20.2401 21 20.454 20.891C20.6422 20.7951 20.7951 20.6422 20.891 20.454C21 20.2401 21 19.9601 21 19.4V15.6C21 15.0399 21 14.7599 20.891 14.546C20.7951 14.3578 20.6422 14.2049 20.454 14.109C20.2401 14 19.9601 14 19.4 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8.4 14H4.6C4.03995 14 3.75992 14 3.54601 14.109C3.35785 14.2049 3.20487 14.3578 3.10899 14.546C3 14.7599 3 15.0399 3 15.6V19.4C3 19.9601 3 20.2401 3.10899 20.454C3.20487 20.6422 3.35785 20.7951 3.54601 20.891C3.75992 21 4.03995 21 4.6 21H8.4C8.96005 21 9.24008 21 9.45399 20.891C9.64215 20.7951 9.79513 20.6422 9.89101 20.454C10 20.2401 10 19.9601 10 19.4V15.6C10 15.0399 10 14.7599 9.89101 14.546C9.79513 14.3578 9.64215 14.2049 9.4399 14.109C9.24008 14 8.96005 14 8.4 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.4 3H4.6C4.03995 3 3.75992 3 3.54601 3.10899C3.35785 3.20487 3.20487 3.35785 3.10899 3.54601C3 3.75992 3 4.03995 3 4.6V8.4C3 8.96005 3 9.24008 3.10899 9.45399C3.20487 9.64215 3.35785 9.79513 3.54601 9.89101C3.75992 10 4.03995 10 4.6 10H8.4C8.96005 10 9.24008 10 9.45399 9.89101C9.64215 9.79513 9.79513 9.64215 9.89101 9.45399C10 9.24008 10 8.96005 10 8.4V4.6C10 4.03995 10 3.75992 9.89101 3.54601C9.79513 3.35785 9.64215 3.20487 9.4399 14.109C9.24008 14 8.96005 14 8.4 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <span>Dashboard</span></a>
 
@@ -285,9 +296,11 @@
             sidebarOverlay.classList.toggle('hidden');
         }
 
-        menuBtn.addEventListener('click', toggleSidebar);
-        closeBtn.addEventListener('click', toggleSidebar);
-        sidebarOverlay.addEventListener('click', toggleSidebar);
+        if (menuBtn) {
+            menuBtn.addEventListener('click', toggleSidebar);
+            closeBtn.addEventListener('click', toggleSidebar);
+            sidebarOverlay.addEventListener('click', toggleSidebar);
+        }
     </script>
 </body>
 </html>
