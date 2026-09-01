@@ -88,22 +88,24 @@ def user_profile(req):
 
 
 
-
 def login(req):
-    user_form = AuthenticationForm(req.POST or None)
     if req.method == "POST":
-        username = req.POST.get("username")
-        password = req.POST.get("password")
-        user = authenticate(username = username,
-                            password = password)
-
-        if user is not None:
-            auth_login(req,user)
+        
+        user_form = AuthenticationForm(req, data=req.POST)
+        
+        if user_form.is_valid():
+            user = user_form.get_user()
+            auth_login(req, user)
             return redirect("user:user_dashboard")
+    else:
+        user_form = AuthenticationForm()
+
     data = {
-        "loginForm" : user_form
+        "loginForm": user_form
     }
-    return render(req, "login.html",data)
+    return render(req, "login.html", data)
+
+
 
 def logout(req):
     auth_logout(req)

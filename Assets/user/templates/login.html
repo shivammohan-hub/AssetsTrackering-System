@@ -62,6 +62,14 @@
                 <form method="POST">
                     {% csrf_token %}
 
+
+
+                {% if loginForm.non_field_errors %}
+                    <script>
+                        alert("Invalid username or password");
+                    </script>
+                {% endif %}
+
                     {{ loginForm.as_p }}
 
                     <input class="w-full bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition cursor-pointer" type="submit" value="Sign in">

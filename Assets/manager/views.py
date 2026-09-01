@@ -131,6 +131,7 @@ def manager_login(req):
 
         if user is not None:
             if user.is_staff:
+                
                 auth_login(req, user)
                 return redirect("manager:dashboard")
             else:
