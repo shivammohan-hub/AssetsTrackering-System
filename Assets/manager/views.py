@@ -68,7 +68,7 @@ def asset_list(req):
     return render(req, "asset_list.html",data)
 
 
-@login_required
+
 def add_user(req):
     user_form = UserCreationForm(req.POST or None)
     if req.method == "POST":
@@ -114,7 +114,7 @@ def manager_register(req):
             data.email = req.POST.get("email")
             data.is_staff = True
             data.save()
-            return redirect("manager:login")
+            return redirect("manager:manager-login")
     data = {
         "registerForm" : form
     }

@@ -12,6 +12,7 @@ urlpatterns = [
     path('asset-list/', views.asset_list, name='asset_list'),
     path('category-list/', views.category_list, name='category_list'),
     path('assignments/', views.assignments, name='assignments'),
+    
     path('add-user/', views.add_user, name='add_user'),
     path('users/', views.users, name='users'),
     
