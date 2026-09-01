@@ -13,7 +13,6 @@ class ToAssign(models.Model):
     
     assets = models.ManyToManyField(Asset)
     
-    
     assigned_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 

@@ -60,8 +60,9 @@ def save_assignments(request):
         assign.employee_id = request.POST.get("employee_id")
         assign.department = request.POST.get("department")
         assign.assignment_date = request.POST.get("assignment_date")
+        assign.return_date = request.POST.get("return_date")
         assign.remarks = request.POST.get("remarks")
-        assign.selected_ids = request.POST.getlist("selected_assets") 
+        assign.assets = request.POST.getlist("selected_assets") 
         
         assign.save()
         return redirect("user:asset_history")
@@ -72,10 +73,10 @@ def save_assignments(request):
 
 
 def asset_history(request):
-    assignments = ToAssign.objects.all().order_by("-created_at")
     
     data = {
-        "assignments": assignments,
+        "toassign" : ToAssign.objects.all().order_by("-created_at"),
+        "assets" : Asset.objects.filter()
     }
     return render(request, "asset-history.html", data)
 

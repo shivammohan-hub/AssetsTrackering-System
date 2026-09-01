@@ -115,32 +115,36 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-200 text-sm">
-                                {% for record in assignments %}
+                                {% for assign in toassign %}
                                 <tr class="hover:bg-sky-50/60 transition-colors">
                                     <td class="p-5 align-top">
-                                        <p class="font-bold text-slate-900 text-base">{{ record.assignee_name }}</p>
-                                        <p class="text-xs font-semibold text-slate-500 mt-0.5">ID: {{ record.employee_id|default:"N/A" }}</p>
-                                        <p class="text-xs font-bold text-sky-700 mt-0.5">Dept: {{ record.department|default:"N/A" }}</p>
+                                        <p class="font-bold text-slate-900 text-base">{{ assign.assignee_name }}</p>
+                                        <p class="text-xs font-semibold text-slate-500 mt-0.5">ID: {{ assign.employee_id|default:"N/A" }}</p>
+                                        <p class="text-xs font-bold text-sky-700 mt-0.5">Dept: {{ assign.department|default:"N/A" }}</p>
                                     </td>
                                     <td class="p-5 align-top">
                                         <div class="flex flex-wrap gap-1.5">
-                                            {% for asset in record.assets.all %}
+                                            {{assign.assets}}
+                                            {% for asset in assets %}
+                                            
                                             <span class="bg-slate-100 text-slate-800 text-xs px-3 py-1 rounded-lg border border-slate-200 font-bold shadow-sm">
-                                                {{ asset.name }} <span class="text-slate-500 font-medium">({{ asset.model }})</span>
+                                                {{ asset.asset_name }} <span class="text-slate-500 font-medium">{{ asset.model }}</span>
                                             </span>
+
                                             {% endfor %}
+                                            
                                         </div>
                                     </td>
                                     <td class="p-5 align-top text-slate-700 font-semibold whitespace-nowrap">
-                                        {{ record.assignment_date }}
+                                        {{ assign.assignment_date }}
                                     </td>
 
                                     <td class="p-5 align-top text-slate-700 font-semibold whitespace-nowrap">
-                                        {{ record.return_date }}
+                                        {{ assign.return_date }}
                                     </td>
 
                                     <td class="p-5 align-top text-slate-600 text-xs font-medium">
-                                        {{ record.remarks|default:"None" }}
+                                        {{ assign.remarks|default:"None" }}
                                     </td>
                                 </tr>
                                 {% empty %}
