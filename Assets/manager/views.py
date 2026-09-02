@@ -16,7 +16,8 @@ def dashboard(req):
         "total_asset" : Asset.objects.count(),
         "total_category" : Category.objects.count(),
         "assets" : Asset.objects.all()[:4],
-        "user_count" : User.objects.filter(is_staff=False).count()
+        "user_count" : User.objects.filter(is_staff=False).count(),
+        "total_assign" : ToAssign.objects.count()
     }
     return render(req, "dashboard.html",data)
 

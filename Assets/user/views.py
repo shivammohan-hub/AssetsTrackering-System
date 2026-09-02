@@ -15,6 +15,7 @@ def home(req):
 
 def user_dashboard(req):
     data = {
+        "total_assign" : ToAssign.objects.count(),
         "assets" : Asset.objects.all()[:2],
         "total_asset" : Asset.objects.count()
     }

@@ -100,31 +100,97 @@
 
         <main class="w-full md:flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto md:ml-64">
 
-            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 px-2 md:px-6 mt-2">
-                <div class="bg-white p-6 rounded-2xl flex flex-col gap-2 shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-slate-600 text-sm font-bold uppercase tracking-wider">Total assets</h3>
-                    <h2 class="text-4xl md:text-5xl font-black text-teal-600 tracking-tight">{{total_asset}}</h2>
-                    <p class="text-xs font-semibold text-slate-500">All Registered Assets</p>
-                </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-8">
 
-                <div class="bg-white p-6 rounded-2xl flex flex-col gap-2 shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-slate-600 text-sm font-bold uppercase tracking-wider">Assigned Assets</h3>
-                    <h2 class="text-4xl md:text-5xl font-black text-teal-600 tracking-tight">25</h2>
-                    <p class="text-xs font-semibold text-slate-500">Currently Assigned</p>
-                </div>
+                <a href="{% url 'manager:asset_list' %}"
+                    class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-teal-200 transition-all duration-200">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-slate-500">Total Assets</p>
+                            <h2 class="mt-1 text-4xl font-bold text-slate-800">
+                                {{ total_asset }}
+                            </h2>
+                        </div>
 
-                <div class="bg-white p-6 rounded-2xl flex flex-col gap-2 shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-slate-600 text-sm font-bold uppercase tracking-wider">Available Assets</h3>
-                    <h2 class="text-4xl md:text-5xl font-black text-teal-600 tracking-tight">25</h2>
-                    <p class="text-xs font-semibold text-slate-500">Ready to Assigned</p>
-                </div>
+                        <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center
+                                    group-hover:bg-teal-600 group-hover:text-white transition">
+                            <i class="bi bi-box-seam text-lg"></i>
+                        </div>
+                    </div>
 
-                <div class="bg-white p-6 rounded-2xl flex flex-col gap-2 shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-slate-600 text-sm font-bold uppercase tracking-wider">Maintainance</h3>
-                    <h2 class="text-4xl md:text-5xl font-black text-teal-600 tracking-tight">0</h2>
-                    <p class="text-xs font-semibold text-slate-500">Required Attentions</p>
-                </div>
+                    <div class="mt-4 flex items-center gap-2 text-xs text-slate-400">
+                        <span class="w-2 h-2 rounded-full bg-teal-500"></span>
+                        All Registered Assets
+                    </div>
+                </a>
+
+
+                <a href="{% url 'manager:assignments' %}"
+                    class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-teal-200 transition-all duration-200">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-slate-500">Assigned Assets</p>
+                            <h2 class="mt-2 text-4xl font-bold text-slate-800">{{total_assign}}</h2>
+                        </div>
+
+                        <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center
+                                    group-hover:bg-teal-600 group-hover:text-white transition">
+                            <i class="bi bi-person-check text-lg"></i>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex items-center gap-2 text-xs text-slate-400">
+                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                        Currently Assigned
+                    </div>
+                </a>
+
+
+                <a href="{% url 'manager:asset_list' %}"
+                    class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-teal-200 transition-all duration-200">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-slate-500">Available Assets</p>
+                            <h2 class="mt-2 text-4xl font-bold text-slate-800">0</h2>
+                        </div>
+
+                        <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center
+                                    group-hover:bg-teal-600 group-hover:text-white transition">
+                            <i class="bi bi-check-circle text-lg"></i>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex items-center gap-2 text-xs text-slate-400">
+                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                        Ready to Assign
+                    </div>
+                </a>
+
+
+                <a href=""
+                    class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-teal-200 transition-all duration-200">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-slate-500">Maintenance</p>
+                            <h2 class="mt-2 text-4xl font-bold text-slate-800">0</h2>
+                        </div>
+
+                        <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center
+                                    group-hover:bg-teal-600 group-hover:text-white transition">
+                            <i class="bi bi-tools text-lg"></i>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex items-center gap-2 text-xs text-slate-400">
+                        <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                        Requires Attention
+                    </div>
+                </a>
+
+
             </div>
+            
 
             <div class="flex flex-col gap-4 mt-8 mb-16 md:mb-4 p-6 md:p-8 border border-slate-300 bg-white rounded-2xl mx-2 md:mx-6 shadow-md">
                 <h2 class="text-slate-900 font-extrabold px-3 border-l-4 border-teal-500 text-lg">Quick Actions</h2>
