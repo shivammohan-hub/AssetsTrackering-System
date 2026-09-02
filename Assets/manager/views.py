@@ -155,7 +155,9 @@ def manager_register(req):
             data.email = req.POST.get("email")
             data.is_staff = True
             data.save()
+            messages.success(req, "")
             return redirect("manager:manager-login")
+        
     data = {
         "registerForm" : form
     }
@@ -167,22 +169,19 @@ def manager_login(req):
     if req.method == "POST":
         username = req.POST.get("username")
         password = req.POST.get("password")
-        user = authenticate(username = username,
-                            password = password)
-
+        user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_staff:
-                
                 auth_login(req, user)
                 return redirect("manager:dashboard")
             else:
-                messages.error(req, "You are not authorized to access this dashboard.")
+                messages.error(req, "")
         else:
-            messages.error(req, "Invalid username or password.")
+            messages.error(req, "")
     data = {
-        "loginForm" : form
+        "loginForm": form
     }
-    return render(req, "admin-login.html",data)
+    return render(req, "admin-login.html", data)
 
 
 def manager_logout(req):
