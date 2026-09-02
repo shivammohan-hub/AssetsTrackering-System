@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 
 from django.contrib.auth.decorators import login_required
 from manager.models import *
-from .models import ToAssign
+from .models import *
 
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -17,7 +17,10 @@ def user_dashboard(req):
     data = {
         "total_assign" : ToAssign.objects.count(),
         "assets" : Asset.objects.all()[:2],
-        "total_asset" : Asset.objects.count()
+        "total_asset" : Asset.objects.count(),
+        "total_maintenance": AssetReturn.objects.filter(
+            returning="maintenance"
+        ).count(),
     }
     return render(req, "user-dashboard.html",data)
 
@@ -72,10 +75,10 @@ def save_assignments(request):
 
 
 
-
 def asset_history(req):
     data = {
-        "toassign" : ToAssign.objects.all().order_by("-created_at"),
+        "returned" : AssetReturn.objects.all(),
+
     }
     return render(req, "asset-history.html", data)
 
@@ -84,8 +87,18 @@ def asset_history(req):
 def asset_return(req):
     data = {
         "toassign" : ToAssign.objects.all().order_by("-created_at"),
-        
     }
+    if req.method == "POST":
+        assigned_asset_id = req.POST.get("assigned_asset_id")
+        returning = req.POST.get("returning")
+        assigned_asset = ToAssign.objects.get(id=assigned_asset_id)
+
+        AssetReturn.objects.create(
+            assigned_asset=assigned_asset,
+            returning=returning
+        )
+        return redirect("user:asset_history")
+    
     return render(req, "asset-return.html", data)
 
 

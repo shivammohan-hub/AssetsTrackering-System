@@ -123,26 +123,26 @@
                     <th class="py-4 px-6">Assigned Assets</th>
                     <th class="py-4 px-6">Assignment Date</th>
                     <th class="py-4 px-6">Return Date</th>
-                    <th class="py-4 px-6">Remarks</th>
+                    <th class="py-4 px-6">Returned</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-slate-100 text-sm px-6">
-                {% for assign in toassign %}
+                {% for assign in returned %}
                 <tr class="hover:bg-teal-50/30 transition-colors">
                     
                     <!-- Assignee -->
                     <td class="py-4 px-6 align-top">
                         <div class="space-y-0.5 flex flex-col">
-                            <p class="font-bold text-slate-800 text-xl">{{ assign.assignee_name }}</p>
-                            <span class="text-slate-400 font-mono">ID: {{ assign.employee_id|default:"N/A" }}</span>
-                            <span class="text-teal-600 font-semibold"><span class="text-slate-600">Dept :</span> {{ assign.department|default:"N/A" }}</span>
+                            <p class="font-bold text-slate-800 text-xl">{{ assign.assigned_asset.assignee_name }}</p>
+                            <span class="text-slate-400 font-mono">ID: {{ assign.assigned_asset.employee_id|default:"N/A" }}</span>
+                            <span class="text-teal-600 font-semibold"><span class="text-slate-600">Dept :</span> {{ assign.assigned_asset.department|default:"N/A" }}</span>
                         
                         </div>
                     </td>
 
                     <!-- Assigned Assets -->
                     <td class="py-4 px-6 align-top max-w-xs flex flex-col gap-1">
-                        {% for asset in assign.assets.all %}
+                        {% for asset in assign.assigned_asset.assets.all %}
                         <div class="flex flex-col text-xs border p-1 rounded">
                             <p class="font-bold text-slate-800 py-1 text-sm">{{ asset.asset_name }}</p>
                             <span class="text-slate-400 font-mono">Model: {{ asset.model }}</span>
@@ -153,17 +153,17 @@
 
                     <!-- Assignment Date -->
                     <td class="py-4 px-6 align-top whitespace-nowrap text-slate-700 font-medium text-xs pt-5">
-                        {{ assign.assignment_date }}
+                        {{ assign.assigned_asset.assignment_date }}
                     </td>
 
                     <!-- Return Date -->
                     <td class="py-4 px-6 align-top whitespace-nowrap text-xs pt-5">
-                            <span class="text-slate-600 font-medium">{{ assign.return_date|date:"M d, Y" }}</span>
+                            <span class="text-slate-600 font-medium">{{ assign.assigned_asset.return_date|date:"M d, Y" }}</span>
                     </td>
 
                     <!-- Remarks -->
                     <td class="py-4 px-6 align-top text-xs text-slate-500 max-w-xs leading-relaxed pt-5">
-                        {{ assign.remarks }}
+                        {{ assign.returning }}
                     </td>
                 </tr>
                 {% empty %}

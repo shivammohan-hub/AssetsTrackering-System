@@ -19,3 +19,17 @@ class ToAssign(models.Model):
 
     def __str__(self):
         return f"Assigned to {self.assignee_name} on {self.assignment_date}"
+
+
+class AssetReturn(models.Model):
+
+    assigned_asset = models.ForeignKey(ToAssign,on_delete=models.CASCADE)
+    RETURN = [
+        ("returned", "Returned"),
+        ("maintenance", "Maintenance"),
+    ]
+    returning = models.CharField(max_length=30, choices=RETURN, default="returned")
+
+    def __str__(self):
+            return f"Assigned to {self.assigned_asset.assignee_name} on {self.returning}"
+
