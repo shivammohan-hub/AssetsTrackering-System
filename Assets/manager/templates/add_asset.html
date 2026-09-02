@@ -159,14 +159,14 @@
                                     <label for="assetId" class="block text-sm font-medium text-slate-700 mb-2">
                                         Asset ID <span class="text-red-500">*</span>
                                     </label>
-                                    <input type="text" name="assetId" placeholder="e.g. AST-001" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                    <input type="text" value="{{asset.assetId}}" name="assetId" placeholder="e.g. AST-001" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                                 </div>
 
                                 <div>
                                     <label for="asset_name" class="block text-sm font-medium text-slate-700 mb-2">
                                         Asset Name <span class="text-red-500">*</span>
                                     </label>
-                                    <input type="text" name="asset_name" placeholder="e.g. Dell Latitude 5420" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                    <input type="text" value="{{asset.asset_name}}" name="asset_name" placeholder="e.g. Dell Latitude 5420" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                                 </div>
                                 
                                 <div>
@@ -174,7 +174,7 @@
                                         Category <span class="text-red-500">*</span>
                                     </label>
                                     
-                                    <select name="category" class="w-full rounded-lg bg-white border border-slate-300 px-4 py-3 outline-none">
+                                    <select name="category" required class="w-full rounded-lg bg-white border border-slate-300 px-4 py-3 outline-none">
                                         <option value="" disabled selected>Select Category</option>
                                         {% for category in categories %}
                                         <option value="{{category.id}}">{{category.category_name}}</option>
@@ -186,14 +186,14 @@
                                     <label for="brand" class="block text-sm font-medium text-slate-700 mb-2">
                                         Brand <span class="text-red-500">*</span>
                                     </label>
-                                    <input type="text" name="brand" placeholder="e.g. Dell" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                    <input type="text" name="brand" value="{{asset.brand}}" placeholder="e.g. Dell" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                                 </div>
 
                                 <div>
                                     <label for="model" class="block text-sm font-medium text-slate-700 mb-2">
                                         Model <span class="text-red-500">*</span>
                                     </label>
-                                    <input type="text" name="model" placeholder="e.g. Latitude 5420" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                    <input type="text" value="{{asset.model}}" name="model" placeholder="e.g. Latitude 5420" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                                 </div>
 
                                 <div>
@@ -201,7 +201,7 @@
                                         Serial Number <span class="text-red-500">*</span>
                                     </label>
 
-                                    <input type="text" name="serial_number" placeholder="e.g. DL5420ABC123" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                    <input type="text" value="{{asset.serial_number}}" name="serial_number" placeholder="e.g. DL5420ABC123" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                                 </div>
                             </div>
 
@@ -220,14 +220,14 @@
                                     <label for="purchase_date" class="block text-sm font-medium text-slate-700 mb-2">
                                         Purchase Date <span class="text-red-500">*</span>
                                     </label>
-                                    <input type="date" name="purchase_date" placeholder="e.g. Dell" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                    <input type="date" value="{{asset.purchase_date}}" name="purchase_date" placeholder="e.g. Dell" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                                 </div>
 
                                 <div>
                                     <label for="purchase_price" class="block text-sm font-medium text-slate-700 mb-2">
                                         Purchase Price <span class="text-red-500">*</span>
                                     </label>
-                                    <input type="Number" name="purchase_price" placeholder="e.g. 65000" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                    <input type="Number" value="{{asset.purchase_price}}" name="purchase_price" placeholder="e.g. 65000" required class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                                 </div>
                             </div>
                         </div>
@@ -247,7 +247,7 @@
                                     <label for="condition" class="block text-sm font-medium text-slate-700 mb-2">
                                         Condition <span class="text-red-500">*</span>
                                     </label>
-                                    <select name="condition" class="w-full rounded-lg bg-white border border-slate-300 px-4 py-3 outline-none">
+                                    <select name="condition" required class="w-full rounded-lg bg-white border border-slate-300 px-4 py-3 outline-none">
                                         <option value="" disabled selected>Select condition</option>
                                         <option value="new">New</option>
                                         <option value="good">Good</option>
@@ -260,7 +260,7 @@
                                     <label for="status" class="block text-sm font-medium text-slate-700 mb-2">
                                         Status <span class="text-red-500">*</span>
                                     </label>
-                                    <select name="status" class="w-full bg-white rounded-lg border border-slate-300 px-4 py-3 outline-none">
+                                    <select name="status" required class="w-full bg-white rounded-lg border border-slate-300 px-4 py-3 outline-none">
                                         <option value="" disabled selected>Select Status</option>
                                         <option value="available">Available</option>
                                         <option value="not_available">Not Available</option>
@@ -269,7 +269,7 @@
 
                                 <div>
                                     <label for="quantity" class="block text-sm font-medium text-slate-700 mb-2"> Quantity</label>
-                                    <input type="Number" name="quantity" placeholder="e.g. 05" class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                    <input type="Number" required value="{{asset.quantity}}" name="quantity" placeholder="e.g. 05" class="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none">
                                 </div>
                             </div>
                         </div>
@@ -285,13 +285,13 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div>
                                     <label for="image" class="block text-sm font-medium text-slate-700 mb-2">Asset Image</label>
-                                    <input type="file" name="image" placeholder="" class="w-full text-slate-500 px-4 py-3 border border-slate-300 rounded-lg outline-none">
+                                    <input type="file" name="image" required placeholder="" class="w-full text-slate-500 px-4 py-3 border border-slate-300 rounded-lg outline-none">
                                     <p class="text-xs text-slate-400 mt-2 px-2">Upload JPG, PNG or JPEG image.</p>
                                 </div>
 
                                 <div>
                                     <label for="asset_description" class="block text-sm font-medium text-slate-700 mb-2">Description</label>
-                                    <textarea name="asset_description" rows="5" placeholder="Add a Brief Description of the Asset" class="w-full text-slate-500 px-4 py-3 border border-slate-300 rounded-lg outline-none"></textarea>
+                                    <textarea name="asset_description" required rows="5" placeholder="Add a Brief Description of the Asset" class="w-full text-slate-500 px-4 py-3 border border-slate-300 rounded-lg outline-none">{{asset.asset_description}}</textarea>
                                 </div>
 
                             </div>

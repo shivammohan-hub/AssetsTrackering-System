@@ -34,6 +34,13 @@ def category_list(req):
     return render(req, "category_list.html",data)
 
 
+def category_delete(req,id):
+    category = Category.objects.get(id=id)
+    category.delete()
+    return redirect("manager:category_list")
+
+
+
 @login_required
 def add_asset(req):
     if req.method == "POST":
@@ -60,12 +67,46 @@ def add_asset(req):
     return render(req, "add_asset.html",data)
 
 
+def asset_edit(req,id):
+    asset = Asset.objects.get(id=id)
+    if req.method == "POST":
+        asset.assetId = req.POST.get("assetId")
+        asset.asset_name = req.POST.get("asset_name")
+        asset.category_id = req.POST.get("category")
+        asset.brand = req.POST.get("brand")
+        asset.model = req.POST.get("model")
+        asset.serial_number = req.POST.get("serial_number")
+        asset.purchase_date = req.POST.get("purchase_date")
+        asset.purchase_price = req.POST.get('purchase_price')
+        asset.condition = req.POST.get("condition")
+        asset.status = req.POST.get("status")
+        asset.quantity = req.POST.get("quantity")
+        asset.image = req.FILES.get("image")
+        asset.asset_description = req.POST.get("asset_description")
+        asset.save()
+        return redirect("manager:asset_detail")
+    return render(req, "add_asset.html",{"asset":asset})
+
+
 @login_required
 def asset_list(req):
     data = {
         "assets" : Asset.objects.all()
     }
     return render(req, "asset_list.html",data)
+
+def asset_detail(req,id):
+    data = {
+        "asset" : Asset.objects.get(id=id)
+    }
+    return render(req, "asset_detail.html", data)
+
+
+
+def asset_delete(req,id):
+    asset = Asset.objects.get(id=id)
+    asset.delete()
+    return redirect("manager:asset_list")
 
 
 

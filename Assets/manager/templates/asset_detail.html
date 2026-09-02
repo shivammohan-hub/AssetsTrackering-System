@@ -247,10 +247,10 @@
             <p
               class="text-teal-600 text-lg sm:text-xl font-bold tracking-widest uppercase"
             >
-              Assets
+              Assets Details
             </p>
             <p class="text-slate-500 text-sm tracking-wider">
-              List of all existing Assets
+              Details of Assets
             </p>
           </div>
 
@@ -310,124 +310,176 @@
           <div
             class="w-full bg-white border border-slate-200 rounded-xl min-h-screen overflow-hidden shadow-sm"
           >
-            <div
-              class="px-4 sm:px-7 py-6 border-b border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
-            >
-              <div>
-                <h2 class="text-xl sm:text-2xl font-semibold text-slate-800">
-                  Assets List
+            
+            
+<div class="max-w-7xl mx-auto px-4 py-8">
+    
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+        <div class="flex items-center gap-3">
+            <div class="w-1.5 h-8 bg-teal-600 rounded-full"></div>
+            <div>
+                <h1 class="text-2xl font-bold text-slate-800">Asset Details</h1>
+                <p class="text-sm text-slate-500">Viewing detailed information for asset <span class="font-medium text-teal-600">{{ asset.assetId }}</span></p>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <a href="{% url "manager:asset_edit" asset.id %}" class="inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white font-medium px-5 py-2.5 rounded-lg transition-colors shadow-sm">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                Edit Asset
+            </a>
+            <a href="{% url 'manager:asset_list' %}" class="inline-flex items-center justify-center bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium px-5 py-2.5 rounded-lg transition-colors shadow-sm">
+                Back to List
+            </a>
+        </div>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-6 sm:p-8">
+
+
+        
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
+                <h2 class="text-lg font-semibold text-slate-800">
+                    Additional Information
                 </h2>
-                <p class="text-xs text-slate-400 mt-1">
-                  Manage your existing Assets
-                </p>
-              </div>
-              <div
-                class="px-3 py-2 bg-teal-50 text-teal-700 rounded-lg text-sm font-medium"
-              >
-                8 Assets
-              </div>
             </div>
 
-            <div class="overflow-x-auto">
-              <table class="w-full text-left border-collapse">
-                <thead>
-                  <tr
-                    class="bg-slate-50 border-b border-slate-200 font-semibold text-xs text-slate-500 uppercase whitespace-nowrap"
-                  >
-                    <th class="px-6 py-4 text-center">ID</th>
-                    <th class="px-6 py-4 text-center">Name</th>
-                    <th class="px-6 py-4 text-center">Category</th>
-                    <th class="px-6 py-4 text-center">Brand</th>
-                    <th class="px-6 py-4 text-center">Model</th>
-                    <th class="px-6 py-4 text-center">Condition</th>
-                    <th class="px-6 py-4 text-center">Status</th>
-                    <th class="px-6 py-4 text-center">Action</th>
-                  </tr>
-                </thead>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100 mb-5">
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-3">Asset Image</span>
+                    {% if asset.image %}
+                        <div class="w-48 h-48 rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm">
+                            <img src="{{ asset.image.url }}" alt="{{ asset.asset_name }}" class="w-full h-full object-cover">
+                        </div>
+                    {% else %}
+                        <div class="w-48 h-48 rounded-lg border border-dashed border-slate-300 flex items-center justify-center bg-white text-slate-400 text-sm">
+                            No image uploaded
+                        </div>
+                    {% endif %}
+                </div>
 
-                <tbody class="divide-y divide-slate-100 whitespace-nowrap">
-                  {% for asset in assets %}
-                  <tr
-                    class="border-b text-center hover:bg-slate-50/50 transition"
-                  >
-                    <td class="px-6 py-4 text-sm font-medium text-slate-500">
-                      #{{asset.assetId}}
-                    </td>
-                    <td class="px-6 py-4">
-                      <p class="text-md font-semibold text-slate-700">
-                        {{asset.asset_name}}
-                      </p>
-                    </td>
-                    <td class="px-6 py-4">
-                      <p class="text-sm text-slate-500">{{asset.category}}</p>
-                    </td>
-                    <td class="px-6 py-4">
-                      <p class="text-sm text-slate-500">{{asset.brand}}</p>
-                    </td>
-                    <td class="px-6 py-4">
-                      <p class="text-sm text-slate-500">{{asset.model}}</p>
-                    </td>
-                    <td class="px-6 py-4">
-                      <p class="text-sm text-slate-500">{{asset.condition}}</p>
-                    </td>
-                    <td class="px-6 py-4">
-                      <p class="text-sm text-slate-500">{{asset.status}}</p>
-                    </td>
-                    <td class="px-6 py-4">
-                      <div
-                        class="text-sm text-slate-500 flex gap-4 items-center justify-center"
-                      >
-                        <a
-                          class="w-6 h-6 p-1 rounded hover:text-teal-700 hover:bg-teal-50 flex items-center justify-center"
-                          href="{% url "manager:asset_detail" asset.id %}"
-                          ><svg
-                            width="100%"
-                            height="100%"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M2.42012 12.7132C2.28394 12.4975 2.21584 12.3897 2.17772 12.2234C2.14909 12.0985 2.14909 11.9015 2.17772 11.7766C2.21584 11.6103 2.28394 11.5025 2.42012 11.2868C3.54553 9.50484 6.8954 5 12.0004 5C17.1054 5 20.4553 9.50484 21.5807 11.2868C21.7169 11.5025 21.785 11.6103 21.8231 11.7766C21.8517 11.9015 21.8517 12.0985 21.8231 12.2234C21.785 12.3897 21.7169 12.4975 21.5807 12.7132C20.4553 14.4952 17.1054 19 12.0004 19C6.8954 19 3.54553 14.4952 2.42012 12.7132Z"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
-                            <path
-                              d="M12.0004 15C13.6573 15 15.0004 13.6569 15.0004 12C15.0004 10.3431 13.6573 9 12.0004 9C10.3435 9 9.0004 10.3431 9.0004 12C9.0004 13.6569 10.3435 15 12.0004 15Z"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            /></svg
-                        ></a>
-                        
-                        <a
-                          class="w-6 h-6 p-1 rounded hover:text-teal-700 hover:bg-red-50 flex items-center justify-center"
-                          href="{% url "manager:asset_delete" asset.id %}"
-                          ><svg
-                            width="100%"
-                            height="100%"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M10 11.5V16.5M14 11.5V16.5M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            /></svg
-                        ></a>
-                      </div>
-                    </td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-3">Description</span>
+                    <div class="bg-white p-4 rounded-lg border border-slate-200 min-h-[120px] text-slate-600 text-sm leading-relaxed">
+                        {% if asset.asset_description %}
+                            {{ asset.asset_description|linebreaks }}
+                        {% else %}
+                            <span class="text-slate-400 italic">No description provided for this asset.</span>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
+        
+
+        <div class="mb-8 pt-8 border-t ">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
+                <h2 class="text-lg font-semibold text-slate-800">
+                    Basic Information
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100">
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Asset ID</span>
+                    <p class="text-base font-medium text-slate-800">{{ asset.assetId }}</p>
+                </div>
+
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Asset Name</span>
+                    <p class="text-base font-medium text-slate-800">{{ asset.asset_name }}</p>
+                </div>
+                
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Category</span>
+                    <p class="text-base font-medium text-slate-800">{{ asset.category.category_name|default:"N/A" }}</p>
+                </div>
+
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Brand</span>
+                    <p class="text-base font-medium text-slate-800">{{ asset.brand }}</p>
+                </div>
+
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Model</span>
+                    <p class="text-base font-medium text-slate-800">{{ asset.model }}</p>
+                </div>
+
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Serial Number</span>
+                    <p class="text-base font-medium text-slate-800 font-mono bg-white px-3 py-1 rounded border border-slate-200 inline-block">{{ asset.serial_number }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-slate-200 pt-8 mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
+                <h2 class="text-lg font-semibold text-slate-800">
+                    Purchase Information
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100">
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Purchase Date</span>
+                    <p class="text-base font-medium text-slate-800">{{ asset.purchase_date|date:"F d, Y"|default:"N/A" }}</p>
+                </div>
+
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Purchase Price</span>
+                    <p class="text-base font-medium text-slate-800">&#8377; {{ asset.purchase_price }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-slate-200 pt-8 mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
+                <h2 class="text-lg font-semibold text-slate-800">
+                    Asset Condition & Status
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100">
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Condition</span>
+                    <div>
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide 
+                            {% if asset.condition == 'new' %} bg-emerald-100 text-emerald-800 
+                            {% elif asset.condition == 'good' %} bg-teal-100 text-teal-800 
+                            {% elif asset.condition == 'fair' %} bg-amber-100 text-amber-800 
+                            {% else %} bg-rose-100 text-rose-800 {% endif %}">
+                            {{ asset.condition|title }}
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Status</span>
+                    <div>
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide
+                            {% if asset.status == 'available' %} bg-teal-100 text-teal-800 
+                            {% else %} bg-slate-200 text-slate-700 {% endif %}">
+                            {{ asset.status|title|cut:"_" }}
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Quantity</span>
+                    <p class="text-base font-medium text-slate-800">{{ asset.quantity|default:"1" }}</p>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+</div>
+
+
           </div>
         </div>
       </div>
