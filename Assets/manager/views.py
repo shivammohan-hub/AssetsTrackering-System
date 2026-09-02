@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
+
 from user.models import ToAssign
 
 # Create your views here.
@@ -15,6 +16,7 @@ def dashboard(req):
         "total_asset" : Asset.objects.count(),
         "total_category" : Category.objects.count(),
         "assets" : Asset.objects.all()[:4],
+        "user_count" : User.objects.filter(is_staff=False).count()
     }
     return render(req, "dashboard.html",data)
 
@@ -141,8 +143,11 @@ def assignments(request):
 
 @login_required
 def users(req):
-    users = User.objects.all()
-    return render(req, "users.html", {"users": users} )
+    data = {
+        "users" : User.objects.filter(is_staff=False),
+        "user_count" : User.objects.filter(is_staff=False).count()
+    }
+    return render(req, "users.html", data)
 
 
 
