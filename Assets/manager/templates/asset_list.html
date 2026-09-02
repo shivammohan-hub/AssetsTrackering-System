@@ -324,7 +324,7 @@
               <div
                 class="px-3 py-2 bg-teal-50 text-teal-700 rounded-lg text-sm font-medium"
               >
-                8 Assets
+                Total Assets : {{total_asset}}
               </div>
             </div>
 
@@ -378,7 +378,7 @@
                         class="text-sm text-slate-500 flex gap-4 items-center justify-center"
                       >
                         <a
-                          class="w-6 h-6 p-1 rounded hover:text-teal-700 hover:bg-teal-50 flex items-center justify-center"
+                          class="w-8 h-8 p-1 rounded hover:text-teal-700 hover:bg-teal-50 flex items-center justify-center"
                           href="{% url "manager:asset_detail" asset.id %}"
                           ><svg
                             width="100%"
@@ -404,7 +404,7 @@
                         ></a>
                         
                         <a
-                          class="w-6 h-6 p-1 rounded hover:text-teal-700 hover:bg-red-50 flex items-center justify-center"
+                          class="w-8 h-8 p-1 rounded hover:text-teal-700 hover:bg-red-50 flex items-center justify-center"
                           href="{% url "manager:asset_delete" asset.id %}"
                           ><svg
                             width="100%"

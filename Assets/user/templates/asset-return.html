@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AssetsTracker | Assign Assets</title>
+    <title>AssetsTracker | Assignment History</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen">
+<body class="bg-slate-50/10 text-slate-900 font-sans antialiased min-h-screen">
     
     <!-- Header -->
     <header class="sticky top-0 z-50 h-auto md:h-[10vh] bg-white border-b border-slate-300 px-3 md:px-8 py-3 md:py-0 flex md:flex-row items-center justify-between gap-4 shadow-md">
@@ -19,7 +19,7 @@
         
         <div class="flex w-72 md:w-auto md:justify-end justify-between items-center gap-4 md:gap-6 flex-wrap">
             <div class="hidden sm:block py-1">
-                <p class="text-teal-700 text-lg md:text-base font-extrabold tracking-widest uppercase">Select Assets</p>
+                <p class="text-teal-700 text-xl md:text-base font-extrabold tracking-widest uppercase">Assignment History</p>
             </div>
             
             <div class="flex items-center gap-3 py-1 md:py-3 sm:border-l-2 sm:border-slate-300 sm:px-5">
@@ -53,14 +53,14 @@
                         <span>Dashboard</span>
                     </a>
 
-                    <a class="bg-teal-50 text-teal-700 rounded-xl flex items-center gap-3 px-3 py-6 border-l-8 border-teal-600 transition-all font-bold" href="{% url 'user:assign_assets' %}">
-                        <svg class="w-5 h-5 flex-shrink-0 text-teal-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <a class="flex items-center gap-3 px-5 py-6 hover:bg-teal-50 hover:text-teal-700 rounded-xl transition-all text-slate-700 group" href="{% url 'user:assign_assets' %}">
+                        <svg class="w-5 h-5 flex-shrink-0 text-slate-500 group-hover:text-teal-600 transition-colors" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8 8H8.01M2 5.2L2 9.67451C2 10.1637 2 10.4083 2.05526 10.6385C2.10425 10.8425 2.18506 11.0376 2.29472 11.2166C2.4184 11.4184 2.59135 11.5914 2.93726 11.9373L10.6059 19.6059C11.7939 20.7939 12.388 21.388 13.0729 21.6105C13.6755 21.8063 14.3245 21.8063 14.927 21.6105C15.612 21.388 16.2061 20.7939 17.3941 19.6059L19.6059 17.3941C20.7939 16.2061 21.388 15.612 21.6105 14.927C21.8063 14.3245 21.8063 13.6755 21.6105 13.0729C21.388 12.388 20.7939 11.7939 19.6059 10.6059L11.9373 2.93726C11.5914 2.59135 11.4184 2.4184 11.2166 2.29472C11.0376 2.18506 10.8425 2.10425 10.6385 2.05526C10.4083 2 10.1637 2 9.67452 2L5.2 2C4.0799 2 3.51984 2 3.09202 2.21799C2.7157 2.40973 2.40973 2.71569 2.21799 3.09202C2 3.51984 2 4.07989 2 5.2ZM8.5 8C8.5 8.27614 8.27614 8.5 8 8.5C7.72386 8.5 7.5 8.27614 7.5 8C7.5 7.72386 7.72386 7.5 8 7.5C8.27614 7.5 8.5 7.72386 8.5 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <span>Assign Asset</span>
                     </a>
 
-                    <a class="flex items-center gap-3 px-5 py-6 hover:bg-teal-50 hover:text-teal-700 rounded-xl transition-all text-slate-700 group" href="{% url 'user:asset_return' %}">
+                    <a class="bg-teal-50 text-teal-700 rounded-xl flex items-center gap-3 px-3 py-6 border-l-8 border-teal-600 transition-all font-bold" href="{% url 'user:asset_return' %}">
                         <svg class="w-5 h-5 flex-shrink-0 text-teal-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19 21L22 18M22 18L19 15M22 18H16M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -68,7 +68,7 @@
                     </a>
 
                     <a class="flex items-center gap-3 px-5 py-6 hover:bg-teal-50 hover:text-teal-700 rounded-xl transition-all text-slate-700 group" href="{% url 'user:asset_history' %}">
-                        <svg class="w-5 h-5 flex-shrink-0 text-slate-500 group-hover:text-teal-600 transition-colors" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-5 h-5 flex-shrink-0 text-teal-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19 21L22 18M22 18L19 15M22 18H16M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <span>Assignment History</span>
@@ -101,91 +101,101 @@
         </aside>
 
         <!-- Main Content Area -->
-        <main class="w-full md:flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto md:ml-[280px] pb-32">
-            
-            <form action="{% url 'user:assign_assets' %}" method="post" class="min-h-full flex flex-col">
-                {% csrf_token %}
-
-                <div class="mb-6 px-4 py-4 bg-white border-l-8 border-teal-500 rounded-r-xl shadow-sm">
-                    <h1 class="text-3xl font-bold text-slate-600 tracking-tight">
-                        Select to Assign Assets
-                    </h1>
-                    <p class="text-slate-300 text-sm mt-1 font-semibold">
-                        Select the available assets below to assign them to a user.
-                    </p>
-                </div>
-
-                <!-- Assets Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-2  mb-20">
-                    
-                    {% for asset in assets %}
-                    <label class="bg-white rounded-2xl border shadow-md hover:shadow-lg hover:border-teal-400 transition-all duration-200 cursor-pointer group flex flex-col overflow-hidden">
-                        
-                        <div class="h-40 w-full flex items-center justify-center px-4 relative">
-                            <div class="absolute top-3 right-3">
-                                <span class="text-[10px] bg-teal-100 text-teal-800 font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm border border-teal-200">
-                                    {{ asset.status }}
-                                </span>
-                            </div>
-                            <img src="{{ asset.image.url }}" alt="{{ asset.model }}" class="h-full w-full object-contain border-b py-4">
-                        </div>
-
-                        <div class="px-5 py-3 flex flex-col gap-2">
-                            <h2 class="text-lg font-bold text-slate-900 truncate" title="{{ asset.asset_name }}">
-                                {{ asset.asset_name }}
-                            </h2>
-                            
-                            <div class="flex flex-col gap-3 text-sm f">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-slate-500 font-medium">Brand</span>
-                                    <span class="font-bold text-slate-800">{{ asset.brand }}</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-slate-500 font-medium">Model</span>
-                                    <span class="font-bold text-slate-800">{{ asset.model }}</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-slate-500 font-medium">Serial No.</span>
-                                    <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">{{ asset.serial_number }}</span>
-                                </div>
-                            </div>
-
-                            <div class="mt-auto flex items-center justify-between pt-2 border-t border-slate-200">
-                                <a href="{% url "user:assets_details" asset.id %}" class="text-teal-600 font-bold text-sm hover:text-teal-700 flex items-center gap-1 transition-colors">
-                                    View Details
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                                </a> 
-
-                                <div class="flex items-center justify-center p-1 hover:bg-slate-100 rounded-full transition-colors">
-                                    <input type="checkbox" name="selected_assets" value="{{ asset.id }}" class=" w-6 h-6 rounded border-slate-300 text-teal-600 accent-teal-600 focus:ring-teal-600 cursor-pointer shadow-sm">
-                                </div>
-                            </div>
-                        </div>
-                    </label>
-                    {% empty %}
-                    <div class="col-span-full py-12 flex flex-col items-center justify-center border-2 border-dashed border-slate-300 rounded-2xl bg-white shadow-sm">
-                        <svg class="w-12 h-12 text-slate-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
-                        <p class="text-slate-600 font-bold text-base">No assets available to assign.</p>
-                    </div>
-                    {% endfor %}
-                    
-                </div>
-
+        <main class="w-full md:flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto md:ml-64 pb-20">
+            <div class="max-w-6xl mx-auto space-y-6">
                 
-                <div class="fixed bottom-16 md:bottom-6 left-1/2 lg:ml-36 -translate-x-1/2 w-[92%] md:w-[75%] max-w-5xl z-40">
-                    <div class="bg-white shadow-xl border border-slate-300 px-6 md:px-12 py-4 rounded-2xl flex items-center justify-between gap-6">
-                        <div class="flex items-center gap-3">
-                            <div>
-                                <p class="text-slate-900 font-black text-lg md:text-xl tracking-wide">Ready to Assign?</p>
-                                <p class="hidden lg:inline text-slate-500 text-xs font-semibold tracking-wider">Select items above to proceed</p>
-                            </div>
-                        </div>
-                        
-                        <input type="submit" class="bg-teal-600 hover:bg-teal-700 text-white px-6 md:px-8 py-3 rounded-xl font-bold text-sm transition-all shadow-md shadow-teal-600/20 cursor-pointer" value="Select Assets">
-                    </div>
+                <div class="px-2">
+                    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Assigned Assets</h1>
+                    <p class="text-slate-600 text-sm mt-1 font-semibold">Review complete logs of all asset assignments and returning.</p>
                 </div>
 
-            </form>
+                <div class="bg-white rounded-2xl border border-slate-300 shadow-md overflow-hidden">
+                    
+
+
+
+                    <div class="bg-white border border-slate-200/80 rounded-2xl shadow-sm overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-slate-50/75 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    <th class="py-4 px-6">Assignee</th>
+                    <th class="py-4 px-6">Assigned Assets</th>
+                    <th class="py-4 px-6">Assignment Date</th>
+                    <th class="py-4 px-6">Return Date</th>
+                    <th class="py-4 px-6 text-right">Action</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-sm px-6">
+                {% for assign in toassign %}
+                <tr class="hover:bg-teal-50/30 transition-colors">
+                    
+                    <!-- Assignee -->
+                    <td class="py-4 px-6 align-top">
+                        <div class="space-y-0.5 flex flex-col">
+                            <p class="font-bold text-slate-800 text-xl">{{ assign.assignee_name }}</p>
+                            <span class="text-slate-400 font-mono">ID: {{ assign.employee_id|default:"N/A" }}</span>
+                            <span class="text-teal-600 font-semibold">{{ assign.department|default:"N/A" }}</span>
+                        
+                        </div>
+                    </td>
+
+                    <!-- Assigned Assets -->
+                    <td class="py-4 px-6 align-top max-w-xs">
+                        <div class="flex flex-wrap gap-1.5">
+                            {% for asset in assign.assets.all %}
+                            <div class="text-slate-700 text-md font-medium inline-flex items-center gap-2">
+                                <span>{{ asset.asset_name }}</span>
+                                <span class="font-normal text-slate-400">({{ asset.model }})</span>
+                            </div>
+                            {% empty %}
+                            <span class="text-xs text-rose-500 font-medium italic">No assets</span>
+                            {% endfor %}
+                        </div>
+                    </td>
+
+                    <!-- Assignment Date -->
+                    <td class="py-4 px-6 align-top whitespace-nowrap text-slate-700 font-medium text-xs pt-5">
+                        {{ assign.assignment_date }}
+                    </td>
+
+                    <!-- Return Date -->
+                    <td class="py-4 px-6 align-top whitespace-nowrap text-xs pt-5">
+                            <span class="text-slate-600 font-medium">{{ assign.return_date|date:"M d, Y" }}</span>
+                    </td>
+
+                    <!-- Action -->
+                    <td class="py-4 px-6 align-top text-right whitespace-nowrap pt-4">
+                        <a href="" class="inline-flex items-center justify-center bg-white hover:bg-teal-600 text-teal-600 hover:text-white font-semibold text-md px-5 py-3 rounded-lg border border-teal-200 hover:border-teal-600 transition-all shadow-2xs">
+                            Returned
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="py-16 px-6 text-center">
+                        <div class="max-w-xs mx-auto space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center mx-auto border border-teal-100">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                            </div>
+                            <p class="text-slate-700 font-semibold text-sm">No assignment history found</p>
+                            <p class="text-slate-400 text-xs">Assigned items will appear here once registered.</p>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+                </div>
+
+            </div>
         </main>
     </div>
 
@@ -214,7 +224,7 @@
             </svg>
         </a>
 
-        <a href="{% url 'user:asset_history' %}" class="flex flex-col items-center gap-1 text-slate-600 hover:text-teal-600 font-medium transition-colors">
+        <a href="{% url 'user:asset_history' %}" class="flex flex-col items-center gap-1 text-teal-600 font-bold transition-colors">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 21L22 18M22 18L19 15M22 18H16M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>

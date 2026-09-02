@@ -348,15 +348,10 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100 mb-5">
                 <div>
                     <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-3">Asset Image</span>
-                    {% if asset.image %}
+                    
                         <div class="w-48 h-48 rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm">
                             <img src="{{ asset.image.url }}" alt="{{ asset.asset_name }}" class="w-full h-full object-cover">
                         </div>
-                    {% else %}
-                        <div class="w-48 h-48 rounded-lg border border-dashed border-slate-300 flex items-center justify-center bg-white text-slate-400 text-sm">
-                            No image uploaded
-                        </div>
-                    {% endif %}
                 </div>
 
                 <div>

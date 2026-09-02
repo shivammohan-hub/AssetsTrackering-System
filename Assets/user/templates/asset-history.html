@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen">
+<body class="bg-slate-50/10 text-slate-900 font-sans antialiased min-h-screen">
     
     <!-- Header -->
     <header class="sticky top-0 z-50 h-auto md:h-[10vh] bg-white border-b border-slate-300 px-3 md:px-8 py-3 md:py-0 flex md:flex-row items-center justify-between gap-4 shadow-md">
@@ -60,6 +60,13 @@
                         <span>Assign Asset</span>
                     </a>
 
+                    <a class="flex items-center gap-3 px-5 py-6 hover:bg-teal-50 hover:text-teal-700 rounded-xl transition-all text-slate-700 group" href="{% url 'user:asset_return' %}">
+                        <svg class="w-5 h-5 flex-shrink-0 text-teal-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 21L22 18M22 18L19 15M22 18H16M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Assigned Assets</span>
+                    </a>
+
                     <a class="bg-teal-50 text-teal-700 rounded-xl flex items-center gap-3 px-3 py-6 border-l-8 border-teal-600 transition-all font-bold" href="{% url 'user:asset_history' %}">
                         <svg class="w-5 h-5 flex-shrink-0 text-teal-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19 21L22 18M22 18L19 15M22 18H16M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -103,65 +110,84 @@
                 </div>
 
                 <div class="bg-white rounded-2xl border border-slate-300 shadow-md overflow-hidden">
-                    <div class="overflow-x-auto w-full">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-slate-200/80 border-b border-slate-300 font-extrabold text-xs text-slate-700 uppercase tracking-wider">
-                                    <th class="p-5">Assignee Details</th>
-                                    <th class="p-5">Assigned Assets</th>
-                                    <th class="p-5 whitespace-nowrap">Assignment Date</th>
-                                    <th class="p-5 whitespace-nowrap">Return Date</th>
-                                    <th class="p-5">Remarks</th>
-                                    <th class="p-5">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-200 text-sm">
-                                {% for assign in toassign %}
-                                <tr class="hover:bg-teal-50/60 transition-colors">
-                                    <td class="p-5 align-top flex flex-col gap-2">
-                                        <p class="font-bold text-slate-900 text-base">{{ assign.assignee_name }}</p>
-                                        <p class="text-xs font-semibold text-slate-500 mt-0.5">ID : {{ assign.employee_id|default:"N/A" }}</p>
-                                        <p class="text-xs font-bold text-teal-700 mt-0.5">Dept : {{ assign.department|default:"N/A" }}</p>
-                                    </td>
-                                    <td class="p-5 align-top">
-                                        <div class="flex flex-wrap gap-1.5">
-                                            
-                                            {% for asset in toassign.assets.all %}
-                                            
-                                            <span class="bg-slate-100 text-slate-800 text-xs px-3 py-1 rounded-lg border border-slate-200 font-bold shadow-sm">
-                                                {{ asset.asset_name }} <span class="text-slate-500 font-medium">{{ asset.model }}</span>
-                                            </span>
+                    
 
-                                            {% endfor %}
-                                            
-                                            
-                                        </div>
-                                    </td>
-                                    <td class="p-5 align-top text-slate-700 font-semibold whitespace-nowrap">
-                                        {{ assign.assignment_date }}
-                                    </td>
 
-                                    <td class="p-5 align-top text-slate-700 font-semibold whitespace-nowrap">
-                                        {{ assign.return_date }}
-                                    </td>
 
-                                    <td class="p-5 align-top text-slate-600 text-xs font-medium">
-                                        {{ assign.remarks|default:"None" }}
-                                    </td>
-                                    <td class="px-5">
-                                        <a class="w-full border border-teal-500 text-teal-500 font-semibold hover:bg-teal-600 hover:text-white text-lg px-4 py-2 rounded-md" href="">Return</a>
-                                    </td>
-                                </tr>
-                                {% empty %}
-                                <tr>
-                                    <td colspan="4" class="p-12 text-center text-slate-500 font-bold text-sm">
-                                        No assignment history found yet.
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                    <div class="bg-white border border-slate-200/80 rounded-2xl shadow-sm overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-slate-50/75 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    <th class="py-4 px-6">Assignee</th>
+                    <th class="py-4 px-6">Assigned Assets</th>
+                    <th class="py-4 px-6">Assignment Date</th>
+                    <th class="py-4 px-6">Return Date</th>
+                    <th class="py-4 px-6">Remarks</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-sm px-6">
+                {% for assign in toassign %}
+                <tr class="hover:bg-teal-50/30 transition-colors">
+                    
+                    <!-- Assignee -->
+                    <td class="py-4 px-6 align-top">
+                        <div class="space-y-0.5 flex flex-col">
+                            <p class="font-bold text-slate-800 text-xl">{{ assign.assignee_name }}</p>
+                            <span class="text-slate-400 font-mono">ID: {{ assign.employee_id|default:"N/A" }}</span>
+                            <span class="text-teal-600 font-semibold"><span class="text-slate-600">Dept :</span> {{ assign.department|default:"N/A" }}</span>
+                        
+                        </div>
+                    </td>
+
+                    <!-- Assigned Assets -->
+                    <td class="py-4 px-6 align-top max-w-xs flex flex-col gap-1">
+                        {% for asset in assign.assets.all %}
+                        <div class="flex flex-col text-xs border p-1 rounded">
+                            <p class="font-bold text-slate-800 py-1 text-sm">{{ asset.asset_name }}</p>
+                            <span class="text-slate-400 font-mono">Model: {{ asset.model }}</span>
+                            <span class="text-teal-600 font-semibold">ID: {{ asset.assetId }}</span>
+                        </div>
+                        {% endfor %}
+                    </td>
+
+                    <!-- Assignment Date -->
+                    <td class="py-4 px-6 align-top whitespace-nowrap text-slate-700 font-medium text-xs pt-5">
+                        {{ assign.assignment_date }}
+                    </td>
+
+                    <!-- Return Date -->
+                    <td class="py-4 px-6 align-top whitespace-nowrap text-xs pt-5">
+                            <span class="text-slate-600 font-medium">{{ assign.return_date|date:"M d, Y" }}</span>
+                    </td>
+
+                    <!-- Remarks -->
+                    <td class="py-4 px-6 align-top text-xs text-slate-500 max-w-xs leading-relaxed pt-5">
+                        {{ assign.remarks }}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="py-16 px-6 text-center">
+                        <div class="max-w-xs mx-auto space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center mx-auto border border-teal-100">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                            </div>
+                            <p class="text-slate-700 font-semibold text-sm">No assignment history found</p>
+                            <p class="text-slate-400 text-xs">Assigned items will appear here once registered.</p>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
                 </div>
 
             </div>

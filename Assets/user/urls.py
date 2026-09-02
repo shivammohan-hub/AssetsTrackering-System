@@ -20,6 +20,8 @@ urlpatterns = [
     path('user-profile/', views.user_profile, name='user_profile'),
     path('save_assignments/',views.save_assignments, name="save_assignments"),
 
+    path('asset-return/', views.asset_return, name='asset_return'),
+
 
 
     

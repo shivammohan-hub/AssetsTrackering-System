@@ -29,8 +29,10 @@ def category_list(req):
     
             return redirect("manager:category_list")
     data = {
-        "categories" : Category.objects.all()
+        "categories" : Category.objects.all(),
+        "total_category" : Category.objects.count()
     }
+
     return render(req, "category_list.html",data)
 
 
@@ -91,7 +93,8 @@ def asset_edit(req,id):
 @login_required
 def asset_list(req):
     data = {
-        "assets" : Asset.objects.all()
+        "assets" : Asset.objects.all(),
+        "total_asset" : Asset.objects.count()
     }
     return render(req, "asset_list.html",data)
 

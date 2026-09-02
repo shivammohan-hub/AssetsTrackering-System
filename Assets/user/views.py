@@ -52,34 +52,41 @@ def assign_assets(request):
     return redirect("user:my_assets")
 
 
-
 def save_assignments(request):
     if request.method == "POST":
-        assign = ToAssign() 
+        selected_assets = request.POST.getlist("selected_assets")
+        assign = ToAssign()
         assign.assignee_name = request.POST.get("assignee_name")
         assign.employee_id = request.POST.get("employee_id")
         assign.department = request.POST.get("department")
         assign.assignment_date = request.POST.get("assignment_date")
         assign.return_date = request.POST.get("return_date")
         assign.remarks = request.POST.get("remarks")
-        assign.is_selected = request.POST.getlist("selected_assets") 
-        
-        assign.save()
-        return redirect("user:asset_history")
+        assign.assigned_by = request.user
 
+        assign.save()
+        assign.assets.set(selected_assets)
+        return redirect("user:asset_history")
     return redirect("user:my_assets")
 
 
 
 
-def asset_history(request):
-    
+def asset_history(req):
     data = {
         "toassign" : ToAssign.objects.all().order_by("-created_at"),
         
     }
-    return render(request, "asset-history.html", data)
+    return render(req, "asset-history.html", data)
 
+
+
+def asset_return(req):
+    data = {
+        "toassign" : ToAssign.objects.all().order_by("-created_at"),
+        
+    }
+    return render(req, "asset-return.html", data)
 
 
 
