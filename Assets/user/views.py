@@ -13,6 +13,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 def home(req):
     return render(req, "home.html")
 
+
+@login_required(login_url='user:login')
 def user_dashboard(req):
     data = {
         "total_assign" : ToAssign.objects.count(),
@@ -25,6 +27,8 @@ def user_dashboard(req):
     }
     return render(req, "user-dashboard.html",data)
 
+
+@login_required(login_url='user:login')
 def assets_details(req, id):
     data = {
         "assets" : Asset.objects.filter(id=id)
@@ -32,7 +36,7 @@ def assets_details(req, id):
     return render(req, "assets-details.html",data)
 
 
-
+@login_required(login_url='user:login')
 def my_assets(request):
     data = {
         "assets": Asset.objects.all()
@@ -41,7 +45,7 @@ def my_assets(request):
 
 
 
-
+@login_required(login_url='user:login')
 def assign_assets(request):
     if request.method == "POST":
         selected_assets = request.POST.getlist("selected_assets")
@@ -57,6 +61,7 @@ def assign_assets(request):
     return redirect("user:my_assets")
 
 
+@login_required(login_url='user:login')
 def save_assignments(request):
     if request.method == "POST":
         selected_assets = request.POST.getlist("selected_assets")
@@ -75,7 +80,7 @@ def save_assignments(request):
     return redirect("user:my_assets")
 
 
-
+@login_required(login_url='user:login')
 def asset_history(req):
     data = {
         "returned" : AssetReturn.objects.all(),
@@ -84,7 +89,7 @@ def asset_history(req):
     return render(req, "asset-history.html", data)
 
 
-
+@login_required(login_url='user:login')
 def asset_return(req):
     data = {
         "toassign" : ToAssign.objects.all().order_by("-created_at"),
@@ -103,7 +108,7 @@ def asset_return(req):
     return render(req, "asset-return.html", data)
 
 
-
+@login_required(login_url='user:login')
 def user_profile(req):
     return render(req, "user-profile.html")
 

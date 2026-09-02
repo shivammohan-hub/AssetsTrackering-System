@@ -6,11 +6,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-
 from user.models import ToAssign
 
 # Create your views here.
 
+@login_required(login_url='manager:manager-login')
 def dashboard(req):
     data = {
         "total_asset" : Asset.objects.count(),
@@ -22,7 +22,7 @@ def dashboard(req):
     return render(req, "dashboard.html",data)
 
 
-@login_required
+@login_required(login_url='manager:manager-login')
 def category_list(req):
     if req.method == "POST":
             category  = Category()
@@ -39,14 +39,14 @@ def category_list(req):
     return render(req, "category_list.html",data)
 
 
+@login_required(login_url='manager:manager-login')
 def category_delete(req,id):
     category = Category.objects.get(id=id)
     category.delete()
     return redirect("manager:category_list")
 
 
-
-@login_required
+@login_required(login_url='manager:manager-login')
 def add_asset(req):
     if req.method == "POST":
         asset  = Asset()
@@ -72,6 +72,7 @@ def add_asset(req):
     return render(req, "add_asset.html",data)
 
 
+@login_required(login_url='manager:manager-login')
 def asset_edit(req,id):
     asset = Asset.objects.get(id=id)
     if req.method == "POST":
@@ -93,7 +94,7 @@ def asset_edit(req,id):
     return render(req, "add_asset.html",{"asset":asset})
 
 
-@login_required
+@login_required(login_url='manager:manager-login')
 def asset_list(req):
     data = {
         "assets" : Asset.objects.all(),
@@ -101,6 +102,8 @@ def asset_list(req):
     }
     return render(req, "asset_list.html",data)
 
+
+@login_required(login_url='manager:manager-login')
 def asset_detail(req,id):
     data = {
         "asset" : Asset.objects.get(id=id)
@@ -108,14 +111,14 @@ def asset_detail(req,id):
     return render(req, "asset_detail.html", data)
 
 
-
+@login_required(login_url='manager:manager-login')
 def asset_delete(req,id):
     asset = Asset.objects.get(id=id)
     asset.delete()
     return redirect("manager:asset_list")
 
 
-
+@login_required(login_url='manager:manager-login')
 def add_user(req):
     user_form = UserCreationForm(req.POST or None)
     if req.method == "POST":
@@ -132,7 +135,7 @@ def add_user(req):
     return render(req, "add_user.html",data)
 
 
-@login_required
+@login_required(login_url='manager:manager-login')
 def assignments(request):
     assignments = ToAssign.objects.all().order_by("-created_at")
 
@@ -142,7 +145,7 @@ def assignments(request):
     return render(request, "assignments.html", data)
 
 
-@login_required
+@login_required(login_url='manager:manager-login')
 def users(req):
     data = {
         "users" : User.objects.filter(is_staff=False),
