@@ -21,6 +21,7 @@ def user_dashboard(req):
         "total_maintenance": AssetReturn.objects.filter(
             returning="maintenance"
         ).count(),
+        "available" : Asset.objects.exclude(toassign__assetreturn__returning="maintenance").count()
     }
     return render(req, "user-dashboard.html",data)
 
