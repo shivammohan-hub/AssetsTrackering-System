@@ -26,7 +26,6 @@ from django.http import HttpResponse
 def reset_admin(request):
     User = get_user_model()
     user = User.objects.get(username="yash")
-
     user.set_password("yash@123")
     user.is_staff = True
     user.is_superuser = True
@@ -34,6 +33,7 @@ def reset_admin(request):
     user.save()
 
     return HttpResponse("Yash is now the main superuser.")
+
 
 
 
