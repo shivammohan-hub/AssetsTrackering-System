@@ -19,8 +19,6 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-
 urlpatterns = [
     path('superuser/', admin.site.urls),
 
@@ -31,4 +29,5 @@ urlpatterns = [
     path('admin/', include('manager.urls')),
 ]
 
+# This serves media files in both development (DEBUG=True) and on your Render Disk (DEBUG=False)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

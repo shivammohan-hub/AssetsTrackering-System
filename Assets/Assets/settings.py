@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'user',
     'manager',
     
+    
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 ROOT_URLCONF = 'Assets.urls'
 
@@ -138,5 +141,13 @@ MAILERS = {
     },
 }
 
+import os
+
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [BASE_DIR / "static" ]
+
+# to access the image
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
