@@ -335,149 +335,145 @@
     </div>
 
     <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-6 sm:p-8">
-
-
         
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
-                <h2 class="text-lg font-semibold text-slate-800">
-                    Additional Information
-                </h2>
-            </div>
+      <div class="flex items-center gap-3 mb-6">
+          <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
+          <h2 class="text-lg font-semibold text-slate-800">
+              Additional Information
+          </h2>
+      </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100 mb-5">
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-3">Asset Image</span>
-                    
-                        <div class="h-40 w-full flex items-center justify-center px-4 relative">
-                            {% if asset.image %}
-                                <img src="{{ asset.image }}" alt="{{ asset.model }}" class="h-full w-full object-contain border-b py-4">
-                            {% endif %}
-                        </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100 mb-5">
+        <div>
+            <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-3">Asset Image</span>
+            
+                <div class="h-40 w-full flex items-center justify-center px-4 relative">
+                    {% if asset.image %}
+                        <img src="{{ asset.image }}" alt="{{ asset.model }}" class="h-full w-full object-contain border-b py-4">
+                    {% endif %}
                 </div>
-
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-3">Description</span>
-                    <div class="bg-white p-4 rounded-lg border border-slate-200 min-h-[120px] text-slate-600 text-sm leading-relaxed">
-                        {% if asset.asset_description %}
-                            {{ asset.asset_description|linebreaks }}
-                        {% else %}
-                            <span class="text-slate-400 italic">No description provided for this asset.</span>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="mb-8 pt-8 border-t ">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
-                <h2 class="text-lg font-semibold text-slate-800">
-                    Basic Information
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100">
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Asset ID</span>
-                    <p class="text-base font-medium text-slate-800">{{ asset.assetId }}</p>
-                </div>
-
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Asset Name</span>
-                    <p class="text-base font-medium text-slate-800">{{ asset.asset_name }}</p>
-                </div>
-                
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Category</span>
-                    <p class="text-base font-medium text-slate-800">{{ asset.category.category_name|default:"N/A" }}</p>
-                </div>
-
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Brand</span>
-                    <p class="text-base font-medium text-slate-800">{{ asset.brand }}</p>
-                </div>
-
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Model</span>
-                    <p class="text-base font-medium text-slate-800">{{ asset.model }}</p>
-                </div>
-
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Serial Number</span>
-                    <p class="text-base font-medium text-slate-800 font-mono bg-white px-3 py-1 rounded border border-slate-200 inline-block">{{ asset.serial_number }}</p>
-                </div>
-            </div>
         </div>
 
-        <div class="border-t border-slate-200 pt-8 mb-8">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
-                <h2 class="text-lg font-semibold text-slate-800">
-                    Purchase Information
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100">
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Purchase Date</span>
-                    <p class="text-base font-medium text-slate-800">{{ asset.purchase_date|date:"F d, Y"|default:"N/A" }}</p>
-                </div>
-
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Purchase Price</span>
-                    <p class="text-base font-medium text-slate-800">&#8377; {{ asset.purchase_price }}</p>
-                </div>
+        <div>
+            <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-3">Description</span>
+            <div class="bg-white p-4 rounded-lg border border-slate-200 min-h-[120px] text-slate-600 text-sm leading-relaxed">
+                {% if asset.asset_description %}
+                    {{ asset.asset_description|linebreaks }}
+                {% else %}
+                    <span class="text-slate-400 italic">No description provided for this asset.</span>
+                {% endif %}
             </div>
         </div>
-
-        <div class="border-t border-slate-200 pt-8 mb-8">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
-                <h2 class="text-lg font-semibold text-slate-800">
-                    Asset Condition & Status
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100">
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Condition</span>
-                    <div>
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide 
-                            {% if asset.condition == 'new' %} bg-emerald-100 text-emerald-800 
-                            {% elif asset.condition == 'good' %} bg-teal-100 text-teal-800 
-                            {% elif asset.condition == 'fair' %} bg-amber-100 text-amber-800 
-                            {% else %} bg-rose-100 text-rose-800 {% endif %}">
-                            {{ asset.condition|title }}
-                        </span>
-                    </div>
-                </div>
-
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Status</span>
-                    <div>
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide
-                            {% if asset.status == 'available' %} bg-teal-100 text-teal-800 
-                            {% else %} bg-slate-200 text-slate-700 {% endif %}">
-                            {{ asset.status|title|cut:"_" }}
-                        </span>
-                    </div>
-                </div>
-
-                <div>
-                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Quantity</span>
-                    <p class="text-base font-medium text-slate-800">{{ asset.quantity|default:"1" }}</p>
-                </div>
-            </div>
-        </div>
-
+      </div>
         
 
+      <div class="mb-8 pt-8 border-t ">
+        <div class="flex items-center gap-3 mb-6">
+            <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
+            <h2 class="text-lg font-semibold text-slate-800">
+                Basic Information
+            </h2>
+        </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100">
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Asset ID</span>
+                  <p class="text-base font-medium text-slate-800">{{ asset.assetId }}</p>
+              </div>
+
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Asset Name</span>
+                  <p class="text-base font-medium text-slate-800">{{ asset.asset_name }}</p>
+              </div>
+              
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Category</span>
+                  <p class="text-base font-medium text-slate-800">{{ asset.category.category_name|default:"N/A" }}</p>
+              </div>
+
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Brand</span>
+                  <p class="text-base font-medium text-slate-800">{{ asset.brand }}</p>
+              </div>
+
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Model</span>
+                  <p class="text-base font-medium text-slate-800">{{ asset.model }}</p>
+              </div>
+
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Serial Number</span>
+                  <p class="text-base font-medium text-slate-800 font-mono bg-white px-3 py-1 rounded border border-slate-200 inline-block">{{ asset.serial_number }}</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="border-t border-slate-200 pt-8 mb-8">
+          <div class="flex items-center gap-3 mb-6">
+              <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
+              <h2 class="text-lg font-semibold text-slate-800">
+                  Purchase Information
+              </h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100">
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Purchase Date</span>
+                  <p class="text-base font-medium text-slate-800">{{ asset.purchase_date|date:"F d, Y"|default:"N/A" }}</p>
+              </div>
+
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Purchase Price</span>
+                  <p class="text-base font-medium text-slate-800">&#8377; {{ asset.purchase_price }}</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="border-t border-slate-200 pt-8 mb-8">
+          <div class="flex items-center gap-3 mb-6">
+              <div class="w-1 h-6 bg-teal-600 rounded-full"></div>
+              <h2 class="text-lg font-semibold text-slate-800">
+                  Asset Condition & Status
+              </h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-slate-50/50 p-6 rounded-xl border border-slate-100">
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Condition</span>
+                  <div>
+                      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide 
+                          {% if asset.condition == 'new' %} bg-emerald-100 text-emerald-800 
+                          {% elif asset.condition == 'good' %} bg-teal-100 text-teal-800 
+                          {% elif asset.condition == 'fair' %} bg-amber-100 text-amber-800 
+                          {% else %} bg-rose-100 text-rose-800 {% endif %}">
+                          {{ asset.condition|title }}
+                      </span>
+                  </div>
+              </div>
+
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Status</span>
+                  <div>
+                      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide
+                          {% if asset.status == 'available' %} bg-teal-100 text-teal-800 
+                          {% else %} bg-slate-200 text-slate-700 {% endif %}">
+                          {{ asset.status|title|cut:"_" }}
+                      </span>
+                  </div>
+              </div>
+
+              <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-1">Quantity</span>
+                  <p class="text-base font-medium text-slate-800">{{ asset.quantity|default:"1" }}</p>
+              </div>
+          </div>
+      </div>
+
+        
     </div>
 </div>
 
 
-          </div>
         </div>
       </div>
     </div>
