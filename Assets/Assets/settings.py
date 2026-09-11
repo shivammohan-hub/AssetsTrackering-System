@@ -15,6 +15,14 @@ from pathlib import Path
 
 import os
 import dj_database_url
+from dotenv import load_dotenv
+
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+load_dotenv(os.path.join(BASE_DIR, ".env"))
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,6 +38,14 @@ SECRET_KEY = "django-insecure-local-development-key-change-this"
 DEBUG = os.getenv("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+
+
+# ImageKit
+IMAGEKIT_PUBLIC_KEY = os.getenv("IMAGEKIT_PUBLIC_KEY")
+IMAGEKIT_PRIVATE_KEY = os.getenv("IMAGEKIT_PRIVATE_KEY")
+IMAGEKIT_URL_ENDPOINT = os.getenv("IMAGEKIT_URL_ENDPOINT")
+
+
 
 
 # Application definition
@@ -59,6 +75,8 @@ MIDDLEWARE = [
 ]
 
 
+
+load_dotenv()
 
 ROOT_URLCONF = 'Assets.urls'
 

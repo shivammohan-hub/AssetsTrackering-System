@@ -6,6 +6,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
+from imagekitio import ImageKit
+from django.conf import settings
+
 from user.models import ToAssign
 
 # Create your views here.
@@ -49,7 +52,30 @@ def category_delete(req,id):
 @login_required(login_url='manager:manager-login')
 def add_asset(req):
     if req.method == "POST":
-        asset  = Asset()
+
+        # Get uploaded image
+        uploaded_image = req.FILES.get("image")
+
+        image_url = None
+
+        # Upload image to ImageKit
+        if uploaded_image:
+            imagekit = ImageKit(
+                private_key=settings.IMAGEKIT_PRIVATE_KEY
+            )
+
+            file_data = uploaded_image.read()
+
+            response = imagekit.files.upload(
+                file=file_data,
+                file_name=uploaded_image.name,
+                folder="/assets_image/"
+            )
+
+            image_url = response.url
+
+        # Create Asset
+        asset = Asset()
         asset.assetId = req.POST.get("assetId")
         asset.asset_name = req.POST.get("asset_name")
         asset.category_id = req.POST.get("category")
@@ -57,19 +83,27 @@ def add_asset(req):
         asset.model = req.POST.get("model")
         asset.serial_number = req.POST.get("serial_number")
         asset.purchase_date = req.POST.get("purchase_date")
-        asset.purchase_price = req.POST.get('purchase_price')
+        asset.purchase_price = req.POST.get("purchase_price")
         asset.condition = req.POST.get("condition")
         asset.status = req.POST.get("status")
         asset.quantity = req.POST.get("quantity")
-        asset.image = req.FILES.get("image")
+
+        # Save ImageKit URL
+        asset.image = image_url
+
         asset.asset_description = req.POST.get("asset_description")
+
         asset.save()
 
         return redirect("manager:add_asset")
+
     data = {
-        "categories" : Category.objects.all()
+        "categories": Category.objects.all()
     }
-    return render(req, "add_asset.html",data)
+
+    return render(req, "add_asset.html", data)
+
+
 
 
 @login_required(login_url='manager:manager-login')

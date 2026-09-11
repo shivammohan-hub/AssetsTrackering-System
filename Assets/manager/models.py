@@ -36,7 +36,7 @@ class Asset(models.Model):
 
     quantity = models.IntegerField(null=True, blank=True, default=1)
     asset_description = models.TextField(null=True, blank=True, default="N/A")
-    image = models.ImageField(upload_to="assets_image/", null=True, blank=True,)
+    image = models.URLField(max_length=500, null=True, blank=True,)
 
 
     def __str__(self):

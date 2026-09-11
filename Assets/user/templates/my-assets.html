@@ -122,8 +122,11 @@
                     <label class="bg-white rounded-2xl border shadow-md hover:shadow-lg hover:border-teal-400 transition-all duration-200 cursor-pointer group flex flex-col overflow-hidden">
                         
                         <div class="h-40 w-full flex items-center justify-center px-4 relative">
-                            
-                            <img src="{{ asset.image.url }}" alt="{{ asset.model }}" class="h-full w-full object-contain border-b py-4">
+                            {% if asset.image %}
+                                <img src="{{ asset.image }}"
+                                    alt="{{ asset.model }}"
+                                    class="h-full w-full object-contain border-b py-4">
+                            {% endif %}
                         </div>
 
                         <div class="px-5 py-3 flex flex-col gap-2">
