@@ -349,8 +349,10 @@
                 <div>
                     <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-3">Asset Image</span>
                     
-                        <div class="w-48 h-48 rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm">
-                            <img src="{{ asset.image.url }}" alt="{{ asset.asset_name }}" class="w-full h-full object-cover">
+                        <div class="h-40 w-full flex items-center justify-center px-4 relative">
+                            {% if asset.image %}
+                                <img src="{{ asset.image }}" alt="{{ asset.model }}" class="h-full w-full object-contain border-b py-4">
+                            {% endif %}
                         </div>
                 </div>
 
