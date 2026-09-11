@@ -108,6 +108,7 @@ def add_asset(req):
 
 @login_required(login_url='manager:manager-login')
 def asset_edit(req,id):
+    categories = Category.objects.all()
     asset = Asset.objects.get(id=id)
     if req.method == "POST":
         asset.assetId = req.POST.get("assetId")
@@ -125,7 +126,7 @@ def asset_edit(req,id):
         asset.asset_description = req.POST.get("asset_description")
         asset.save()
         return redirect("manager:asset_detail")
-    return render(req, "add_asset.html",{"asset":asset})
+    return render(req, "add_asset.html" ,{"asset":asset,"categories":categories})
 
 
 @login_required(login_url='manager:manager-login')
