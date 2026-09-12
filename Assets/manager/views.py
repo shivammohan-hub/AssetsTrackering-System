@@ -125,8 +125,10 @@ def asset_edit(req,id):
         asset.image = req.FILES.get("image")
         asset.asset_description = req.POST.get("asset_description")
         asset.save()
-        return redirect("manager:asset_detail")
+        return redirect("manager:asset_list")
     return render(req, "add_asset.html" ,{"asset":asset,"categories":categories})
+
+
 
 
 @login_required(login_url='manager:manager-login')
