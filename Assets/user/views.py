@@ -84,7 +84,7 @@ def save_assignments(request):
 def asset_history(req):
     data = {
         "returned" : AssetReturn.objects.all(),
-
+        "toassign" : ToAssign.objects.all().order_by("-created_at"),
     }
     return render(req, "asset-history.html", data)
 

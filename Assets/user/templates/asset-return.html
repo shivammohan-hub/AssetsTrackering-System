@@ -110,9 +110,6 @@
                 </div>
 
                 <div class="bg-white rounded-2xl border border-slate-300 shadow-md overflow-hidden">
-                    
-
-
 
                     <div class="bg-white border border-slate-200/80 rounded-2xl shadow-sm overflow-hidden">
     <div class="overflow-x-auto">
@@ -183,17 +180,6 @@
                             </select>
                             <input class="border border-teal-500 font-bold text-xs text-teal-500 hover:bg-teal-500 py-2 px-3 rounded-lg hover:text-white" type="submit" value="OK">
                         </form>
-
-
-
-{% comment %} 
-                        <a href="" class="inline-flex items-center justify-center bg-white hover:bg-green-600 text-green-600 hover:text-white font-semibold text-md px-5 py-3 rounded-lg border border-green-400 hover:border-green-600 transition-all shadow-2xs">
-                            Returned
-                        </a>
-
-                        <a href="" class="inline-flex items-center justify-center bg-white hover:bg-orange-500 text-orange-500 hover:border-orange-500 hover:text-white font-semibold text-md px-5 py-3 rounded-lg border border-orange-400 transition-all shadow-2xs">
-                            Maintainance
-                        </a> {% endcomment %}
                     </td>
                 </tr>
                 {% empty %}
@@ -213,10 +199,6 @@
         </table>
     </div>
 </div>
-
-
-
-
 
                 </div>
 
@@ -249,11 +231,11 @@
             </svg>
         </a>
 
-        <a href="{% url 'user:asset_history' %}" class="flex flex-col items-center gap-1 text-teal-600 font-bold transition-colors">
+        <a href="{% url 'user:asset_return' %}" class="flex flex-col items-center gap-1 text-teal-600 font-bold transition-colors">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 21L22 18M22 18L19 15M22 18H16M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span class="text-[10px]">History</span>
+            <span class="text-[10px]">Assigned</span>
         </a>
 
         <a href="{% url 'user:user_profile' %}" class="flex flex-col items-center gap-1 text-slate-600 hover:text-teal-600 font-medium transition-colors">
