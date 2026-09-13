@@ -52,7 +52,6 @@ def category_delete(req,id):
 @login_required(login_url='manager:manager-login')
 def add_asset(req):
     if req.method == "POST":
-
         # Get uploaded image
         uploaded_image = req.FILES.get("image")
 
@@ -90,13 +89,9 @@ def add_asset(req):
 
         # Save ImageKit URL
         asset.image = image_url
-
         asset.asset_description = req.POST.get("asset_description")
-
         asset.save()
-
         return redirect("manager:add_asset")
-
     data = {
         "categories": Category.objects.all()
     }
@@ -107,10 +102,13 @@ def add_asset(req):
 
 
 @login_required(login_url='manager:manager-login')
-def asset_edit(req,id):
-    categories = Category.objects.all()
+def asset_edit(req, id):
     asset = Asset.objects.get(id=id)
     if req.method == "POST":
+        # Get uploaded image
+        uploaded_image = req.FILES.get("image")
+
+        # Update Asset fields
         asset.assetId = req.POST.get("assetId")
         asset.asset_name = req.POST.get("asset_name")
         asset.category_id = req.POST.get("category")
@@ -118,15 +116,34 @@ def asset_edit(req,id):
         asset.model = req.POST.get("model")
         asset.serial_number = req.POST.get("serial_number")
         asset.purchase_date = req.POST.get("purchase_date")
-        asset.purchase_price = req.POST.get('purchase_price')
+        asset.purchase_price = req.POST.get("purchase_price")
         asset.condition = req.POST.get("condition")
         asset.status = req.POST.get("status")
         asset.quantity = req.POST.get("quantity")
-        asset.image = req.FILES.get("image")
         asset.asset_description = req.POST.get("asset_description")
+
+        # Upload new image only if user selected one
+        if uploaded_image:
+            imagekit = ImageKit(
+                private_key=settings.IMAGEKIT_PRIVATE_KEY
+            )
+
+            file_data = uploaded_image.read()
+
+            response = imagekit.files.upload(
+                file=file_data,
+                file_name=uploaded_image.name,
+                folder="/assets_image/"
+            )
+            # Save new ImageKit URL
+            asset.image = response.url
         asset.save()
-        return redirect("manager:asset_list")
-    return render(req, "add_asset.html" ,{"asset":asset,"categories":categories})
+        return redirect("manager:asset_detail", id=asset.id)
+    data = {
+        "asset": asset,
+        "categories": Category.objects.all(),
+    }
+    return render(req, "add_asset.html", data)
 
 
 
