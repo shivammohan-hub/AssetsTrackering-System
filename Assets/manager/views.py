@@ -95,7 +95,6 @@ def add_asset(req):
     data = {
         "categories": Category.objects.all()
     }
-
     return render(req, "add_asset.html", data)
 
 
