@@ -129,63 +129,61 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-slate-100 text-sm px-6">
+
+
                 {% for assign in toassign %}
-                <tr class="hover:bg-teal-50/30 transition-colors">
-                
-                    <!-- Assignee -->
 
-                    <td class="text-center">{{ assign.id }}</td>
-                    <td class="py-4 px-6 align-top">
-                        <div class="space-y-0.5 flex flex-col">
-                            <p class="font-bold text-slate-800 text-xl">{{ assign.assignee_name }}</p>
-                            <span class="text-slate-400 font-mono">ID: {{ assign.employee_id|default:"N/A" }}</span>
-                            <span class="text-teal-600 font-semibold">{{ assign.department|default:"N/A" }}</span>
-                        
-                        </div>
-                    </td>
+                <form action="{% url "user:on_returning" %}" method="post">
+                {% csrf_token %}
 
-                    <!-- Assigned Assets -->
-                    <td class="py-4 px-6 align-top max-w-xs">
-                        <div class="flex flex-wrap gap-1.5">
-                            {% for asset in assign.assets.all %}
-                            <div class="text-slate-700 text-md font-medium inline-flex items-center gap-2">
-                                <span>{{ asset.asset_name }}</span>
-                                <span class="font-normal text-slate-400">({{ asset.model }})</span>
+                    <input type="hidden" name="assigned_asset" value="{{ assign.id }}">
+                    <tr class="hover:bg-teal-50/30 transition-colors">
+                        <!-- Assignee -->
+                        <td class="text-center">{{ assign.id }}</td>
+                        <td class="py-4 px-6 align-top">
+                            <div class="space-y-0.5 flex flex-col">
+                                <p class="font-bold text-slate-800 text-xl">{{ assign.assignee_name }}</p>
+                                <span class="text-slate-400 font-mono">ID: {{ assign.employee_id }}</span>
+                                <span class="text-teal-600 font-semibold">{{ assign.department }}</span>
                             </div>
-                            {% empty %}
-                            <span class="text-xs text-rose-500 font-medium italic">No assets</span>
-                            {% endfor %}
-                        </div>
-                    </td>
+                        </td>
 
-                    <!-- Assignment Date -->
-                    <td class="py-4 px-6 align-top whitespace-nowrap text-slate-700 font-medium text-xs pt-5">
-                        {{ assign.assignment_date }}
-                    </td>
+                        <!-- Assigned Assets -->
+                        <td class="py-4 px-6 align-top max-w-xs">
+                            <div class="flex flex-wrap gap-1.5">
+                                {% for asset in assign.assets.all %}
+                                <div class="text-slate-700 text-md font-medium inline-flex items-center gap-2">
+                                    <span>{{ asset.asset_name }}</span>
+                                    <span class="font-normal text-slate-400">({{ asset.model }})</span>
+                                </div>
+                                {% empty %}
+                                <span class="text-xs text-rose-500 font-medium italic">No assets</span>
+                                {% endfor %}
+                            </div>
+                        </td>
 
-                    <!-- Return Date -->
-                    <td class="py-4 px-6 align-top whitespace-nowrap text-xs pt-5">
-                            <span class="text-slate-600 font-medium">{{ assign.return_date|date:"M d, Y" }}</span>
-                    </td>
+                        <!-- Assignment Date -->
+                        <td class="py-4 px-6 align-top whitespace-nowrap text-slate-700 font-medium text-xs pt-5">
+                            {{ assign.assignment_date }}
+                        </td>
 
-                    <!-- Action -->
-                    <td class="py-4 px-6 align-top text-right flex flex-col gap-2 whitespace-nowrap pt-4">        
-                        <form action="" class="flex gap-2" method="post">
+                        <!-- Return Date -->
+                        <td class="py-4 px-6 align-top whitespace-nowrap text-xs pt-5">
+                                <span class="text-slate-600 font-medium">{{ assign.return_date|date:"M d, Y" }}</span>
+                        </td>
 
-                            {% csrf_token %}
-
-                            <input type="hidden" name="assigned_asset_id" value="{{ assign.id }}">
-                        
-                                
+                        <!-- Action -->
+                        <td class="py-4 px-6 align-top text-right flex flex-col gap-2 whitespace-nowrap pt-4">
                             <select class="px-4 py-2 rounded-lg border font-semibold text-slate-600" required name="returning" id="">
                                 <option value="" disabled selected>Select</option>
                                 <option value="returned">Returned</option>
                                 <option value="maintenance">Maintenance</option>
                             </select>
                             <input class="border border-teal-500 font-bold text-xs text-teal-500 hover:bg-teal-500 py-2 px-3 rounded-lg hover:text-white" type="submit" value="OK">
-                        </form>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                </form>
+
                 {% empty %}
                 <tr>
                     <td colspan="6" class="py-16 px-6 text-center">
@@ -199,6 +197,7 @@
                     </td>
                 </tr>
                 {% endfor %}
+                
             </tbody>
         </table>
     </div>

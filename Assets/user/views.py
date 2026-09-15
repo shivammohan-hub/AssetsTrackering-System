@@ -82,29 +82,31 @@ def save_assignments(request):
 
 @login_required(login_url='user:login')
 def asset_return(req):
+    returned_assignments = AssetReturn.objects.all( "assigned_asset_id" )
     data = {
-        "toassign" : ToAssign.objects.all().order_by("-created_at"),
+        
+        "toassign": ToAssign.objects.exclude(id__in=returned_assignments).order_by("-created_at"),
     }
-    if req.method == "POST":
-        assigned_asset_id = req.POST.get("assigned_asset_id")
-        returning = req.POST.get("returning")
-        assigned_asset = ToAssign.objects.get(id=assigned_asset_id)
-
-        AssetReturn.objects.create(
-            assigned_asset=assigned_asset,
-            returning=returning
-        )
-        return redirect("user:asset_history")
-    
     return render(req, "asset-return.html", data)
+
+
+@login_required(login_url='user:login')
+def on_returning(req):
+    if req.method == "POST":
+        rtn = AssetReturn()
+        rtn.assigned_asset_id = req.POST.get("assigned_asset")
+        rtn.returning = req.POST.get("returning")
+        rtn.save()
+
+        return redirect("user:asset_history")
+    return redirect("user:asset_return")
 
 
 
 @login_required(login_url='user:login')
 def asset_history(req):
     data = {
-        "returned" : AssetReturn.objects.all(),
-        "toassign" : ToAssign.objects.all().order_by("-created_at"),
+        "returned" : AssetReturn.objects.all().order_by("-created_at"),
     }
     return render(req, "asset-history.html", data)
 

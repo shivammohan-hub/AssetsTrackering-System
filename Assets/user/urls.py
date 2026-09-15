@@ -21,6 +21,7 @@ urlpatterns = [
 
     path('save_assignments/',views.save_assignments, name="save_assignments"),
     path('asset-return/', views.asset_return, name='asset_return'),
+    path('on_returning/', views.on_returning, name='on_returning'),
 
 
 
