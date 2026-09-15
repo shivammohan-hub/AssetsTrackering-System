@@ -76,17 +76,8 @@ def save_assignments(request):
 
         assign.save()
         assign.assets.set(selected_assets)
-        return redirect("user:asset_history")
+        return redirect("user:asset_return")
     return redirect("user:my_assets")
-
-
-@login_required(login_url='user:login')
-def asset_history(req):
-    data = {
-        "returned" : AssetReturn.objects.all(),
-        "toassign" : ToAssign.objects.all().order_by("-created_at"),
-    }
-    return render(req, "asset-history.html", data)
 
 
 @login_required(login_url='user:login')
@@ -108,6 +99,16 @@ def asset_return(req):
     return render(req, "asset-return.html", data)
 
 
+
+@login_required(login_url='user:login')
+def asset_history(req):
+    data = {
+        "returned" : AssetReturn.objects.all(),
+        "toassign" : ToAssign.objects.all().order_by("-created_at"),
+    }
+    return render(req, "asset-history.html", data)
+
+
 @login_required(login_url='user:login')
 def user_profile(req):
     return render(req, "user-profile.html")
@@ -116,7 +117,6 @@ def user_profile(req):
 
 def login(req):
     if req.method == "POST":
-        
         user_form = AuthenticationForm(req, data=req.POST)
         
         if user_form.is_valid():
