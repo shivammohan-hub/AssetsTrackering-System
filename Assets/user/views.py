@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from manager.models import *
 from .models import *
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 
 
 # Create your views here.
@@ -23,7 +23,7 @@ def user_dashboard(req):
         "total_maintenance": AssetReturn.objects.filter(
             returning="maintenance"
         ).count(),
-        "available" : Asset.objects.exclude(toassign__assetreturn__returning="maintenance").count()
+        "available" : AssetReturn.objects.exclude(returning="maintenance").count()
     }
     return render(req, "user-dashboard.html",data)
 
@@ -49,9 +49,6 @@ def my_assets(request):
 def assign_assets(request):
     if request.method == "POST":
         selected_assets = request.POST.getlist("selected_assets")
-        if not selected_assets:
-            return redirect("user:my_assets")
-        
         assets = Asset.objects.filter(id__in=selected_assets)
         data = {
             "selected_assets": assets,
@@ -82,7 +79,7 @@ def save_assignments(request):
 
 @login_required(login_url='user:login')
 def asset_return(req):
-    returned_assignments = AssetReturn.objects.all( "assigned_asset_id" )
+    returned_assignments = AssetReturn.objects.values("assigned_asset_id")
     data = {
         
         "toassign": ToAssign.objects.exclude(id__in=returned_assignments).order_by("-created_at"),
@@ -98,7 +95,7 @@ def on_returning(req):
         rtn.returning = req.POST.get("returning")
         rtn.save()
 
-        return redirect("user:asset_history")
+        return redirect("user:asset_return")
     return redirect("user:asset_return")
 
 
