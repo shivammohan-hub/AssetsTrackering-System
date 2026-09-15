@@ -104,9 +104,13 @@
         <main class="w-full md:flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto md:ml-64 pb-20">
             <div class="max-w-6xl mx-auto space-y-6">
                 
-                <div class="px-2">
-                    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Assigned Assets</h1>
-                    <p class="text-slate-600 text-sm mt-1 font-semibold">Review complete logs of all asset assignments and returning.</p>
+                <div class="flex items-center justify-between md:px-3">
+                    <div class="px-2">
+                        <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Assigned Assets</h1>
+                        <p class="text-slate-600 text-sm mt-1 font-semibold">Review complete logs of all asset assignments and returning.</p>
+                    </div>
+
+                    <a class="bg-teal-600 text-white font-semibold text-sm hover:bg-teal-700 rounded-lg px-3 py-1.5" href="{% url 'user:asset_history' %}">Assignment History</a>
                 </div>
 
                 <div class="bg-white rounded-2xl border border-slate-300 shadow-md overflow-hidden">
