@@ -99,6 +99,15 @@ def on_returning(req):
     return redirect("user:asset_return")
 
 
+@login_required(login_url='user:login')
+def maintenance(req):
+    data = {
+        "availability" : AssetReturn.objects.filter(returning="maintenance"),
+        
+    }
+    return render(req, "maintenance.html", data)
+
+
 
 @login_required(login_url='user:login')
 def asset_history(req):

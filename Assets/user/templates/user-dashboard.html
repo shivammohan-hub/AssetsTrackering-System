@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AssetsTracker | Manager Dashboard</title>
+    <title>AssetsTracker | User Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -149,7 +149,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2 md:ml-2">
 
-                <a href="{% url 'manager:asset_list' %}"
+                <a href="{% url 'user:my_assets' %}"
                     class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-teal-200 transition-all duration-200 hover:text-teal-700">
                     <div class="flex items-start justify-between">
                         <div>
@@ -167,7 +167,7 @@
                 </a>
 
 
-                <a href="{% url 'manager:assignments' %}"
+                <a href="{% url 'user:asset_return' %}"
                     class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-teal-200 transition-all duration-200 hover:text-teal-700">
                     <div class="flex items-start justify-between">
                         <div>
@@ -183,7 +183,7 @@
                 </a>
 
 
-                <a href="{% url 'manager:asset_list' %}"
+                <a href="{% url 'user:my_assets' %}"
                     class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-teal-200 transition-all duration-200 hover:text-teal-700">
                     <div class="flex items-start justify-between">
                         <div>
@@ -199,7 +199,7 @@
                 </a>
 
 
-                <a href=""
+                <a href="{% url "user:maintenance" %}"
                     class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-teal-200 transition-all duration-200 hover:text-teal-700">
                     <div class="flex items-start justify-between">
                         <div>
